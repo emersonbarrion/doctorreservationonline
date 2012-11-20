@@ -1,0 +1,13 @@
+-- GIT HUB
+https://github.com/emersonbarrion/courtreservationonline.git
+
+--Tables
+cro_admin_users
+cro_courts
+cro_payments
+cro_reservations
+cro_users
+
+-- Current Fixtures
+users.yml
+		
