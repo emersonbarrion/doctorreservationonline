@@ -29,6 +29,8 @@ dev:
       delivery_strategy: none
 
 all:
+  controller:
+    class: CroFrontWebController
   routing:
     class: sfPatternRouting
     param:

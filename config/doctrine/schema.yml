@@ -10,6 +10,7 @@ CroAdminUsers:
     contact1: { type: string(255) }
     contact2: { type: string(255) }
     website: { type: string(255) }
+    company_slogan: { type: string(255), notnull: true }
     company_logo: { type: string(255) }
     lastlogin: { type: timestamp, notnull: true }
     status: { type: boolean, notnull: true, default: 0 }

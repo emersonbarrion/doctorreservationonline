@@ -10,7 +10,20 @@
  */
 class CroUsersForm extends BaseCroUsersForm
 {
-  public function configure()
-  {
-  }
+	public function configure()
+	{
+		$this->setWidgets(array(
+		    'username'  	=> new sfWidgetFormInput(array(), array('class' => 'boxtext')),
+		    'password'		=> new sfWidgetFormInputPassword(array(), array('class' => 'boxtext')),
+		    'remember_me' 	=> new sfWidgetFormInputCheckbox(array(), array('align' => 'absmiddle')),
+		));
+
+		$this->setValidators(array(
+			'username' 		=> new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Username')),
+			'password' 		=> new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Password')),
+			'remember_me'	=> new sfValidatorBoolean()
+		));
+
+		$this->widgetSchema->setNameFormat('login[%s]');
+  	}
 }

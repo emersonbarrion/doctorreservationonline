@@ -1,0 +1,185 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+
+.clearfix{ 
+clear:both;
+}
+
+#headerdiv {
+	height: 138px;
+	width: 900px;
+	margin:auto;
+	position:relative;
+}
+
+
+#head1{
+	height: 62px;
+	width: 230px;
+	position:absolute;
+	left: 42px;
+	top: 38px;
+}
+
+#head2{
+	height: 65px;
+	width: 390px;
+	position:absolute;
+	left: 467px;
+	top: 38px;
+}
+
+#header2div {
+	background-image: url(../images/header2div.jpg);
+	background-repeat: repeat-x;
+	height: 130px;
+	width: 100%;
+}
+
+#mainmenu { 
+	height: 34px;
+	width: 900px;
+	margin:auto;
+	position:relative;
+}
+
+#mainmenu ul { 
+ list-style:none;
+ padding:0px;
+ margin:0px;
+ position:relative;
+}
+
+#mainmenu ul li{ 
+ padding:9px 20px 9px 20px;
+ float:left;
+ position:relative;
+ color:#FFFFFF;
+ text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#mainmenu ul a:link {
+	text-decoration: none;
+}
+
+
+#mainmenu ul li:hover{ 
+background-color:#78abc9;
+color:#000000;
+	-webkit-transition: all 0.3s ease-in;  /* Saf3.2+, Chrome */
+	-moz-transition: all 0.3s ease-in;  /* FF4+ */
+	-ms-transition: all 0.3s ease-in;  /* IE10? */
+	-o-transition: all 0.3s ease-in;  /* Opera 10.5+ */
+	transition: all 0.3s ease-in;
+	 text-shadow: 1px 1px 1px rgba(255,255,255,1);
+}
+
+#spiel2 { 
+	height: 56px;
+	width: 900px;
+	margin:auto;
+	position:relative;
+	font-size:24px;
+	font-weight:bold;
+	color:#FFFFFF;
+	text-align:center;
+	padding:26px 0px 0px 0px;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+}
+
+#contentarea { 
+	width: 900px;
+	margin:auto;
+	position:relative;
+	padding:10px 0px 30px 0px;
+}
+
+a:link {
+	color: #FF0000;
+}
+
+
+#addressbox { 
+position:relative;
+float:left;
+width:320px;
+}
+
+#loginarea { 
+position:relative;
+float:right;
+width:500px;
+}
+
+#loginbox {
+	margin:auto;
+	padding:20px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border: 1px solid #CCCCCC;
+-moz-box-shadow: 0px 0px 30px #999999;
+-webkit-box-shadow:0px 0px 30px #999999;
+box-shadow: 0px 0px 30px #999999;
+}
+
+.mainsm {
+	font-size: 12px !important;
+}
+
+#loginbox ul{ 
+list-style:none;
+margin:0px;
+padding:0px;
+}
+
+#loginbox ul li{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #666666;
+}
+
+#loginbox ul li.error {
+	color: red;
+	font-size:10px;
+}
+
+.boxtext {
+	background-color:#fbfbfb;
+	font-size: 17px;
+	color:#999999;
+	padding: 10px;
+	width: 438px;
+	border: 1px solid #CCCCCC;
+}
+
+.boxbutton {
+
+	background-color:#fbfbfb;
+	font-size: 17px;
+	color:#999999;
+	padding: 10px;
+	border: 1px solid #CCCCCC;
+	cursor:pointer;
+}
+
+#footerdiv {
+	height:38px;
+	width:100%;
+	position:relative;
+	background-image: url(../images/footbg.jpg);
+	background-repeat: repeat-x;
+}
+
+#footliner1 { 
+	text-align:center;
+	color:#FFFFFF;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+	padding:7px 0px 0px 0px;
+}

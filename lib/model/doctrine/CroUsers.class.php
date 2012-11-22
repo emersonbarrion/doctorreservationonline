@@ -12,5 +12,4 @@
  */
 class CroUsers extends BaseCroUsers
 {
-
 }

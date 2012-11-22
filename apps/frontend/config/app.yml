@@ -3,3 +3,9 @@
 
 # default values
 #all:
+all:
+  base_url:          http://www.courtreservationonline.com
+  passwordsalt:	cro
+  remember_cookie:
+    expiration: 25920000
+    name: remember_me

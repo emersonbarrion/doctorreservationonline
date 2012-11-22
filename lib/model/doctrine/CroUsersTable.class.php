@@ -16,4 +16,15 @@ class CroUsersTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('CroUsers');
     }
+
+   	public function getUserByUsernameAndPassword($username, $password)
+	{
+        $record = Doctrine_Query::create()
+					->from('CroUsers u')
+        			->where('u.username = ?', $username)
+        			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
+        			->fetchArray();
+                    
+        return $record;
+	}
 }
