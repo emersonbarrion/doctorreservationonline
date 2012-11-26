@@ -25,8 +25,6 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'rate'                  => new sfWidgetFormInputText(),
       'start_time'            => new sfWidgetFormDateTime(),
       'end_time'              => new sfWidgetFormDateTime(),
-      'created_by'            => new sfWidgetFormInputText(),
-      'updated_by'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CroAdminUsers'), 'add_empty' => false)),
       'created_at'            => new sfWidgetFormDateTime(),
       'updated_at'            => new sfWidgetFormDateTime(),
     ));
@@ -42,8 +40,6 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'rate'                  => new sfValidatorPass(),
       'start_time'            => new sfValidatorDateTime(),
       'end_time'              => new sfValidatorDateTime(),
-      'created_by'            => new sfValidatorInteger(),
-      'updated_by'            => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroAdminUsers'))),
       'created_at'            => new sfValidatorDateTime(),
       'updated_at'            => new sfValidatorDateTime(),
     ));

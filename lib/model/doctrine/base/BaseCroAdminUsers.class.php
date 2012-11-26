@@ -18,36 +18,33 @@
  * @property string $company_logo
  * @property timestamp $lastlogin
  * @property boolean $status
- * @property Doctrine_Collection $CroCourts
  * 
- * @method string              getUsername()       Returns the current record's "username" value
- * @method string              getEmail()          Returns the current record's "email" value
- * @method string              getPassword()       Returns the current record's "password" value
- * @method string              getFname()          Returns the current record's "fname" value
- * @method string              getLname()          Returns the current record's "lname" value
- * @method string              getAddress()        Returns the current record's "address" value
- * @method string              getContact1()       Returns the current record's "contact1" value
- * @method string              getContact2()       Returns the current record's "contact2" value
- * @method string              getWebsite()        Returns the current record's "website" value
- * @method string              getCompanySlogan()  Returns the current record's "company_slogan" value
- * @method string              getCompanyLogo()    Returns the current record's "company_logo" value
- * @method timestamp           getLastlogin()      Returns the current record's "lastlogin" value
- * @method boolean             getStatus()         Returns the current record's "status" value
- * @method Doctrine_Collection getCroCourts()      Returns the current record's "CroCourts" collection
- * @method CroAdminUsers       setUsername()       Sets the current record's "username" value
- * @method CroAdminUsers       setEmail()          Sets the current record's "email" value
- * @method CroAdminUsers       setPassword()       Sets the current record's "password" value
- * @method CroAdminUsers       setFname()          Sets the current record's "fname" value
- * @method CroAdminUsers       setLname()          Sets the current record's "lname" value
- * @method CroAdminUsers       setAddress()        Sets the current record's "address" value
- * @method CroAdminUsers       setContact1()       Sets the current record's "contact1" value
- * @method CroAdminUsers       setContact2()       Sets the current record's "contact2" value
- * @method CroAdminUsers       setWebsite()        Sets the current record's "website" value
- * @method CroAdminUsers       setCompanySlogan()  Sets the current record's "company_slogan" value
- * @method CroAdminUsers       setCompanyLogo()    Sets the current record's "company_logo" value
- * @method CroAdminUsers       setLastlogin()      Sets the current record's "lastlogin" value
- * @method CroAdminUsers       setStatus()         Sets the current record's "status" value
- * @method CroAdminUsers       setCroCourts()      Sets the current record's "CroCourts" collection
+ * @method string        getUsername()       Returns the current record's "username" value
+ * @method string        getEmail()          Returns the current record's "email" value
+ * @method string        getPassword()       Returns the current record's "password" value
+ * @method string        getFname()          Returns the current record's "fname" value
+ * @method string        getLname()          Returns the current record's "lname" value
+ * @method string        getAddress()        Returns the current record's "address" value
+ * @method string        getContact1()       Returns the current record's "contact1" value
+ * @method string        getContact2()       Returns the current record's "contact2" value
+ * @method string        getWebsite()        Returns the current record's "website" value
+ * @method string        getCompanySlogan()  Returns the current record's "company_slogan" value
+ * @method string        getCompanyLogo()    Returns the current record's "company_logo" value
+ * @method timestamp     getLastlogin()      Returns the current record's "lastlogin" value
+ * @method boolean       getStatus()         Returns the current record's "status" value
+ * @method CroAdminUsers setUsername()       Sets the current record's "username" value
+ * @method CroAdminUsers setEmail()          Sets the current record's "email" value
+ * @method CroAdminUsers setPassword()       Sets the current record's "password" value
+ * @method CroAdminUsers setFname()          Sets the current record's "fname" value
+ * @method CroAdminUsers setLname()          Sets the current record's "lname" value
+ * @method CroAdminUsers setAddress()        Sets the current record's "address" value
+ * @method CroAdminUsers setContact1()       Sets the current record's "contact1" value
+ * @method CroAdminUsers setContact2()       Sets the current record's "contact2" value
+ * @method CroAdminUsers setWebsite()        Sets the current record's "website" value
+ * @method CroAdminUsers setCompanySlogan()  Sets the current record's "company_slogan" value
+ * @method CroAdminUsers setCompanyLogo()    Sets the current record's "company_logo" value
+ * @method CroAdminUsers setLastlogin()      Sets the current record's "lastlogin" value
+ * @method CroAdminUsers setStatus()         Sets the current record's "status" value
  * 
  * @package    courtreservationonline
  * @subpackage model
@@ -125,10 +122,6 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('CroCourts', array(
-             'local' => 'id',
-             'foreign' => 'updated_by'));
-
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

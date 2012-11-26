@@ -6,19 +6,29 @@
 <div class="clearfix"></div>
 
 <div id="header2div">
- <div id="mainmenu">
- 	<ul>
-    	<a href="/index"><li>HOME</li></a>
-    	<a href="/reservation"><li>RESERVATION</li></a>
-    	<a href="#"><li>REGISTER</li></a>
-    	<?php if($sf_user->isAuthenticated()):?>
-    		<a href="/index/logout"><li>LOGOUT</li></a>
-    	<?php endif; ?>
-    </ul>
- </div>
- 
- <div class="clearfix"></div>
- 
- <div id="spiel2">TEXT HERE ( MAYBE COMPANY SLOGAN OR QUOTE )</div>
- 
+	<div id="mainmenu">
+		<ul id="nav" class="menubar">			
+			<li class="menubaritem first"><a href="/index">HOME</a></li>
+			<li class="menubaritem"><a href="/reservation">RESERVATION</a>
+				<ul>
+					<li class="menuitem"><a href="#">TEST1</a></li>
+					<li class="menuitem"><a href="#">TEST2</a></li>
+				</ul>
+			</li>
+			<?php if(!$sf_user->isAuthenticated()): ?>
+			<li class="menubaritem"><a href="#">REGISTER</a></li>
+			<?php endif; ?>
+			<?php if($sf_user->isAuthenticated()): ?>
+			<li class="menubaritem"><a href="/index/logout">LOGOUT</a></li>
+			<?php endif; ?>
+		</ul>
+	</div>
+
+	<?php if($sf_user->isAuthenticated()): ?>
+		<div id="user">Sign in as <?php echo $sf_user->getAttribute('userfullname') ?></div>
+	<?php endif; ?>
 </div>
+
+<?php if(!$sf_user->isAuthenticated()): ?>
+	<div id="spiel2">TEXT HERE ( MAYBE COMPANY SLOGAN OR QUOTE )</div>
+<?php endif; ?>

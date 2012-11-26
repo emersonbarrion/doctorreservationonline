@@ -25,6 +25,6 @@ class CroUsersTable extends Doctrine_Table
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
                     
-        return $record;
+        return $record[0];
 	}
 }

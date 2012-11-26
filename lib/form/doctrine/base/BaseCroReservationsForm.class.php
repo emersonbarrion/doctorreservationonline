@@ -16,12 +16,11 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'             => new sfWidgetFormInputHidden(),
+      'title'          => new sfWidgetFormInputText(),
       'userid'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CroUsers'), 'add_empty' => false)),
       'courtid'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CroCourts'), 'add_empty' => false)),
-      'start_date'     => new sfWidgetFormDate(),
-      'end_date'       => new sfWidgetFormDate(),
-      'start_time'     => new sfWidgetFormDateTime(),
-      'end_time'       => new sfWidgetFormDateTime(),
+      'start'          => new sfWidgetFormDateTime(),
+      'end'            => new sfWidgetFormDateTime(),
       'status'         => new sfWidgetFormInputCheckbox(),
       'payment_status' => new sfWidgetFormInputText(),
       'created_at'     => new sfWidgetFormDateTime(),
@@ -30,12 +29,11 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'title'          => new sfValidatorString(array('max_length' => 255)),
       'userid'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroUsers'))),
       'courtid'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroCourts'))),
-      'start_date'     => new sfValidatorDate(),
-      'end_date'       => new sfValidatorDate(),
-      'start_time'     => new sfValidatorDateTime(),
-      'end_time'       => new sfValidatorDateTime(),
+      'start'          => new sfValidatorDateTime(),
+      'end'            => new sfValidatorDateTime(),
       'status'         => new sfValidatorBoolean(array('required' => false)),
       'payment_status' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'     => new sfValidatorDateTime(),

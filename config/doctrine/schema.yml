@@ -41,21 +41,15 @@ CroCourts:
     rate: { type: double, notnull: true }
     start_time: { type: timestamp, notnull: true }
     end_time: { type: timestamp, notnull: true }
-    created_by: { type: integer, notnull: true }
-    updated_by: { type: integer, notnull: true }
-  relations:
-    CroAdminUsers: { local: created_by, foreign: id }
-    CroAdminUsers: { local: updated_by, foreign: id }
 
 CroReservations:
   actAs: { Timestampable: ~ }
   columns:
+    title: { type: string(255), notnull: true }
     userid: { type: integer, notnull: true }
     courtid: { type: integer, notnull: true }
-    start_date: { type: date, notnull: true }
-    end_date: { type: date, notnull: true }
-    start_time: { type: timestamp, notnull: true }
-    end_time: { type: timestamp, notnull: true }
+    start: { type: timestamp, notnull: true }
+    end: { type: timestamp, notnull: true }
     status: { type: boolean, notnull: true, default: 0 }
     payment_status: { type: string(255), notnull: true, default: 0 }
   relations:

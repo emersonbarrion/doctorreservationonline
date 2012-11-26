@@ -7,13 +7,18 @@
  */
 class CroReservationsTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object CroReservationsTable
-     */
     public static function getInstance()
     {
         return Doctrine_Core::getTable('CroReservations');
     }
+
+    public function getUserReservations($userid)
+	{
+        $record = Doctrine_Query::create()
+					->from('CroReservations u')
+        			->where('u.userid = ?', $userid)
+        			->fetchArray();
+
+        return $record;
+	}
 }

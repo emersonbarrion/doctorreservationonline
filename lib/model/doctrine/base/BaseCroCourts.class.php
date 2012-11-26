@@ -14,9 +14,6 @@
  * @property double $rate
  * @property timestamp $start_time
  * @property timestamp $end_time
- * @property integer $created_by
- * @property integer $updated_by
- * @property CroAdminUsers $CroAdminUsers
  * @property Doctrine_Collection $CroReservations
  * 
  * @method string              getName()                  Returns the current record's "name" value
@@ -28,9 +25,6 @@
  * @method double              getRate()                  Returns the current record's "rate" value
  * @method timestamp           getStartTime()             Returns the current record's "start_time" value
  * @method timestamp           getEndTime()               Returns the current record's "end_time" value
- * @method integer             getCreatedBy()             Returns the current record's "created_by" value
- * @method integer             getUpdatedBy()             Returns the current record's "updated_by" value
- * @method CroAdminUsers       getCroAdminUsers()         Returns the current record's "CroAdminUsers" value
  * @method Doctrine_Collection getCroReservations()       Returns the current record's "CroReservations" collection
  * @method CroCourts           setName()                  Sets the current record's "name" value
  * @method CroCourts           setStatus()                Sets the current record's "status" value
@@ -41,9 +35,6 @@
  * @method CroCourts           setRate()                  Sets the current record's "rate" value
  * @method CroCourts           setStartTime()             Sets the current record's "start_time" value
  * @method CroCourts           setEndTime()               Sets the current record's "end_time" value
- * @method CroCourts           setCreatedBy()             Sets the current record's "created_by" value
- * @method CroCourts           setUpdatedBy()             Sets the current record's "updated_by" value
- * @method CroCourts           setCroAdminUsers()         Sets the current record's "CroAdminUsers" value
  * @method CroCourts           setCroReservations()       Sets the current record's "CroReservations" collection
  * 
  * @package    courtreservationonline
@@ -96,23 +87,11 @@ abstract class BaseCroCourts extends sfDoctrineRecord
              'type' => 'timestamp',
              'notnull' => true,
              ));
-        $this->hasColumn('created_by', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => true,
-             ));
-        $this->hasColumn('updated_by', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => true,
-             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('CroAdminUsers', array(
-             'local' => 'updated_by',
-             'foreign' => 'id'));
-
         $this->hasMany('CroReservations', array(
              'local' => 'id',
              'foreign' => 'courtid'));

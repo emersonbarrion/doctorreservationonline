@@ -42,8 +42,9 @@ class indexActions extends sfActions
 				->getUserByUsernameAndPassword($postData['username'], $postData['password']);
 
         if($user) {
-	    	if($postData['remember_me'] == 'on') $this->getResponse()->setCookie('remember_me', 1, time()+$expire);
+	    	if(isset($postData['remember_me']) && $postData['remember_me'] == 'on') $this->getResponse()->setCookie('remember_me', 1, time()+$expire);
 	    	
+	    	$this->getUser()->setUserAttributes($user);
         	$this->getUser()->setAuthenticated(TRUE);
         	$this->redirect('reservation/index');
         }
