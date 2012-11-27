@@ -192,6 +192,11 @@ a:link {
 	width:320px;
 }
 
+#registerarea {
+	width:500px;
+	margin:0 auto;
+}
+
 #loginarea { 
 	position:relative;
 	float:right;

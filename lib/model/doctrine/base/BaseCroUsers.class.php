@@ -12,33 +12,30 @@
  * @property string $minitial
  * @property string $email
  * @property string $phone
- * @property string $user_type
- * @property string $subscription_type
+ * @property string $subscription
  * @property boolean $status
  * @property Doctrine_Collection $CroReservations
  * 
- * @method string              getUsername()          Returns the current record's "username" value
- * @method string              getPassword()          Returns the current record's "password" value
- * @method string              getFname()             Returns the current record's "fname" value
- * @method string              getLname()             Returns the current record's "lname" value
- * @method string              getMinitial()          Returns the current record's "minitial" value
- * @method string              getEmail()             Returns the current record's "email" value
- * @method string              getPhone()             Returns the current record's "phone" value
- * @method string              getUserType()          Returns the current record's "user_type" value
- * @method string              getSubscriptionType()  Returns the current record's "subscription_type" value
- * @method boolean             getStatus()            Returns the current record's "status" value
- * @method Doctrine_Collection getCroReservations()   Returns the current record's "CroReservations" collection
- * @method CroUsers            setUsername()          Sets the current record's "username" value
- * @method CroUsers            setPassword()          Sets the current record's "password" value
- * @method CroUsers            setFname()             Sets the current record's "fname" value
- * @method CroUsers            setLname()             Sets the current record's "lname" value
- * @method CroUsers            setMinitial()          Sets the current record's "minitial" value
- * @method CroUsers            setEmail()             Sets the current record's "email" value
- * @method CroUsers            setPhone()             Sets the current record's "phone" value
- * @method CroUsers            setUserType()          Sets the current record's "user_type" value
- * @method CroUsers            setSubscriptionType()  Sets the current record's "subscription_type" value
- * @method CroUsers            setStatus()            Sets the current record's "status" value
- * @method CroUsers            setCroReservations()   Sets the current record's "CroReservations" collection
+ * @method string              getUsername()        Returns the current record's "username" value
+ * @method string              getPassword()        Returns the current record's "password" value
+ * @method string              getFname()           Returns the current record's "fname" value
+ * @method string              getLname()           Returns the current record's "lname" value
+ * @method string              getMinitial()        Returns the current record's "minitial" value
+ * @method string              getEmail()           Returns the current record's "email" value
+ * @method string              getPhone()           Returns the current record's "phone" value
+ * @method string              getSubscription()    Returns the current record's "subscription" value
+ * @method boolean             getStatus()          Returns the current record's "status" value
+ * @method Doctrine_Collection getCroReservations() Returns the current record's "CroReservations" collection
+ * @method CroUsers            setUsername()        Sets the current record's "username" value
+ * @method CroUsers            setPassword()        Sets the current record's "password" value
+ * @method CroUsers            setFname()           Sets the current record's "fname" value
+ * @method CroUsers            setLname()           Sets the current record's "lname" value
+ * @method CroUsers            setMinitial()        Sets the current record's "minitial" value
+ * @method CroUsers            setEmail()           Sets the current record's "email" value
+ * @method CroUsers            setPhone()           Sets the current record's "phone" value
+ * @method CroUsers            setSubscription()    Sets the current record's "subscription" value
+ * @method CroUsers            setStatus()          Sets the current record's "status" value
+ * @method CroUsers            setCroReservations() Sets the current record's "CroReservations" collection
  * 
  * @package    courtreservationonline
  * @subpackage model
@@ -85,12 +82,7 @@ abstract class BaseCroUsers extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
-        $this->hasColumn('user_type', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('subscription_type', 'string', 255, array(
+        $this->hasColumn('subscription', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 255,

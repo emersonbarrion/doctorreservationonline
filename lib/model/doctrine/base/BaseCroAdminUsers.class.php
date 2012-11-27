@@ -16,8 +16,10 @@
  * @property string $website
  * @property string $company_slogan
  * @property string $company_logo
+ * @property integer $user_group
  * @property timestamp $lastlogin
  * @property boolean $status
+ * @property CroGroups $CroGroups
  * 
  * @method string        getUsername()       Returns the current record's "username" value
  * @method string        getEmail()          Returns the current record's "email" value
@@ -30,8 +32,10 @@
  * @method string        getWebsite()        Returns the current record's "website" value
  * @method string        getCompanySlogan()  Returns the current record's "company_slogan" value
  * @method string        getCompanyLogo()    Returns the current record's "company_logo" value
+ * @method integer       getUserGroup()      Returns the current record's "user_group" value
  * @method timestamp     getLastlogin()      Returns the current record's "lastlogin" value
  * @method boolean       getStatus()         Returns the current record's "status" value
+ * @method CroGroups     getCroGroups()      Returns the current record's "CroGroups" value
  * @method CroAdminUsers setUsername()       Sets the current record's "username" value
  * @method CroAdminUsers setEmail()          Sets the current record's "email" value
  * @method CroAdminUsers setPassword()       Sets the current record's "password" value
@@ -43,8 +47,10 @@
  * @method CroAdminUsers setWebsite()        Sets the current record's "website" value
  * @method CroAdminUsers setCompanySlogan()  Sets the current record's "company_slogan" value
  * @method CroAdminUsers setCompanyLogo()    Sets the current record's "company_logo" value
+ * @method CroAdminUsers setUserGroup()      Sets the current record's "user_group" value
  * @method CroAdminUsers setLastlogin()      Sets the current record's "lastlogin" value
  * @method CroAdminUsers setStatus()         Sets the current record's "status" value
+ * @method CroAdminUsers setCroGroups()      Sets the current record's "CroGroups" value
  * 
  * @package    courtreservationonline
  * @subpackage model
@@ -108,6 +114,10 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
+        $this->hasColumn('user_group', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
         $this->hasColumn('lastlogin', 'timestamp', null, array(
              'type' => 'timestamp',
              'notnull' => true,
@@ -122,6 +132,10 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('CroGroups', array(
+             'local' => 'user_group',
+             'foreign' => 'id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

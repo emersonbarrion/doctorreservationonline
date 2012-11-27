@@ -15,3 +15,35 @@ CroReservations:
     end: '2012-11-30 03:00:00'
     status: 1
     payment_status: 'PAID'
+  User3:
+    CroUsers: Emerson
+    CroCourts: Basketball
+    title: 'Third Reservation'
+    start: '2012-11-30 03:00:00'
+    end: '2012-11-30 05:00:00'
+    status: 1
+    payment_status: 'PAID'
+  User4:
+    CroUsers: Emerson
+    CroCourts: Basketball
+    title: 'Third Reservation'
+    start: '2012-11-30 05:00:00'
+    end: '2012-11-30 08:00:00'
+    status: 1
+    payment_status: 'PAID'
+  User5:
+    CroUsers: Emerson
+    CroCourts: Basketball
+    title: 'Third Reservation'
+    start: '2012-11-30 08:00:00'
+    end: '2012-11-30 12:00:00'
+    status: 1
+    payment_status: 'PAID'
+  User6:
+    CroUsers: Emerson
+    CroCourts: Basketball
+    title: 'Third Reservation'
+    start: '2012-11-30 12:00:00'
+    end: '2012-11-30 15:00:00'
+    status: 1
+    payment_status: 'PAID'

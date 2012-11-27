@@ -12,8 +12,11 @@ CroAdminUsers:
     website: { type: string(255) }
     company_slogan: { type: string(255), notnull: true }
     company_logo: { type: string(255) }
+    user_group: { type: integer, notnull: true }
     lastlogin: { type: timestamp, notnull: true }
     status: { type: boolean, notnull: true, default: 0 }
+  relations:
+    CroGroups: { local: user_group, foreign: id }
 
 CroUsers:
   actAs: { Timestampable: ~ }
@@ -25,9 +28,13 @@ CroUsers:
     minitial: { type: string(255) }
     email: { type: string(255), notnull: true, unique: true }
     phone: { type: string(255) }
-    user_type: { type: string(255), notnull: true }
-    subscription_type: { type: string(255), notnull: true }
+    subscription: { type: string(255), notnull: true }
     status: { type: boolean, notnull: true, default: 0 }
+
+CroGroups:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
 
 CroCourts:
   actAs: { Timestampable: ~ }

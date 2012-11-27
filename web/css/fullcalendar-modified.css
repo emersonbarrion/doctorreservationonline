@@ -1,0 +1,27 @@
+/* Fake Rounded Corners SPECIFICALLY FOR EVENTS
+-----------------------------------------------------------------*/
+	
+.fc-corner-left .fc-event-inner {
+	border-left-width: 0;
+	}
+	
+.fc-corner-right .fc-event-inner {
+	border-right-width: 0;
+	}
+	
+.fc-corner-top .fc-event-inner {
+	border-top-width: 0;
+	}
+	
+.fc-corner-bottom .fc-event-inner {
+	border-bottom-width: 0;
+	}
+
+.fc-corner-left .fc-event-inner {
+	margin-left: 0;
+	}
+
+.fc-event {
+	font-size: 10px;
+}
+	

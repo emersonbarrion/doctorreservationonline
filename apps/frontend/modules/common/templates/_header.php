@@ -7,16 +7,22 @@
 
 <div id="header2div">
 	<div id="mainmenu">
-		<ul id="nav" class="menubar">			
+		<ul id="nav" class="menubar">
+			<?php if(!$sf_user->isAuthenticated()): ?>
 			<li class="menubaritem first"><a href="/index">HOME</a></li>
-			<li class="menubaritem"><a href="/reservation">RESERVATION</a>
+			<?php endif; ?>
+			<?php if($sf_user->isAuthenticated()): ?>
+			<li class="menubaritem first"><a href="/dashboard">DASHBOARD</a></li>
+			<li class="menubaritem first"><a href="/account">ACCOUNT</a>
 				<ul>
-					<li class="menuitem"><a href="#">TEST1</a></li>
-					<li class="menuitem"><a href="#">TEST2</a></li>
+					<li class="menuitem"><a href="#">Profile</a></li>
+					<li class="menuitem"><a href="#">Change Password</a></li>
 				</ul>
 			</li>
+			<?php endif; ?>
+			<li class="menubaritem"><a href="/reservation">RESERVATION</a></li>
 			<?php if(!$sf_user->isAuthenticated()): ?>
-			<li class="menubaritem"><a href="#">REGISTER</a></li>
+			<li class="menubaritem"><a href="user/register">REGISTER</a></li>
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated()): ?>
 			<li class="menubaritem"><a href="/index/logout">LOGOUT</a></li>

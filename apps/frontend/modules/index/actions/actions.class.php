@@ -12,8 +12,8 @@ class indexActions extends sfActions
 {
 	public function executeIndex(sfWebRequest $request)
 	{
-		$this->form = new CroUsersForm();
-		$this->processForm($request, $this->form);
+		$this->form = new CroLoginForm();
+		$this->processForm($request);
 	}
 
 	public function executeLogout(sfWebRequest $request)
@@ -22,7 +22,7 @@ class indexActions extends sfActions
 		$this->redirect('index/index');
 	}
 
-	protected function processForm(sfWebRequest $request, sfForm $form)
+	protected function processForm(sfWebRequest $request)
 	{
 		if ($request->isMethod('post'))
         {

@@ -6,6 +6,6 @@ indexSuccess:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [fullcalendar.css]
+  stylesheets:    [fullcalendar.css, fullcalendar-modified.css]
 
   javascripts:    [calendar/fullcalendar.min.js, calendar-script.js]
