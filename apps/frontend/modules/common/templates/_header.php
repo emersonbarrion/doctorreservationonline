@@ -22,7 +22,7 @@
 			<?php endif; ?>
 			<li class="menubaritem"><a href="/reservation">RESERVATION</a></li>
 			<?php if(!$sf_user->isAuthenticated()): ?>
-			<li class="menubaritem"><a href="user/register">REGISTER</a></li>
+			<li class="menubaritem"><a href="/user/register">REGISTER</a></li>
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated()): ?>
 			<li class="menubaritem"><a href="/index/logout">LOGOUT</a></li>

@@ -233,7 +233,8 @@ a:link {
 #loginbox ul li.error {
 	color: red;
 	font-size:10px;
-	height:40px;
+	height:15px;
+	margin-left:200px;
 }
 
 .boxtext {

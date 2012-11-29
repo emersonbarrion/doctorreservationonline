@@ -24,4 +24,15 @@ CroUsers:
     minitial: c
     email: emerson.barrion@gmail.com
     phone: 12345678
+    subscription: 'Monthly'
+    status: 1
+  Jeff:
+    username: jeff
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    fname: jeff
+    lname: jarin
+    minitial: j
+    email: jeff.jarin@gmail.com
+    phone: 12345678
+    subscription: 'Yearly'
     status: 1
