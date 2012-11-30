@@ -13,4 +13,9 @@ ADMINISTRATION PAGE<br/><br/>
 
 <a href='<?php echo url_for('court/new') ?>'>Create Court</a><br/>
 <a href='<?php echo url_for('court/list') ?>'>Retrieve Court</a><br/>
+
+<br/><br/>
+
+<a href='<?php echo url_for('reservation/new') ?>'>Create Reservation</a><br/>
+<a href='<?php echo url_for('reservation/list') ?>'>Retrieve Reservation</a><br/>
 </div>
