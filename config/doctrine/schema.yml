@@ -46,8 +46,8 @@ CroCourts:
     priorreservationhours: { type: integer, notnull: true }
     maxreservationhours: { type: integer, notnull: true }
     rate: { type: double, notnull: true }
-    start_time: { type: timestamp, notnull: true }
-    end_time: { type: timestamp, notnull: true }
+    start_time: { type: string(255), notnull: true }
+    end_time: { type: string(255), notnull: true }
 
 CroReservations:
   actAs: { Timestampable: ~ }

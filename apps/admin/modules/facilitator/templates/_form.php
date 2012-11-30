@@ -31,7 +31,7 @@
               <li><div class='form-label'>Status:</div> <?php echo $form['status'] ?></li>
               <li class="error">&nbsp; <?php echo $form['status']->getError() ?></li>
               <li><a href='<?php echo url_for('facilitator/remove?id='.$form->getObject()->getId()) ?>'>Delete</a></li>
-              <li style="float:right;"><input name="Submit" type="submit" value="Register" class="boxbutton"/></li>
+              <li style="float:right;"><input name="Submit" type="submit" value="Submit" class="boxbutton"/></li>
             </ul> 
             <div class="clearfix"></div>
         </form>
