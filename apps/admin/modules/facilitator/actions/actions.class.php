@@ -21,7 +21,7 @@ class facilitatorActions extends sfActions
 
 	public function executeNew(sfWebRequest $request)
 	{
-		$this->form = new CroUsersForm();
+		$this->form = new CroAdminUsersForm();
 		$this->processForm($request, $this->form);
 	}
 
@@ -38,7 +38,7 @@ class facilitatorActions extends sfActions
 	public function executeEdit(sfWebRequest $request)
 	{
 		$crouser = Doctrine::getTable('CroAdminUsers')->find(array($request->getParameter('id')));
-		$this->form = new CroUsersForm($crouser);
+		$this->form = new CroAdminUsersForm($crouser);
 		$this->processForm($request, $this->form);
 	}
 

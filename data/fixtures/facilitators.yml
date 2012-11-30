@@ -1,0 +1,46 @@
+CroAdminUsers:
+  Admin:
+    username: admin
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    email: courtreservationonline@gmail.com
+    fname: owner
+    lname: owner
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'France'
+    website: http://www.courtreservationonline.com
+    company_slogan: Your court reservation
+    company_logo: 
+    CroGroups: Admin
+    lastlogin: '2012-11-30 03:00:00'
+    status: 1
+  CompanyA:
+    username: microtech
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    email: microtech@gmail.com
+    fname: Belle
+    lname: Steven
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'USA'
+    website: http://www.microtech.com
+    company_slogan: Electronic Business Solutions
+    company_logo: 
+    CroGroups: Facilitator
+    lastlogin: '2012-11-27 05:00:00'
+    status: 1
+  CompanyB:
+    username: Jiggle
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    email: jiggle@gmail.com
+    fname: Philipp
+    lname: Claire
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'Britain'
+    website: http://www.jiggle.com
+    company_slogan: Online Service Provider
+    company_logo: 
+    CroGroups: Facilitator
+    lastlogin: '2012-11-24 02:00:00'
+    status: 1
