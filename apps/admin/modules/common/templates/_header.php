@@ -1,6 +1,14 @@
+<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('admin', 'facilitator'))): ?>
+	<div id="user">Sign in as <?php echo $sf_user->getAttribute('userfullname') ?></div>
+<?php endif; ?>
+
 <div style='float:left; width: 200px'>
 ADMINISTRATION PAGE<br/><br/>
+<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('admin', 'facilitator'))): ?>
+	<a href="<?php echo url_for('index/logout') ?>">LOGOUT</a>
+<?php endif; ?>
 
+<br/><br/>
 <a href='<?php echo url_for('user/new') ?>'>New User</a><br/>
 <a href='<?php echo url_for('user/list') ?>'>User List</a><br/>
 

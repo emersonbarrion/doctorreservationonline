@@ -10,12 +10,44 @@
  */
 class indexActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-  }
+	public function executeIndex(sfWebRequest $request)
+	{
+	}
+
+	public function executeLogin(sfWebRequest $request)
+	{
+		$this->form = new CroLoginForm();
+		$this->processForm($request);
+	}
+
+	public function executeLogout(sfWebRequest $request)
+	{
+		$this->getUser()->clearUserAttributes();
+		$this->redirect('index/login');
+	}
+
+	protected function processForm(sfWebRequest $request)
+	{
+		if ($request->isMethod('post'))
+        {
+        	$postData = $request->getParameter('login');
+            $this->form->bind($postData);
+
+            if ($this->form->isValid()) $this->checkLogin($request, $postData);
+        }
+	}
+
+	protected function checkLogin(sfWebRequest $request, $postData)
+	{
+		$user = Doctrine_Core::getTable('CroAdminUsers')->getAdminUserByUsernameAndPassword($postData['username'], $postData['password']);
+
+        if($user) {
+	    	$this->getUser()->setUserAttributes($user);
+        	$this->redirect('index/index');
+        }
+	}
+
+	public function executeDenied(sfWebRequest $request)
+	{
+	}
 }

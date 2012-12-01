@@ -13,7 +13,6 @@
  * @property string $address
  * @property string $contact1
  * @property string $contact2
- * @property string $website
  * @property string $company_slogan
  * @property string $company_logo
  * @property integer $user_group
@@ -29,7 +28,6 @@
  * @method string        getAddress()        Returns the current record's "address" value
  * @method string        getContact1()       Returns the current record's "contact1" value
  * @method string        getContact2()       Returns the current record's "contact2" value
- * @method string        getWebsite()        Returns the current record's "website" value
  * @method string        getCompanySlogan()  Returns the current record's "company_slogan" value
  * @method string        getCompanyLogo()    Returns the current record's "company_logo" value
  * @method integer       getUserGroup()      Returns the current record's "user_group" value
@@ -44,7 +42,6 @@
  * @method CroAdminUsers setAddress()        Sets the current record's "address" value
  * @method CroAdminUsers setContact1()       Sets the current record's "contact1" value
  * @method CroAdminUsers setContact2()       Sets the current record's "contact2" value
- * @method CroAdminUsers setWebsite()        Sets the current record's "website" value
  * @method CroAdminUsers setCompanySlogan()  Sets the current record's "company_slogan" value
  * @method CroAdminUsers setCompanyLogo()    Sets the current record's "company_logo" value
  * @method CroAdminUsers setUserGroup()      Sets the current record's "user_group" value
@@ -98,10 +95,6 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('contact2', 'string', 255, array(
-             'type' => 'string',
-             'length' => 255,
-             ));
-        $this->hasColumn('website', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
              ));

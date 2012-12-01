@@ -19,7 +19,9 @@ class CroUsersForm extends BaseCroUsersForm
 		$this->validatorSchema['subscription'] 	= new sfValidatorChoice(array('choices' => array('monthly','yearly')));
 
 		if($this->isNew()){
-			$this->validatorSchema['username'] = new sfValidatorDoctrineUnique(array('model' => 'CroUsers', 'column' => 'Username', 'throw_global_error' => true), array('invalid' => "Username is not available."));
+			$this->validatorSchema['username'] = new sfValidatorAnd(array(
+				new sfValidatorDoctrineUnique(array('model' => 'CroUsers', 'column' => 'Username', 'throw_global_error' => true), array('invalid' => "Username is not available.")),
+			));
 			$this->validatorSchema['email'] = new sfValidatorAnd(array(
 							new sfValidatorEmail(array(), array('required' => 'PLEASE ENTER EMAIL!', 'invalid' => 'Please enter Valid Email')),
 							new sfValidatorDoctrineUnique(array('model' => 'CroUsers', 'column' => 'Email', 'throw_global_error' => true), array('invalid' => "Email is not available."))

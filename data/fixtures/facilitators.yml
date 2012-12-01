@@ -8,7 +8,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'France'
-    website: http://www.courtreservationonline.com
     company_slogan: Your court reservation
     company_logo: 
     CroGroups: Admin
@@ -23,7 +22,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'USA'
-    website: http://www.microtech.com
     company_slogan: Electronic Business Solutions
     company_logo: 
     CroGroups: Facilitator
@@ -38,7 +36,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'Britain'
-    website: http://www.jiggle.com
     company_slogan: Online Service Provider
     company_logo: 
     CroGroups: Facilitator

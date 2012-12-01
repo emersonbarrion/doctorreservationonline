@@ -52,7 +52,9 @@ class userActions extends sfActions
 	protected function processForm(sfWebRequest $request, sfForm $form)
 	{
 		if ($request->isMethod('post')) {
-			$form->bind($request->getParameter($form->getName()));
+        	$postData = $request->getParameter('user');
+        	$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+			$form->bind($postData);
 
 			if ($form->isValid()){
 				$form->save();

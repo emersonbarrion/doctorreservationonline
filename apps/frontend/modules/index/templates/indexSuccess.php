@@ -8,11 +8,10 @@
 <iframe width="310" height="240" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.ph/maps?hl=en&amp;q=staples+center&amp;ie=UTF8&amp;hq=staples+center&amp;t=m&amp;ll=34.043136,-118.267025&amp;spn=0.018491,0.032015&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.ph/maps?hl=en&amp;q=staples+center&amp;ie=UTF8&amp;hq=staples+center&amp;t=m&amp;ll=34.043136,-118.267025&amp;spn=0.018491,0.032015&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>  </div>    
 <!-- ADDRESS BOX --> 
 
-<?php if(!$sf_user->isAuthenticated()):?>
+<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))):?>
 <div id="loginarea">
   <div id="loginbox">
       <form action="<?php echo url_for('index/index') ?>" method="post">
-		  <?php echo $form['_csrf_token'] ?>
     	<?php echo $form->renderHiddenFields(false) ?>
         <ul>  
           <li>Email Address (username)</li>

@@ -37,3 +37,6 @@ all:
   .actions:
     login_module: index
     login_action: index
+
+    secure_module: index
+    secure_action: denied

@@ -17,20 +17,20 @@ class userActions extends sfActions
 	public function executeRegister(sfWebRequest $request)
 	{
 		$this->form = new CroUsersForm();
-		$this->processForm($request);
+		$this->processForm($request, $this->form);
 	}
 
-	protected function processForm(sfWebRequest $request)
+	protected function processForm(sfWebRequest $request, sfForm $form)
 	{
 		if ($request->isMethod('post'))
         {
-        	$postData = $request->getParameter('register');
+        	$postData = $request->getParameter('user');
         	$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
             $this->form->bind($postData);
 
             if ($this->form->isValid()) {
             	$this->form->save();
-				$this->redirect('reservation/index');
+				$this->redirect('index/index');
             }
         }
 	}
