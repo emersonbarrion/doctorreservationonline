@@ -14,7 +14,7 @@ $(document).ready(function() {
 		header: {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
+			right: 'month'
 		},
 
 		events: "/reservation/events",
@@ -33,30 +33,46 @@ $(document).ready(function() {
 
 	    dayClick: function(date, allDay, jsEvent, view) {
 	        setDimBackground();
-	        $('#add-event').show();
+			$.ajax({
+				type: 'GET',
+				timeout: 5000,
+				url: '/reservation/new',
+				data: { selected_date: moment(date).format('YYYY-MM-DD') },
+
+				success:function(data){
+					$('#add-event').empty();
+					$('#add-event').show();
+					$('#add-event').append(data);
+				}
+			});
+
 	        $('.fc-view div').css('z-index','8');
 	    },
 	    eventClick: function(calEvent, jsEvent, view) {
 	        setDimBackground();
-	        $('#edit-event').show();
+			$.ajax({
+				type: 'GET',
+				timeout: 5000,
+				url: '/reservation/edit',
+				data: { id: calEvent.id },
+
+				success:function(data){
+					$('#edit-event').empty();
+					$('#edit-event').show();
+					$('#edit-event').append(data);
+				}
+			});
+
+			console.log(calEvent);
 	        $('.fc-view div').css('z-index','8');
 	    },
 
 	    eventRender: function(event, element) {         
-	    	var startHours = event.start.getHours().pad(2);
-	    	var startMinutes = event.start.getMinutes().pad(2);
-	    	var endHours = event.end.getHours().pad(2);
-	    	var endMinutes = event.end.getMinutes().pad(2);
-	    	var reserveTime = startHours + ':' + startMinutes + ' - ' + endHours + ':' + endMinutes  + "<br/>";
-	    	element.find('.fc-event-title').prepend(reserveTime);
-		    //console.log(eventTime);
+	    	var timeRange = getReservationTimeRange(event.start, event.end);
+	    	element.find('.fc-event-title').prepend(timeRange + "<br/>");
 		}
 		
 	});
-
-	Number.prototype.pad = function (len) {
-	    return (new Array(len+1).join("0") + this).slice(-len);
-	}
 
 	$('.dim').live('click', function(){
 		$(this).toggle();

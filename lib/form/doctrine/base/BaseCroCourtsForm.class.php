@@ -23,8 +23,8 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'priorreservationhours' => new sfWidgetFormInputText(),
       'maxreservationhours'   => new sfWidgetFormInputText(),
       'rate'                  => new sfWidgetFormInputText(),
-      'start_time'            => new sfWidgetFormDateTime(),
-      'end_time'              => new sfWidgetFormDateTime(),
+      'start_time'            => new sfWidgetFormInputText(),
+      'end_time'              => new sfWidgetFormInputText(),
       'created_at'            => new sfWidgetFormDateTime(),
       'updated_at'            => new sfWidgetFormDateTime(),
     ));
@@ -38,8 +38,8 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'priorreservationhours' => new sfValidatorInteger(),
       'maxreservationhours'   => new sfValidatorInteger(),
       'rate'                  => new sfValidatorPass(),
-      'start_time'            => new sfValidatorDateTime(),
-      'end_time'              => new sfValidatorDateTime(),
+      'start_time'            => new sfValidatorString(array('max_length' => 255)),
+      'end_time'              => new sfValidatorString(array('max_length' => 255)),
       'created_at'            => new sfValidatorDateTime(),
       'updated_at'            => new sfValidatorDateTime(),
     ));

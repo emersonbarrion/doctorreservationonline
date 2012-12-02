@@ -1,0 +1,5 @@
+CroGroups:
+  Admin:
+    name: admin
+  Facilitator:
+    name: facilitator

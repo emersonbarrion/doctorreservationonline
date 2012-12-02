@@ -20,8 +20,8 @@ abstract class BaseCroCourtsFormFilter extends BaseFormFilterDoctrine
       'priorreservationhours' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'maxreservationhours'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'rate'                  => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'start_time'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'end_time'              => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'start_time'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'end_time'              => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'created_at'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
@@ -34,8 +34,8 @@ abstract class BaseCroCourtsFormFilter extends BaseFormFilterDoctrine
       'priorreservationhours' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'maxreservationhours'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'rate'                  => new sfValidatorPass(array('required' => false)),
-      'start_time'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'end_time'              => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'start_time'            => new sfValidatorPass(array('required' => false)),
+      'end_time'              => new sfValidatorPass(array('required' => false)),
       'created_at'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
@@ -65,8 +65,8 @@ abstract class BaseCroCourtsFormFilter extends BaseFormFilterDoctrine
       'priorreservationhours' => 'Number',
       'maxreservationhours'   => 'Number',
       'rate'                  => 'Text',
-      'start_time'            => 'Date',
-      'end_time'              => 'Date',
+      'start_time'            => 'Text',
+      'end_time'              => 'Text',
       'created_at'            => 'Date',
       'updated_at'            => 'Date',
     );

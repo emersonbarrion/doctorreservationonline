@@ -12,8 +12,8 @@
  * @property integer $priorreservationhours
  * @property integer $maxreservationhours
  * @property double $rate
- * @property timestamp $start_time
- * @property timestamp $end_time
+ * @property string $start_time
+ * @property string $end_time
  * @property Doctrine_Collection $CroReservations
  * 
  * @method string              getName()                  Returns the current record's "name" value
@@ -23,8 +23,8 @@
  * @method integer             getPriorreservationhours() Returns the current record's "priorreservationhours" value
  * @method integer             getMaxreservationhours()   Returns the current record's "maxreservationhours" value
  * @method double              getRate()                  Returns the current record's "rate" value
- * @method timestamp           getStartTime()             Returns the current record's "start_time" value
- * @method timestamp           getEndTime()               Returns the current record's "end_time" value
+ * @method string              getStartTime()             Returns the current record's "start_time" value
+ * @method string              getEndTime()               Returns the current record's "end_time" value
  * @method Doctrine_Collection getCroReservations()       Returns the current record's "CroReservations" collection
  * @method CroCourts           setName()                  Sets the current record's "name" value
  * @method CroCourts           setStatus()                Sets the current record's "status" value
@@ -79,13 +79,15 @@ abstract class BaseCroCourts extends sfDoctrineRecord
              'type' => 'double',
              'notnull' => true,
              ));
-        $this->hasColumn('start_time', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('start_time', 'string', 255, array(
+             'type' => 'string',
              'notnull' => true,
+             'length' => 255,
              ));
-        $this->hasColumn('end_time', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('end_time', 'string', 255, array(
+             'type' => 'string',
              'notnull' => true,
+             'length' => 255,
              ));
     }
 

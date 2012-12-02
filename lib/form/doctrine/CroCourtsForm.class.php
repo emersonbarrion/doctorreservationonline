@@ -10,7 +10,10 @@
  */
 class CroCourtsForm extends BaseCroCourtsForm
 {
-  public function configure()
-  {
-  }
+	public function configure()
+	{
+		unset( $this['created_at'], $this['updated_at']);
+
+		$this->widgetSchema->setNameFormat('court[%s]');
+  	}
 }

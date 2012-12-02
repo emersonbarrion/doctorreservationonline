@@ -18,7 +18,7 @@ class indexActions extends sfActions
 
 	public function executeLogout(sfWebRequest $request)
 	{
-		$this->getUser()->setAuthenticated(FALSE);
+		$this->getUser()->clearUserAttributes();
 		$this->redirect('index/index');
 	}
 
@@ -45,8 +45,11 @@ class indexActions extends sfActions
 	    	if(isset($postData['remember_me']) && $postData['remember_me'] == 'on') $this->getResponse()->setCookie('remember_me', 1, time()+$expire);
 	    	
 	    	$this->getUser()->setUserAttributes($user);
-        	$this->getUser()->setAuthenticated(TRUE);
         	$this->redirect('reservation/index');
         }
+	}
+
+	public function executeDenied(sfWebRequest $request)
+	{
 	}
 }
