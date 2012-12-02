@@ -14,6 +14,7 @@ class myUser extends sfBasicSecurityUser
 	public function clearUserAttributes()
 	{
 		$this->setAuthenticated(FALSE);
+		$this->getAttributeHolder()->clear();
 		$this->clearCredentials();
 	}
 }

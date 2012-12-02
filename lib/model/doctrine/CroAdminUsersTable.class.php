@@ -24,7 +24,7 @@ class CroAdminUsersTable extends Doctrine_Table
         			->where('u.username = ?', $username)
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
-                    
-        return $record[0];
+
+        return empty($record) ? NULL : $record[0];
 	}
 }

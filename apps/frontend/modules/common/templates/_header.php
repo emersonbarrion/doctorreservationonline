@@ -9,23 +9,23 @@
 	<div id="mainmenu">
 		<ul id="nav" class="menubar">
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
-			<li class="menubaritem first"><a href="/index">HOME</a></li>
+			<li class="menubaritem first"><a href="<?php echo url_for('index/index') ?>">HOME</a></li>
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
-			<li class="menubaritem first"><a href="/dashboard">DASHBOARD</a></li>
-			<li class="menubaritem first"><a href="/account">ACCOUNT</a>
+			<li class="menubaritem first"><a href="<?php echo url_for('dashboard/index') ?>">DASHBOARD</a></li>
+			<li class="menubaritem first"><a href="<?php echo url_for('account/index') ?>">ACCOUNT</a>
 				<ul>
 					<li class="menuitem"><a href="#">Profile</a></li>
 					<li class="menuitem"><a href="#">Change Password</a></li>
 				</ul>
 			</li>
 			<?php endif; ?>
-			<li class="menubaritem"><a href="/reservation">RESERVATION</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATION</a></li>
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
-			<li class="menubaritem"><a href="/user/register">REGISTER</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('user/register') ?>">REGISTER</a></li>
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
-			<li class="menubaritem"><a href="/index/logout">LOGOUT</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('index/logout') ?>">LOGOUT</a></li>
 			<?php endif; ?>
 		</ul>
 	</div>
