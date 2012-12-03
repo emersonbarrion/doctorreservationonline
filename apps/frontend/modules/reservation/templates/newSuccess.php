@@ -27,5 +27,5 @@
       $('#cro_reservations_selected_date').attr('value', selectedDate);
 </script>
 <?php else: ?>
-Please sign in before add new reservation <a href="<?php echo url_for('index/index') ?>">Sign in</a> / <a href="<?php echo url_for('index/register') ?>">Register</a>
+Please sign in before add new reservation <a href="<?php echo url_for('index/index') ?>">Sign in</a> / <a href="<?php echo url_for('user/register') ?>">Register</a>
 <?php endif; ?>
