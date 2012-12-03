@@ -17,10 +17,18 @@ class userActions extends sfActions
 	public function executeRegister(sfWebRequest $request)
 	{
 		$this->form = new CroUsersForm();
-		$this->processForm($request, $this->form);
+		$this->form->registerConfigure();
+		$this->processForm($request, $this->form, 'register');
 	}
 
-	protected function processForm(sfWebRequest $request, sfForm $form)
+	public function executeEdit(sfWebRequest $request)
+	{
+		$this->crouser = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
+		$this->form = new CroUsersForm($this->crouser);
+		$this->processForm($request, $this->form, 'edit');
+	}
+
+	protected function processForm(sfWebRequest $request, sfForm $form, $action)
 	{
 		if ($request->isMethod('post'))
         {
@@ -30,7 +38,13 @@ class userActions extends sfActions
 
             if ($this->form->isValid()) {
             	$this->form->save();
-				$this->redirect('index/index');
+            	if($action == 'edit') {
+	            	$user = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
+	            	$this->getUser()->setAttribute('userfullname', ucfirst($user['fname']) . ' ' . ucfirst($user['lname']));
+	            	$this->redirect('user/edit');
+            	} else {
+            		$this->redirect('index/index');
+            	}
             }
         }
 	}

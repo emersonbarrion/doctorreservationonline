@@ -14,9 +14,15 @@ class CroReservationsForm extends BaseCroReservationsForm
     {
         unset( $this['created_at'], $this['updated_at'] );
         
-        $this->widgetSchema['start'] = new sfWidgetFormInputText();
-        $this->widgetSchema['end'] = new sfWidgetFormInputText();
-        $this->widgetSchema['userid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroUsers', 'method' => 'getUsername'));
+        if($this->isNew()){
+            $this->widgetSchema['start'] = new sfWidgetFormInputText();
+            $this->widgetSchema['end'] = new sfWidgetFormInputText();
+        } else {
+            $this->widgetSchema['start'] = new sfWidgetFormInputText(array(), array('value' => date('h:i A', strtotime($this->getObject()->getStart()))));
+            $this->widgetSchema['end'] = new sfWidgetFormInputText(array(), array('value' => date('h:i A', strtotime($this->getObject()->getEnd()))));
+        }
+
+        $this->widgetSchema['userid'] = new sfWidgetFormInputHidden(array(), array('value' => sfContext::getInstance()->getUser()->getAttribute('id')));
         $this->widgetSchema['courtid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroCourts', 'method' => 'getName'));
         $this->widgetSchema['selected_date'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['payment_status']  = new sfWidgetFormChoice(array('choices' => array('PAID' => 'Paid', 'ONHOLD' => 'On hold', 'CANCEL' => 'Cancel')));
@@ -25,5 +31,17 @@ class CroReservationsForm extends BaseCroReservationsForm
         $this->validatorSchema['selected_date'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['start'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
         $this->validatorSchema['end'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
+    }
+
+    public function adminConfigure()
+    {
+        if($this->isNew()){
+            $this->widgetSchema['start'] = new sfWidgetFormInputText();
+            $this->widgetSchema['end'] = new sfWidgetFormInputText();
+        } else {
+            $this->widgetSchema['start'] = new sfWidgetFormInputText(array(), array('value' => date('Y-m-d h:i a', strtotime($this->getObject()->getStart()))));
+            $this->widgetSchema['end'] = new sfWidgetFormInputText(array(), array('value' => date('Y-m-d h:i a', strtotime($this->getObject()->getEnd()))));
+        }
+        $this->widgetSchema['userid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroUsers', 'method' => 'getUsername'));
     }
 }

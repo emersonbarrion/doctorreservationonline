@@ -14,7 +14,7 @@ $(document).ready(function() {
 		header: {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month'
+			right: 'month, basicWeek'
 		},
 
 		events: "/reservation/events",
@@ -41,6 +41,7 @@ $(document).ready(function() {
 
 				success:function(data){
 					$('#add-event').empty();
+					$('#edit-event').empty();
 					$('#add-event').show();
 					$('#add-event').append(data);
 				}
@@ -54,16 +55,16 @@ $(document).ready(function() {
 				type: 'GET',
 				timeout: 5000,
 				url: '/reservation/edit',
-				data: { id: calEvent.id },
+				data: { id: calEvent.id, selected_date: moment(calEvent.start).format('YYYY-MM-DD') },
 
 				success:function(data){
+					$('#add-event').empty();
 					$('#edit-event').empty();
 					$('#edit-event').show();
 					$('#edit-event').append(data);
 				}
 			});
 
-			console.log(calEvent);
 	        $('.fc-view div').css('z-index','8');
 	    },
 

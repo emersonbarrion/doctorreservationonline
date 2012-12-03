@@ -22,13 +22,13 @@ CroUsers:
   columns:
     username: { type: string(255), notnull: true, unique: true }
     password: { type: string(32), notnull: true }
-    fname: { type: string(255), notnull: true }
-    lname: { type: string(255), notnull: true }
-    minitial: { type: string(255) }
     email: { type: string(255), notnull: true, unique: true }
+    fname: { type: string(255) }
+    lname: { type: string(255) }
+    minitial: { type: string(255) }
     phone: { type: string(255) }
-    subscription: { type: string(255), notnull: true }
-    status: { type: boolean, notnull: true, default: 0 }
+    subscription: { type: string(255) }
+    status: { type: boolean, default: 0 }
 
 CroGroups:
   actAs: { Timestampable: ~ }

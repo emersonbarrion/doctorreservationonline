@@ -26,3 +26,18 @@
     </div>
 
 </div>
+
+<script>
+  $(function() {
+    $('#cro_reservations_start').datetimepicker({
+      controlType: 'select',
+      timeFormat: 'hh:mm tt',
+      dateFormat: "yy-mm-dd"
+    });
+    $('#cro_reservations_end').datetimepicker({
+      controlType: 'select',
+      timeFormat: 'hh:mm tt',
+      dateFormat: "yy-mm-dd"
+    });
+  });
+</script>

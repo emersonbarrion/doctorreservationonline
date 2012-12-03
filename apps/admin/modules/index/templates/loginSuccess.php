@@ -15,6 +15,4 @@
         <div class="clearfix"></div>
     </form>
   </div>
-
-  <p align="center"><a href="#">View Schedule</a> | <a href="#">Forgot my password</a></p>
 </div>

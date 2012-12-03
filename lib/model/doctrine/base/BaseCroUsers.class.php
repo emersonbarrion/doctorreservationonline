@@ -7,10 +7,10 @@
  * 
  * @property string $username
  * @property string $password
+ * @property string $email
  * @property string $fname
  * @property string $lname
  * @property string $minitial
- * @property string $email
  * @property string $phone
  * @property string $subscription
  * @property boolean $status
@@ -18,20 +18,20 @@
  * 
  * @method string              getUsername()        Returns the current record's "username" value
  * @method string              getPassword()        Returns the current record's "password" value
+ * @method string              getEmail()           Returns the current record's "email" value
  * @method string              getFname()           Returns the current record's "fname" value
  * @method string              getLname()           Returns the current record's "lname" value
  * @method string              getMinitial()        Returns the current record's "minitial" value
- * @method string              getEmail()           Returns the current record's "email" value
  * @method string              getPhone()           Returns the current record's "phone" value
  * @method string              getSubscription()    Returns the current record's "subscription" value
  * @method boolean             getStatus()          Returns the current record's "status" value
  * @method Doctrine_Collection getCroReservations() Returns the current record's "CroReservations" collection
  * @method CroUsers            setUsername()        Sets the current record's "username" value
  * @method CroUsers            setPassword()        Sets the current record's "password" value
+ * @method CroUsers            setEmail()           Sets the current record's "email" value
  * @method CroUsers            setFname()           Sets the current record's "fname" value
  * @method CroUsers            setLname()           Sets the current record's "lname" value
  * @method CroUsers            setMinitial()        Sets the current record's "minitial" value
- * @method CroUsers            setEmail()           Sets the current record's "email" value
  * @method CroUsers            setPhone()           Sets the current record's "phone" value
  * @method CroUsers            setSubscription()    Sets the current record's "subscription" value
  * @method CroUsers            setStatus()          Sets the current record's "status" value
@@ -58,24 +58,22 @@ abstract class BaseCroUsers extends sfDoctrineRecord
              'notnull' => true,
              'length' => 32,
              ));
-        $this->hasColumn('fname', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('lname', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('minitial', 'string', 255, array(
-             'type' => 'string',
-             'length' => 255,
-             ));
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
              'unique' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('fname', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('lname', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('minitial', 'string', 255, array(
+             'type' => 'string',
              'length' => 255,
              ));
         $this->hasColumn('phone', 'string', 255, array(
@@ -84,12 +82,10 @@ abstract class BaseCroUsers extends sfDoctrineRecord
              ));
         $this->hasColumn('subscription', 'string', 255, array(
              'type' => 'string',
-             'notnull' => true,
              'length' => 255,
              ));
         $this->hasColumn('status', 'boolean', null, array(
              'type' => 'boolean',
-             'notnull' => true,
              'default' => 0,
              ));
     }

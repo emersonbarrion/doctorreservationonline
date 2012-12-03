@@ -25,5 +25,5 @@ ADMINISTRATION PAGE<br/><br/>
 <br/><br/>
 
 <a href='<?php echo url_for('reservation/new') ?>'>Create Reservation</a><br/>
-<a href='<?php echo url_for('reservation/list') ?>'>Retrieve Reservation</a><br/>
+<a href='<?php echo url_for('reservation/list') ?>'>Reservation List</a><br/>
 </div>

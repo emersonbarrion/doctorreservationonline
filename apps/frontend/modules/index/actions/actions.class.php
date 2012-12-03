@@ -38,8 +38,7 @@ class indexActions extends sfActions
 		$name 	= sfConfig::get('app_remember_cookie_name');
 		$expire = sfConfig::get('app_remember_cookie_expiration');
 
-		$user = Doctrine_Core::getTable('CroUsers')
-				->getUserByUsernameAndPassword($postData['username'], $postData['password']);
+		$user = Doctrine_Core::getTable('CroUsers')->getUserByUsernameAndPassword($postData['username'], $postData['password']);
 
         if($user) {
 	    	if(isset($postData['remember_me']) && $postData['remember_me'] == 'on') $this->getResponse()->setCookie('remember_me', 1, time()+$expire);

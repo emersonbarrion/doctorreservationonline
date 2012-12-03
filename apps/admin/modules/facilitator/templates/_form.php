@@ -20,8 +20,6 @@
               <li class="error">&nbsp; <?php echo $form['contact1']->getError() ?></li>
               <li><div class='form-label'>Contact Office:</div> <?php echo $form['contact2'] ?></li>
               <li class="error">&nbsp; <?php echo $form['contact2']->getError() ?></li>
-              <li><div class='form-label'>Website:</div> <?php echo $form['website'] ?></li>
-              <li class="error">&nbsp; <?php echo $form['website']->getError() ?></li>
               <li><div class='form-label'>Company Slogan:</div> <?php echo $form['company_slogan'] ?></li>
               <li class="error">&nbsp; <?php echo $form['company_slogan']->getError() ?></li>
               <li><div class='form-label'>Company Logo:</div> <?php echo $form['company_logo'] ?></li>

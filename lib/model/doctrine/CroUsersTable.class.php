@@ -21,10 +21,10 @@ class CroUsersTable extends Doctrine_Table
 	{
         $record = Doctrine_Query::create()
 					->from('CroUsers u')
-        			->where('u.username = ?', $username)
+        			->where('u.username = ? OR u.email = ?', array($username, $username))
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
-                    
+
         return empty($record) ? NULL : $record[0];
 	}
 }

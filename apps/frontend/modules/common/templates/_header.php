@@ -15,7 +15,7 @@
 			<li class="menubaritem first"><a href="<?php echo url_for('dashboard/index') ?>">DASHBOARD</a></li>
 			<li class="menubaritem first"><a href="<?php echo url_for('account/index') ?>">ACCOUNT</a>
 				<ul>
-					<li class="menuitem"><a href="#">Profile</a></li>
+					<li class="menuitem"><a href="<?php echo url_for('user/edit') ?>">Profile</a></li>
 					<li class="menuitem"><a href="#">Change Password</a></li>
 				</ul>
 			</li>

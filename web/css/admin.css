@@ -1,3 +1,7 @@
 body {
 	margin: 50px 10px;
 }
+
+#ui-datepicker-div {
+	font-size: 12px;
+}

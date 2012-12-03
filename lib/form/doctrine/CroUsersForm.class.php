@@ -33,4 +33,9 @@ class CroUsersForm extends BaseCroUsersForm
 
 		$this->widgetSchema->setNameFormat('user[%s]');
   	}
+
+  	public function registerConfigure()
+  	{
+  		unset( $this['created_at'], $this['updated_at'], $this['fname'], $this['lname'], $this['status'], $this['subscription'], $this['minitial'] );
+  	}
 }

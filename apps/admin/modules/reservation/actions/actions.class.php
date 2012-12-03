@@ -22,6 +22,7 @@ class reservationActions extends sfActions
 	public function executeNew(sfWebRequest $request)
 	{
 		$this->form = new CroReservationsForm();
+		$this->form->adminConfigure();
 		$this->processForm($request, $this->form);
 	}
 
@@ -39,6 +40,7 @@ class reservationActions extends sfActions
 	{
 		$crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
 		$this->form = new CroReservationsForm($crouser);
+		$this->form->adminConfigure();
 		$this->processForm($request, $this->form);
 	}
 
@@ -52,7 +54,14 @@ class reservationActions extends sfActions
 	protected function processForm(sfWebRequest $request, sfForm $form)
 	{
 		if ($request->isMethod('post')) {
-			$form->bind($request->getParameter($form->getName()));
+			$data = $request->getParameter($form->getName());
+
+			$data['start'] = strtotime($data['start']);
+			$data['end'] = strtotime($data['end']);
+			$data['start'] = date('Y-m-d H:i:s', $data['start']);
+			$data['end'] = date('Y-m-d H:i:s', $data['end']);
+
+			$form->bind($data);
 
 			if ($form->isValid()){
 				$form->save();
