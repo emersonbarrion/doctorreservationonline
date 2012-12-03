@@ -21,7 +21,7 @@ class CroAdminUsersTable extends Doctrine_Table
 	{
         $record = Doctrine_Query::create()
 					->from('CroAdminUsers u')
-        			->where('u.username = ?', $username)
+        			->where('u.username = ? OR u.email = ?', array($username, $username))
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
 

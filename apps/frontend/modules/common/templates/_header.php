@@ -13,7 +13,7 @@
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem first"><a href="<?php echo url_for('dashboard/index') ?>">DASHBOARD</a></li>
-			<li class="menubaritem first"><a href="<?php echo url_for('account/index') ?>">ACCOUNT</a>
+			<li class="menubaritem first"><a href="#">ACCOUNT</a>
 				<ul>
 					<li class="menuitem"><a href="<?php echo url_for('user/edit') ?>">Profile</a></li>
 					<li class="menuitem"><a href="#">Change Password</a></li>

@@ -280,7 +280,7 @@ requires jQuery 1.7+
 			list.addClass(settings.className);
 		}
 
-		list.css({'display':'none', 'position': 'fixed' });
+		list.css({'display':'none', 'position': 'absolute' });
 
 		if (settings.minTime !== null && settings.showDuration) {
 			list.addClass('ui-timepicker-with-duration');
