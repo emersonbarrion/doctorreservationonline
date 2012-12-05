@@ -14,6 +14,9 @@ class indexActions extends sfActions
 	{
 		$this->form = new CroLoginForm();
 		$this->processForm($request);
+
+		$content = Doctrine_Core::getTable('CroCms')->getContentByPageUrlAndContentName(1, 'info');
+		$this->info = $content['content_text'];
 	}
 
 	public function executeLogout(sfWebRequest $request)

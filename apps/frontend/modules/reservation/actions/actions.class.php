@@ -27,6 +27,13 @@ class reservationActions extends sfActions
     $this->processForm($request, $this->form);    
   }
 
+  public function executeDelete(sfWebRequest $request)
+  {
+    $crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
+    $crouser->delete();
+    $this->redirect('reservation/index');
+  }
+
   public function executeEvents(sfWebRequest $request)
   {
 		$reservations = Doctrine_Core::getTable('CroReservations')->getUserReservations($this->getUser()->getAttribute('id'));

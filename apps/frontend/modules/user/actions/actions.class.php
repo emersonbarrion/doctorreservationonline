@@ -12,6 +12,7 @@ class userActions extends sfActions
 {
 	public function executeIndex(sfWebRequest $request)
 	{
+		$this->sendMailToUser();
 	}
 
 	public function executeRegister(sfWebRequest $request)
@@ -43,9 +44,20 @@ class userActions extends sfActions
 	            	$this->getUser()->setAttribute('userfullname', ucfirst($user['fname']) . ' ' . ucfirst($user['lname']));
 	            	$this->redirect('user/edit');
             	} else {
+            		$this->sendMailToUser();
             		$this->redirect('index/index');
             	}
             }
         }
+	}
+
+	protected function sendMailToUser()
+	{
+		$message = $this->getMailer()->compose(array('emersonbarrion@yahoo.com.ph' => 'Admin'),
+											   $request->getParameter('email'),
+											   'Welcome to Court Reservation Online',
+											   'Your court reservation online account has been activated.');
+
+		$this->getMailer()->send($message);
 	}
 }

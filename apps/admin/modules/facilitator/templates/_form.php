@@ -1,7 +1,7 @@
 <div id="registerarea">
 
     <div id="loginbox">
-        <form action="<?php echo url_for('facilitator/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
+        <form action="<?php echo url_for('facilitator/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
             <?php echo $form->renderHiddenFields(false) ?>
             <ul>
               <li><div class='form-label'>Username:</div> <?php echo $form['username'] ?></li>
@@ -20,10 +20,6 @@
               <li class="error">&nbsp; <?php echo $form['contact1']->getError() ?></li>
               <li><div class='form-label'>Contact Office:</div> <?php echo $form['contact2'] ?></li>
               <li class="error">&nbsp; <?php echo $form['contact2']->getError() ?></li>
-              <li><div class='form-label'>Company Slogan:</div> <?php echo $form['company_slogan'] ?></li>
-              <li class="error">&nbsp; <?php echo $form['company_slogan']->getError() ?></li>
-              <li><div class='form-label'>Company Logo:</div> <?php echo $form['company_logo'] ?></li>
-              <li class="error">&nbsp; <?php echo $form['company_logo']->getError() ?></li>
               <li><div class='form-label'>User Group:</div> <?php echo $form['user_group'] ?></li>
               <li class="error">&nbsp; <?php echo $form['user_group']->getError() ?></li>
               <li><div class='form-label'>Status:</div> <?php echo $form['status'] ?></li>

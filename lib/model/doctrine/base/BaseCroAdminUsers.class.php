@@ -13,41 +13,38 @@
  * @property string $address
  * @property string $contact1
  * @property string $contact2
- * @property string $company_slogan
- * @property string $company_logo
  * @property integer $user_group
  * @property timestamp $lastlogin
  * @property boolean $status
  * @property CroGroups $CroGroups
+ * @property Doctrine_Collection $CroCms
  * 
- * @method string        getUsername()       Returns the current record's "username" value
- * @method string        getEmail()          Returns the current record's "email" value
- * @method string        getPassword()       Returns the current record's "password" value
- * @method string        getFname()          Returns the current record's "fname" value
- * @method string        getLname()          Returns the current record's "lname" value
- * @method string        getAddress()        Returns the current record's "address" value
- * @method string        getContact1()       Returns the current record's "contact1" value
- * @method string        getContact2()       Returns the current record's "contact2" value
- * @method string        getCompanySlogan()  Returns the current record's "company_slogan" value
- * @method string        getCompanyLogo()    Returns the current record's "company_logo" value
- * @method integer       getUserGroup()      Returns the current record's "user_group" value
- * @method timestamp     getLastlogin()      Returns the current record's "lastlogin" value
- * @method boolean       getStatus()         Returns the current record's "status" value
- * @method CroGroups     getCroGroups()      Returns the current record's "CroGroups" value
- * @method CroAdminUsers setUsername()       Sets the current record's "username" value
- * @method CroAdminUsers setEmail()          Sets the current record's "email" value
- * @method CroAdminUsers setPassword()       Sets the current record's "password" value
- * @method CroAdminUsers setFname()          Sets the current record's "fname" value
- * @method CroAdminUsers setLname()          Sets the current record's "lname" value
- * @method CroAdminUsers setAddress()        Sets the current record's "address" value
- * @method CroAdminUsers setContact1()       Sets the current record's "contact1" value
- * @method CroAdminUsers setContact2()       Sets the current record's "contact2" value
- * @method CroAdminUsers setCompanySlogan()  Sets the current record's "company_slogan" value
- * @method CroAdminUsers setCompanyLogo()    Sets the current record's "company_logo" value
- * @method CroAdminUsers setUserGroup()      Sets the current record's "user_group" value
- * @method CroAdminUsers setLastlogin()      Sets the current record's "lastlogin" value
- * @method CroAdminUsers setStatus()         Sets the current record's "status" value
- * @method CroAdminUsers setCroGroups()      Sets the current record's "CroGroups" value
+ * @method string              getUsername()   Returns the current record's "username" value
+ * @method string              getEmail()      Returns the current record's "email" value
+ * @method string              getPassword()   Returns the current record's "password" value
+ * @method string              getFname()      Returns the current record's "fname" value
+ * @method string              getLname()      Returns the current record's "lname" value
+ * @method string              getAddress()    Returns the current record's "address" value
+ * @method string              getContact1()   Returns the current record's "contact1" value
+ * @method string              getContact2()   Returns the current record's "contact2" value
+ * @method integer             getUserGroup()  Returns the current record's "user_group" value
+ * @method timestamp           getLastlogin()  Returns the current record's "lastlogin" value
+ * @method boolean             getStatus()     Returns the current record's "status" value
+ * @method CroGroups           getCroGroups()  Returns the current record's "CroGroups" value
+ * @method Doctrine_Collection getCroCms()     Returns the current record's "CroCms" collection
+ * @method CroAdminUsers       setUsername()   Sets the current record's "username" value
+ * @method CroAdminUsers       setEmail()      Sets the current record's "email" value
+ * @method CroAdminUsers       setPassword()   Sets the current record's "password" value
+ * @method CroAdminUsers       setFname()      Sets the current record's "fname" value
+ * @method CroAdminUsers       setLname()      Sets the current record's "lname" value
+ * @method CroAdminUsers       setAddress()    Sets the current record's "address" value
+ * @method CroAdminUsers       setContact1()   Sets the current record's "contact1" value
+ * @method CroAdminUsers       setContact2()   Sets the current record's "contact2" value
+ * @method CroAdminUsers       setUserGroup()  Sets the current record's "user_group" value
+ * @method CroAdminUsers       setLastlogin()  Sets the current record's "lastlogin" value
+ * @method CroAdminUsers       setStatus()     Sets the current record's "status" value
+ * @method CroAdminUsers       setCroGroups()  Sets the current record's "CroGroups" value
+ * @method CroAdminUsers       setCroCms()     Sets the current record's "CroCms" collection
  * 
  * @package    courtreservationonline
  * @subpackage model
@@ -98,22 +95,12 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
-        $this->hasColumn('company_slogan', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('company_logo', 'string', 255, array(
-             'type' => 'string',
-             'length' => 255,
-             ));
         $this->hasColumn('user_group', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
              ));
         $this->hasColumn('lastlogin', 'timestamp', null, array(
              'type' => 'timestamp',
-             'notnull' => true,
              ));
         $this->hasColumn('status', 'boolean', null, array(
              'type' => 'boolean',
@@ -128,6 +115,10 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
         $this->hasOne('CroGroups', array(
              'local' => 'user_group',
              'foreign' => 'id'));
+
+        $this->hasMany('CroCms', array(
+             'local' => 'id',
+             'foreign' => 'updated_by'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

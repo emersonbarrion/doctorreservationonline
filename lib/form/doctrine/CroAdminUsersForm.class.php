@@ -15,9 +15,6 @@ class CroAdminUsersForm extends BaseCroAdminUsersForm
 		unset( $this['created_at'], $this['updated_at'], $this['lastlogin'] );
 
 		$this->widgetSchema['password'] = new sfWidgetFormInputPassword();
-		
-		//$this->widgetSchema['subscription']  = new sfWidgetFormChoice(array('choices' => array('monthly' => 'Monthly', 'yearly' => 'Yearly')));
-		//$this->validatorSchema['subscription'] 	= new sfValidatorChoice(array('choices' => array('monthly','yearly')));
 
 		if($this->isNew()){
 			$this->validatorSchema['username'] = new sfValidatorDoctrineUnique(array('model' => 'CroUsers', 'column' => 'Username', 'throw_global_error' => true), array('invalid' => "Username is not available."));

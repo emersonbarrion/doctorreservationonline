@@ -8,8 +8,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'France'
-    company_slogan: Your court reservation
-    company_logo: 
     CroGroups: Admin
     lastlogin: '2012-11-30 03:00:00'
     status: 1
@@ -22,8 +20,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'USA'
-    company_slogan: Electronic Business Solutions
-    company_logo: 
     CroGroups: Facilitator
     lastlogin: '2012-11-27 05:00:00'
     status: 1
@@ -36,8 +32,6 @@ CroAdminUsers:
     contact1: 1234567890
     contact2: 0987654321
     address: 'Britain'
-    company_slogan: Online Service Provider
-    company_logo: 
     CroGroups: Facilitator
     lastlogin: '2012-11-24 02:00:00'
     status: 1

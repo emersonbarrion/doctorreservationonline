@@ -9,8 +9,6 @@
     <td align="center" valign="top"><?php echo $cro_adminuser->getAddress() ?></td>
     <td align="center" valign="top"><?php echo $cro_adminuser->getContact1() ?></td>
     <td align="center" valign="top"><?php echo $cro_adminuser->getContact2() ?></td>
-    <td align="center" valign="top"><?php echo $cro_adminuser->getCompanySlogan() ?></td>
-    <td align="center" valign="top"><?php echo $cro_adminuser->getCompanyLogo() ?></td>
     <td align="center" valign="top"><?php echo $cro_adminuser->getUserGroup() ?></td>
     <td align="center" valign="top"><?php echo $cro_adminuser->getLastlogin() ?></td>
     <td align="center" valign="top"><?php echo $cro_adminuser->getStatus() ?></td>

@@ -26,4 +26,14 @@ ADMINISTRATION PAGE<br/><br/>
 
 <a href='<?php echo url_for('reservation/new') ?>'>Create Reservation</a><br/>
 <a href='<?php echo url_for('reservation/list') ?>'>Reservation List</a><br/>
+
+<br/><br/>
+
+<a href='<?php echo url_for('page/new') ?>'>Create Page</a><br/>
+<a href='<?php echo url_for('page/list') ?>'>Page List</a><br/>
+
+<br/><br/>
+
+<a href='<?php echo url_for('cms/new') ?>'>Create Cms</a><br/>
+<a href='<?php echo url_for('cms/list') ?>'>Cms List</a><br/>
 </div>

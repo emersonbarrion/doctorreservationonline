@@ -16,7 +16,7 @@
       <tr><td>Payment status:</td><td><?php echo $form['payment_status'] ?></td></tr>
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
-    <a href='<?php echo url_for('reservation/remove?id='.$form->getObject()->getId()) ?>'>Delete</a>
+    <a href='<?php echo url_for('reservation/delete?id='.$form->getObject()->getId()) ?>'>Delete</a>
     <input name="Submit" type="submit" value="Submit"/>
 </form>
 

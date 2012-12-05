@@ -39,7 +39,7 @@ class userActions extends sfActions
 	{
 		$crouser = Doctrine::getTable('CroUsers')->find(array($request->getParameter('id')));
 		$this->form = new CroUsersForm($crouser);
-		$this->processForm($request, $this->form);
+		$this->processForm($request, $this->form, $crouser);
 	}
 
 	public function executeRemove(sfWebRequest $request)
@@ -49,11 +49,17 @@ class userActions extends sfActions
 		$this->redirect('user/list');
 	}
 
-	protected function processForm(sfWebRequest $request, sfForm $form)
+	protected function processForm(sfWebRequest $request, sfForm $form, $crouser = NULL)
 	{
 		if ($request->isMethod('post')) {
         	$postData = $request->getParameter('user');
-        	$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+
+        	if($postData['password']){
+        		$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+        	} else {
+        		$postData['password'] = $crouser->getPassword();
+        	}
+
 			$form->bind($postData);
 
 			if ($form->isValid()){

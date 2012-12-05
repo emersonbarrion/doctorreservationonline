@@ -9,10 +9,8 @@ CroAdminUsers:
     address: { type: string(4000) }
     contact1: { type: string(255) }
     contact2: { type: string(255) }
-    company_slogan: { type: string(255), notnull: true }
-    company_logo: { type: string(255) }
     user_group: { type: integer, notnull: true }
-    lastlogin: { type: timestamp, notnull: true }
+    lastlogin: { type: timestamp }
     status: { type: boolean, notnull: true, default: 0 }
   relations:
     CroGroups: { local: user_group, foreign: id }
@@ -71,3 +69,23 @@ CroPayments:
     payment_type: { type: string(255), notnull: true }
   relations:
     CroReservations: { onDelete: CASCADE, local: reservationid, foreign: id }
+
+CroCms:
+  actAs: { Timestampable: ~ }
+  columns:
+    page_url_id: { type: integer, notnull: true }
+    content_name: { type: string(255), notnull: true }
+    content_text: { type: string(4000) }
+    content_image: { type: string(4000) }
+    created_by: { type: integer, notnull: true }
+    updated_by: { type: integer, notnull: true }
+  relations:
+    CroAdminUsers: { onDelete: CASCADE, local: created_by, foreign: id }
+    CroAdminUsers: { onDelete: CASCADE, local: updated_by, foreign: id }
+    CroPages: { onDelete: CASCADE, local: page_url_id, foreign: id }
+
+CroPages:
+  actAs: { Timestampable: ~ }
+  columns:
+    page_url: { type: string(255), notnull: true }
+    description: { type: string(255), notnull: true }

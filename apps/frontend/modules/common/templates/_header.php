@@ -1,5 +1,5 @@
 <div id="headerdiv">
-	<div id="head1"><img src="/images/logo.png" width="230" height="62" /></div>
+	<div id="head1"><img src="/uploads/<?php echo $logo ?>" width="180" height="130" /></div>
     <div id="head2"><img src="/images/logo2.png" width="389" height="65" /></div>
 </div>
 
@@ -36,5 +36,5 @@
 </div>
 
 <?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
-	<div id="spiel2">TEXT HERE ( MAYBE COMPANY SLOGAN OR QUOTE )</div>
+	<div id="spiel2"><?php echo $slogan ?></div>
 <?php endif; ?>

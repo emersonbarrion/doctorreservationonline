@@ -1,4 +1,4 @@
-<p><a href="#"><strong>Mycourt.com</strong></a> is your online tennis reservation system. No more worrying with lost sign-up sheets, no more conflicts, and no more hoping there is an open court when you arrive. Participating facilities will instantly offer their tennis players access to online and telephone reservations and that is just the beginning. Reserve MyCourt is ABSOLUTELY FREE to both players and facilities and is supported by advertising. So <a href="#">Click Here</a> to see our current membership, and then join us!</p>
+<?php echo $sf_data->getRaw('info') ?>
 
 <div class="clearfix"></div>
 

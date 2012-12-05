@@ -39,7 +39,7 @@ class facilitatorActions extends sfActions
 	{
 		$crouser = Doctrine::getTable('CroAdminUsers')->find(array($request->getParameter('id')));
 		$this->form = new CroAdminUsersForm($crouser);
-		$this->processForm($request, $this->form);
+		$this->processForm($request, $this->form, $crouser);
 	}
 
 	public function executeRemove(sfWebRequest $request)
@@ -49,17 +49,23 @@ class facilitatorActions extends sfActions
 		$this->redirect('facilitator/list');
 	}
 
-	protected function processForm(sfWebRequest $request, sfForm $form)
+	protected function processForm(sfWebRequest $request, sfForm $form, $crouser = NULL)
 	{
 		if ($request->isMethod('post')) {
         	$postData = $request->getParameter('admin');
-        	$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+        	$postFile = $request->getFiles('admin');
+			
+			if($postData['password']){
+        		$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+        	} else {
+        		$postData['password'] = $crouser->getPassword();
+        	}
+        	//var_dump($postData);die;
+			$form->bind($postData, $postFile);
 
-			$form->bind($postData);
-
-			if ($form->isValid()){
+			if ($form->isValid()){				
 				$form->save();
-				$this->redirect('facilitator/list');
+				$this->redirect('facilitator/list');				
 			}
 		}
 	}
