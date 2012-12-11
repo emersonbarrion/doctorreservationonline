@@ -1,4 +1,5 @@
 <?php if($sf_user->isAuthenticated() && $sf_user->hasCredential('user')): ?>
+<div id="is-available" style ="background-color:red"></div>
 <form action="<?php echo url_for('reservation/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <table>
@@ -17,14 +18,78 @@
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
     <a href='<?php echo url_for('reservation/delete?id='.$form->getObject()->getId()) ?>'>Delete</a>
-    <input name="Submit" type="submit" value="Submit"/>
+    <input id="submit-edit-reservation" name="Submit" type="submit" value="Submit"/>
 </form>
 
 <script>
       var selectedDate = $('#selectedDate').text();
-      $('#cro_reservations_start').timepicker({'timeFormat' : 'h:i A'});
-      $('#cro_reservations_end').timepicker({'timeFormat' : 'h:i A'});
       $('#cro_reservations_selected_date').attr('value', selectedDate);
+
+      var courtid = $("#cro_reservations_courtid").val();
+        $.ajax({
+            type: 'GET',
+            timeout: 5000,
+            url: '/reservation/courtavailable',
+            data: { courtid: courtid, date: selectedDate },
+
+            success:function(data){
+                var availableTime = eval(data);
+                $('#cro_reservations_start').timepicker('remove');
+                $('#cro_reservations_end').timepicker('remove');
+                $('#cro_reservations_start').delay(1000).timepicker({'timeFormat' : 'h:i A', 'minTime' : availableTime[0].start_time, 'maxTime' : availableTime[0].end_time});
+                $('#cro_reservations_end').delay(1000).timepicker({'timeFormat' : 'h:i A', 'minTime' : availableTime[0].start_time, 'maxTime' : availableTime[0].end_time});
+            }
+        });
+
+        $("#cro_reservations_courtid").live('change', function() {
+            courtid = $(this).val();
+            $.ajax({
+                type: 'GET',
+                timeout: 5000,
+                url: '/reservation/courtavailable',
+                data: { courtid: courtid, date: selectedDate },
+
+                success:function(data){
+                    var availableTime = eval(data);
+                    $('#cro_reservations_start').timepicker('remove');
+                    $('#cro_reservations_end').timepicker('remove');
+                    $('#cro_reservations_start').delay(1000).timepicker({'timeFormat' : 'h:i A', 'minTime' : availableTime[0].start_time, 'maxTime' : availableTime[0].end_time});
+                    $('#cro_reservations_end').delay(1000).timepicker({'timeFormat' : 'h:i A', 'minTime' : availableTime[0].start_time, 'maxTime' : availableTime[0].end_time});
+                }
+            });
+        });
+
+        $("#submit-edit-reservation").live('click', function() {
+            var startTime = $('#cro_reservations_start').val();
+            var endTime = $('#cro_reservations_end').val();
+            var resid = $('#cro_reservations_id').val();
+            $.ajax({
+              type: 'GET',
+              timeout: 5000,
+              url: '/reservation/editreservationavailable',
+              data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime , reservationid: resid },
+
+              success:function(data){
+                  $('#is-available').empty();
+                  if(!data){
+                      $('#is-available').text('Not available');
+                  } else {
+                      $('#is-available').text('Submitting...');
+                      $('form').submit();
+                  }
+              }
+            });
+
+            if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || !$('#cro_reservations_end').val()){
+                alert('Please fill the fields');
+            }
+
+            return false;
+        });
+
+        $('#cro_reservations_start, #cro_reservations_end').focus(function(){
+            $('#is-available').empty();
+        });
 </script>
 <?php else: ?>
 Please sign in before editting a reservation <a href="<?php echo url_for('index/index') ?>">Sign in</a> / <a href="<?php echo url_for('user/register') ?>">Register</a>

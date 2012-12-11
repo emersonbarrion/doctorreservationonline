@@ -68,7 +68,7 @@ $(document).ready(function() {
 	        $('.fc-view div').css('z-index','8');
 	    },
 
-	    eventRender: function(event, element) {         
+	    eventRender: function(event, element) {   
 	    	var timeRange = getReservationTimeRange(event.start, event.end);
 	    	element.find('.fc-event-title').prepend(timeRange + "<br/>");
 		}

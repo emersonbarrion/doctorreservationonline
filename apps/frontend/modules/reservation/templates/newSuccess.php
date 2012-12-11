@@ -45,33 +45,35 @@
         });
 
         $("#submit-new-reservation").live('click', function() {
-        var startTime = $('#cro_reservations_start').val();
-        var endTime = $('#cro_reservations_end').val();
-        $.ajax({
-            type: 'GET',
-            timeout: 5000,
-            url: '/reservation/reservationavailable',
-            data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime },
+          var startTime = $('#cro_reservations_start').val();
+          var endTime = $('#cro_reservations_end').val();
 
-            success:function(data){
-                $('#is-available').empty();
-                if(!data){
-                    $('#is-available').text('Not available');
-                } else {
-                    $('#is-available').text('Submitting...');
-                    $('form').submit();
+          if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
+            $('#is-available').empty();
+            $('#is-available').text('Fill the required fields');
+          } else {
+            $.ajax({
+                type: 'GET',
+                timeout: 5000,
+                url: '/reservation/reservationavailable',
+                data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime },
+
+                success:function(data){
+                    $('#is-available').empty();
+                    if(!data){
+                        $('#is-available').text('Not available');
+                    } else {
+                        $('#is-available').text('Submitting...');
+                        $('form').submit();
+                    }
                 }
-            }
-        });
-        if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || !$('#cro_reservations_end').val()){
-          alert('Please fill the fields');
-        }
+            });
+          }
 
-        return false;
-
+          return false;
         });
 
-        $('#cro_reservations_start, #cro_reservations_end').focus(function(){
+        $('#cro_reservations_start, #cro_reservations_end, #cro_reservations_title, #cro_reservations_court').focus(function(){
             $('#is-available').empty();
         });
 

@@ -64,8 +64,28 @@ class reservationActions extends sfActions
     $available = Doctrine_Core::getTable('CroReservations')
                     ->checkReservations($request->getParameter('courtid'), 
                                         $request->getParameter('date'),
-                                        $start,
-                                        $end);
+                                        $start, $end,
+                                        $this->getUser()->getAttribute('id'));
+
+    echo $available;
+
+    return sfView::NONE;
+  }
+
+  public function executeEditreservationavailable(sfWebRequest $request)
+  {
+    $start = strtotime($request->getParameter('start'), $request->getParameter('date'));
+    $end = strtotime($request->getParameter('end'), $request->getParameter('date'));
+    $start = date('H:i:s', $start);
+    $end = date('H:i:s', $end);
+    $start =  $request->getParameter('date') . ' ' . $start;
+    $end   = $request->getParameter('date') . ' ' . $end;
+
+    $available = Doctrine_Core::getTable('CroReservations')
+                    ->checkEditReservations($request->getParameter('courtid'), 
+                                            $request->getParameter('date'),
+                                            $start, $end,
+                                            $this->getUser()->getAttribute('id'), $request->getParameter('reservationid'));
 
     echo $available;
 
