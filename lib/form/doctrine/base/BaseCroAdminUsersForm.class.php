@@ -26,7 +26,7 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
       'contact2'   => new sfWidgetFormInputText(),
       'user_group' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CroGroups'), 'add_empty' => false)),
       'lastlogin'  => new sfWidgetFormDateTime(),
-      'status'     => new sfWidgetFormInputCheckbox(),
+      'status'     => new sfWidgetFormInputText(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
     ));
@@ -43,7 +43,7 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
       'contact2'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'user_group' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroGroups'))),
       'lastlogin'  => new sfValidatorDateTime(array('required' => false)),
-      'status'     => new sfValidatorBoolean(array('required' => false)),
+      'status'     => new sfValidatorString(array('max_length' => 1, 'required' => false)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
     ));

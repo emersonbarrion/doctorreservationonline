@@ -21,8 +21,8 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
       'courtid'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('CroCourts'), 'add_empty' => false)),
       'start'          => new sfWidgetFormDateTime(),
       'end'            => new sfWidgetFormDateTime(),
-      'status'         => new sfWidgetFormInputCheckbox(),
       'payment_status' => new sfWidgetFormInputText(),
+      'status'         => new sfWidgetFormInputText(),
       'created_at'     => new sfWidgetFormDateTime(),
       'updated_at'     => new sfWidgetFormDateTime(),
     ));
@@ -34,8 +34,8 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
       'courtid'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroCourts'))),
       'start'          => new sfValidatorDateTime(),
       'end'            => new sfValidatorDateTime(),
-      'status'         => new sfValidatorBoolean(array('required' => false)),
       'payment_status' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'status'         => new sfValidatorString(array('max_length' => 1, 'required' => false)),
       'created_at'     => new sfValidatorDateTime(),
       'updated_at'     => new sfValidatorDateTime(),
     ));

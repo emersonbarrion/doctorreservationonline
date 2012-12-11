@@ -19,8 +19,8 @@ ADMINISTRATION PAGE<br/><br/>
 
 <br/><br/>
 
-<a href='<?php echo url_for('court/new') ?>'>Create Court</a><br/>
-<a href='<?php echo url_for('court/list') ?>'>Retrieve Court</a><br/>
+<a href='<?php echo url_for('court/new') ?>'>Create Unit</a><br/>
+<a href='<?php echo url_for('court/list') ?>'>Retrieve Units</a><br/>
 
 <br/><br/>
 

@@ -21,4 +21,21 @@ class CroReservationsTable extends Doctrine_Table
         
         return $record;
 	}
+
+    public function checkReservations($courtid, $date, $start, $end)
+    {
+        $reservation = Doctrine_Query::create()
+                        ->from('CroReservations u')
+                        ->where('u.courtid = ? AND u.start LIKE ?', array($courtid, $date . '%'))
+                        ->fetchArray();
+
+        $isAvailable = true;
+        foreach($reservation as $key => $val){
+            if((($val['start'] <= $start) && ($val['end'] > $start)) || (($val['start'] < $end) && ($val['end'] >= $end))){
+                $isAvailable = false;
+            }
+        }
+
+        return $isAvailable;
+    }
 }

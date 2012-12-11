@@ -44,20 +44,30 @@ class userActions extends sfActions
 	            	$this->getUser()->setAttribute('userfullname', ucfirst($user['fname']) . ' ' . ucfirst($user['lname']));
 	            	$this->redirect('user/edit');
             	} else {
-            		$this->sendMailToUser();
+            		$this->sendMailToUser($request);
             		$this->redirect('index/index');
             	}
             }
         }
 	}
 
-	protected function sendMailToUser()
+	public function executeActivate(sfWebRequest $request)
 	{
-		$message = $this->getMailer()->compose(array('emersonbarrion@yahoo.com.ph' => 'Admin'),
-											   $request->getParameter('email'),
-											   'Welcome to Court Reservation Online',
-											   'Your court reservation online account has been activated.');
+		$this->crouser = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
+		$this->form = new CroUsersForm($this->crouser);
+		$this->processForm($request, $this->form, 'edit');
+	}
 
-		$this->getMailer()->send($message);
+	protected function sendMailToUser(sfWebRequest $request)
+	{
+		$html = $this->getPartial('user/activate');
+
+		$message = $this->getMailer()->compose();
+		$message->setSubject('Account Activation');
+		$message->setTo($request->getParameter('email'));
+		$message->setFrom('fineschedule@gmail.com');
+		$message->setBody($html, 'text/html');    
+
+		echo $this->getMailer()->send($message);
 	}
 }

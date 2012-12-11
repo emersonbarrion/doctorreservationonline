@@ -11,7 +11,7 @@ CroAdminUsers:
     contact2: { type: string(255) }
     user_group: { type: integer, notnull: true }
     lastlogin: { type: timestamp }
-    status: { type: boolean, notnull: true, default: 0 }
+    status: { type: string(1), notnull: true, default: 0 }
   relations:
     CroGroups: { local: user_group, foreign: id }
 
@@ -26,7 +26,7 @@ CroUsers:
     minitial: { type: string(255) }
     phone: { type: string(255) }
     subscription: { type: string(255) }
-    status: { type: boolean, default: 0 }
+    status: { type: string(1), notnull: true, default: 0 }
 
 CroGroups:
   actAs: { Timestampable: ~ }
@@ -37,7 +37,6 @@ CroCourts:
   actAs: { Timestampable: ~ }
   columns:
     name: { type: string(255), notnull: true }
-    status: { type: boolean, notnull: true, default: 0}
     indoor: { type: boolean, notnull: true, default: 0}
     lights: { type: boolean, notnull: true, default: 0}
     priorreservationhours: { type: integer, notnull: true }
@@ -45,6 +44,7 @@ CroCourts:
     rate: { type: double, notnull: true }
     start_time: { type: string(255), notnull: true }
     end_time: { type: string(255), notnull: true }
+    status: { type: string(1), notnull: true, default: 0 }
 
 CroReservations:
   actAs: { Timestampable: ~ }
@@ -54,11 +54,19 @@ CroReservations:
     courtid: { type: integer, notnull: true }
     start: { type: timestamp, notnull: true }
     end: { type: timestamp, notnull: true }
-    status: { type: boolean, notnull: true, default: 0 }
     payment_status: { type: string(255), notnull: true, default: 0 }
+    status: { type: string(1), notnull: true, default: 0 }
   relations:
     CroUsers: { local: userid, foreign: id }
     CroCourts: { local: courtid, foreign: id }
+
+CroCourtClose:
+  actAs: { Timestampable: ~ }
+  columns:
+    reservationid: { type: integer, notnull: true }
+    closedate: { type: string(255), notnull: true }
+  relations:
+    CroReservations: { local: reservationid, foreign: id }
 
 CroPayments:
   actAs: { Timestampable: ~ }

@@ -31,6 +31,9 @@ class CroUsersForm extends BaseCroUsersForm
 			$this->widgetSchema['email'] 	= new sfWidgetFormInput(array(), array('readonly' => 'readonly'));
 		}
 
+        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array('1' => 'Enabled', '0' => 'Disabled')));
+        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array('1', '0')));
+        
 		$this->widgetSchema->setNameFormat('user[%s]');
   	}
 

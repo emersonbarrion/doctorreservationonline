@@ -16,4 +16,14 @@ class CroCourtsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('CroCourts');
     }
+
+    public function getTimeAvailable($courtid, $date = NULL)
+	{
+        $timeAvailable = Doctrine_Query::create()->from('CroCourts u');
+
+        if($courtid) $record = $timeAvailable->where('u.id = ?', $courtid)->fetchArray();
+        else $record = $timeAvailable->fetchArray();
+        
+        return $record;
+	}
 }

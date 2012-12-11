@@ -1,0 +1,27 @@
+CroCms:
+  Header_Logo:
+    page_url_id: 1
+    content_name: logo
+    content_image: logo.png
+    created_by: 1
+    updated_by: 1
+
+  Header_Slogan:
+    page_url_id: 1
+    content_name: slogan
+    content_text: 'This is the company slogan'
+    created_by: 1
+    updated_by: 1
+
+  Header_Info:
+    page_url_id: 1
+    content_name: info
+    content_text: |
+        <p><a href="#"><strong>Mycourt.com</strong></a> is your online tennis reservation system. 
+        No more worrying with lost sign-up sheets, no more conflicts, and no more hoping there 
+        is an open court when you arrive. Participating facilities will instantly offer their tennis 
+        players access to online and telephone reservations and that is just the beginning. Reserve 
+        MyCourt is ABSOLUTELY FREE to both players and facilities and is supported by advertising. 
+        So <a href="#">Click Here</a> to see our current membership, and then join us!</p>
+    created_by: 1
+    updated_by: 1

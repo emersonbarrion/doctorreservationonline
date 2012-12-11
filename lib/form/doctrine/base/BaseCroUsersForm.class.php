@@ -24,7 +24,7 @@ abstract class BaseCroUsersForm extends BaseFormDoctrine
       'minitial'     => new sfWidgetFormInputText(),
       'phone'        => new sfWidgetFormInputText(),
       'subscription' => new sfWidgetFormInputText(),
-      'status'       => new sfWidgetFormInputCheckbox(),
+      'status'       => new sfWidgetFormInputText(),
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),
     ));
@@ -39,7 +39,7 @@ abstract class BaseCroUsersForm extends BaseFormDoctrine
       'minitial'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'phone'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'subscription' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'status'       => new sfValidatorBoolean(array('required' => false)),
+      'status'       => new sfValidatorString(array('max_length' => 1, 'required' => false)),
       'created_at'   => new sfValidatorDateTime(),
       'updated_at'   => new sfValidatorDateTime(),
     ));

@@ -1,0 +1,4 @@
+CroPages:
+  Header:
+    page_url: 'header'
+    description: 'This is the header part'

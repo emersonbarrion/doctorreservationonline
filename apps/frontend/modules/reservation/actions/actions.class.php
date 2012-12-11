@@ -43,6 +43,35 @@ class reservationActions extends sfActions
 		return sfView::NONE;
   }
 
+  public function executeCourtavailable(sfWebRequest $request)
+  {    
+    $available = Doctrine_Core::getTable('CroCourts')->getTimeAvailable($request->getParameter('courtid'), $request->getParameter('date'));
+
+    echo json_encode($available);
+
+    return sfView::NONE;
+  }
+
+  public function executeReservationavailable(sfWebRequest $request)
+  {
+    $start = strtotime($request->getParameter('start'), $request->getParameter('date'));
+    $end = strtotime($request->getParameter('end'), $request->getParameter('date'));
+    $start = date('H:i:s', $start);
+    $end = date('H:i:s', $end);
+    $start =  $request->getParameter('date') . ' ' . $start;
+    $end   = $request->getParameter('date') . ' ' . $end;
+
+    $available = Doctrine_Core::getTable('CroReservations')
+                    ->checkReservations($request->getParameter('courtid'), 
+                                        $request->getParameter('date'),
+                                        $start,
+                                        $end);
+
+    echo $available;
+
+    return sfView::NONE;
+  }
+
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     if ($request->isMethod('post')) {
