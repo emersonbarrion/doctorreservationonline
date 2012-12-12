@@ -16,13 +16,13 @@
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
 CroUsers:
-  Emerson:
+  Admin:
     username: user
     password: b219dbd0bc70f6446d9c1262101f6d0a
-    fname: emerson
-    lname: barrion
+    fname: admin	
+    lname: admin
     minitial: c
-    email: emerson.barrion@gmail.com
+    email: admin.admin@gmail.com
     phone: 12345678
     subscription: 'Monthly'
     status: 1
