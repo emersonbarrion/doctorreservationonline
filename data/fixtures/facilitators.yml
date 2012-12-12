@@ -3,7 +3,7 @@ CroAdminUsers:
     username: admin
     password: b219dbd0bc70f6446d9c1262101f6d0a
     email: courtreservationonline@gmail.com
-    fname: owner
+    fname: admin
     lname: owner
     contact1: 1234567890
     contact2: 0987654321

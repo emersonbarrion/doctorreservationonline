@@ -13,7 +13,7 @@
  * @property string $minitial
  * @property string $phone
  * @property string $subscription
- * @property string $status
+ * @property boolean $status
  * @property Doctrine_Collection $CroReservations
  * 
  * @method string              getUsername()        Returns the current record's "username" value
@@ -24,7 +24,7 @@
  * @method string              getMinitial()        Returns the current record's "minitial" value
  * @method string              getPhone()           Returns the current record's "phone" value
  * @method string              getSubscription()    Returns the current record's "subscription" value
- * @method string              getStatus()          Returns the current record's "status" value
+ * @method boolean             getStatus()          Returns the current record's "status" value
  * @method Doctrine_Collection getCroReservations() Returns the current record's "CroReservations" collection
  * @method CroUsers            setUsername()        Sets the current record's "username" value
  * @method CroUsers            setPassword()        Sets the current record's "password" value
@@ -84,11 +84,10 @@ abstract class BaseCroUsers extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
-        $this->hasColumn('status', 'string', 1, array(
-             'type' => 'string',
+        $this->hasColumn('status', 'boolean', null, array(
+             'type' => 'boolean',
              'notnull' => true,
              'default' => 0,
-             'length' => 1,
              ));
     }
 

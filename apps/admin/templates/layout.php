@@ -8,8 +8,11 @@
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
-  <body>
-    <?php include_component('common', 'header') ?>
-    <?php echo $sf_content ?>
-  </body>
+        <body>
+            <?php include_component('common', 'header') ?>
+            <div id="content">
+                <?php echo $sf_content ?>
+            </div>
+            <div style="clear:both"></div>
+        </body>
 </html>

@@ -26,7 +26,7 @@ CroUsers:
     minitial: { type: string(255) }
     phone: { type: string(255) }
     subscription: { type: string(255) }
-    status: { type: string(1), notnull: true, default: 0 }
+    status: { type: boolean, notnull: true, default: 0 }
 
 CroGroups:
   actAs: { Timestampable: ~ }
