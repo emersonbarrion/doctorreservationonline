@@ -15,8 +15,8 @@ class CroUsersForm extends BaseCroUsersForm
 		unset( $this['created_at'], $this['updated_at'] );
 
 		$this->widgetSchema['password'] = new sfWidgetFormInputPassword();
-		$this->widgetSchema['subscription']  = new sfWidgetFormChoice(array('choices' => array('monthly' => 'Monthly', 'yearly' => 'Yearly')));
-		$this->validatorSchema['subscription'] 	= new sfValidatorChoice(array('choices' => array('monthly','yearly')));
+		$this->widgetSchema['subscription']  = new sfWidgetFormChoice(array('choices' => array('Monthly' => 'Monthly', 'Yearly' => 'Yearly')));
+		$this->validatorSchema['subscription'] 	= new sfValidatorChoice(array('choices' => array('Monthly','Yearly')));
 
 		if($this->isNew()){
 			$this->validatorSchema['username'] = new sfValidatorAnd(array(
@@ -31,8 +31,8 @@ class CroUsersForm extends BaseCroUsersForm
 			$this->widgetSchema['email'] 	= new sfWidgetFormInput(array(), array('readonly' => 'readonly'));
 		}
 
-        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array('1' => 'Enabled', '0' => 'Disabled')));
-        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array('1', '0')));
+        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(1 => 'Active', 0 => 'Inactive')));
+        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(1,0)));
         
 		$this->widgetSchema->setNameFormat('user[%s]');
   	}

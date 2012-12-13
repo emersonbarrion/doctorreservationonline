@@ -6,22 +6,22 @@
 		<li class="menubaritem first"><a href="<?php echo url_for('users/index') ?>">Users</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('user/list') ?>">User</a>
 			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('user/new') ?>">New</li>
+            	<li class="menuitem"><a href="<?php echo url_for('user/new') ?>">New</a></li>
             </ul>
         </li>    
 		<li class="menubaritem first"><a href="<?php echo url_for('facilitator/list') ?>">Facilitator</a>
 			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('facilitator/new') ?>">New</li>
+            	<li class="menuitem"><a href="<?php echo url_for('facilitator/new') ?>">New</a></li>
             </ul>
         </li>
 		<li class="menubaritem first"><a href="<?php echo url_for('court/list') ?>">Unit</a>
 			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('court/new') ?>">New</li>
+            	<li class="menuitem"><a href="<?php echo url_for('court/new') ?>">New</a></li>
             </ul>
         </li>
 		<li class="menubaritem first"><a href="<?php echo url_for('reservation/list') ?>">Reservation</a>
 			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('reservation/new') ?>">New</li>
+            	<li class="menuitem"><a href="<?php echo url_for('reservation/new') ?>">New</a></li>
             </ul>
         </li>
 		<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('admin', 'facilitator'), false)): ?>
