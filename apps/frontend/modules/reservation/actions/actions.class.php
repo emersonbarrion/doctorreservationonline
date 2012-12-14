@@ -14,6 +14,11 @@ class reservationActions extends sfActions
   {
   }
 
+  public function executeAll(sfWebRequest $request)
+  {
+    $this->setTemplate('index');
+  }
+
   public function executeNew(sfWebRequest $request)
   {
       $this->form = new CroReservationsForm();
@@ -23,8 +28,14 @@ class reservationActions extends sfActions
   public function executeEdit(sfWebRequest $request)
   {
     $crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
+    
+    if($crouser->getUserid() != $this->getUser()->getAttribute('id')) {
+      echo 'Please select your reservation';
+      return sfView::NONE;
+    }
+
     $this->form = new CroReservationsForm($crouser);
-    $this->processForm($request, $this->form);    
+    $this->processForm($request, $this->form);
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -36,7 +47,13 @@ class reservationActions extends sfActions
 
   public function executeEvents(sfWebRequest $request)
   {
-		$reservations = Doctrine_Core::getTable('CroReservations')->getUserReservations($this->getUser()->getAttribute('id'));
+    $reserve = NULL;
+
+    if($request->getParameter('reserve') != 'all') {
+      $reserve = $this->getUser()->getAttribute('id');
+    }
+
+		$reservations = Doctrine_Core::getTable('CroReservations')->getUserReservations($reserve);
 
 		echo json_encode($reservations);
 
@@ -56,10 +73,18 @@ class reservationActions extends sfActions
   {
     $start = strtotime($request->getParameter('start'), $request->getParameter('date'));
     $end = strtotime($request->getParameter('end'), $request->getParameter('date'));
+
+    $totalTime = $end - $start;
+    if($totalTime < 1800) {
+      echo 'error';
+      return sfView::NONE;
+    }
+
     $start = date('H:i:s', $start);
     $end = date('H:i:s', $end);
     $start =  $request->getParameter('date') . ' ' . $start;
     $end   = $request->getParameter('date') . ' ' . $end;
+
 
     $available = Doctrine_Core::getTable('CroReservations')
                     ->checkReservations($request->getParameter('courtid'), 
@@ -76,6 +101,13 @@ class reservationActions extends sfActions
   {
     $start = strtotime($request->getParameter('start'), $request->getParameter('date'));
     $end = strtotime($request->getParameter('end'), $request->getParameter('date'));
+
+    $totalTime = $end - $start;
+    if($totalTime < 1800) {
+      echo 'error';
+      return sfView::NONE;
+    }
+    
     $start = date('H:i:s', $start);
     $end = date('H:i:s', $end);
     $start =  $request->getParameter('date') . ' ' . $start;

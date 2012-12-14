@@ -13,7 +13,7 @@
  * @property double $rate
  * @property string $start_time
  * @property string $end_time
- * @property string $status
+ * @property integer $status
  * @property Doctrine_Collection $CroReservations
  * 
  * @method string              getName()                  Returns the current record's "name" value
@@ -24,7 +24,7 @@
  * @method double              getRate()                  Returns the current record's "rate" value
  * @method string              getStartTime()             Returns the current record's "start_time" value
  * @method string              getEndTime()               Returns the current record's "end_time" value
- * @method string              getStatus()                Returns the current record's "status" value
+ * @method integer             getStatus()                Returns the current record's "status" value
  * @method Doctrine_Collection getCroReservations()       Returns the current record's "CroReservations" collection
  * @method CroCourts           setName()                  Sets the current record's "name" value
  * @method CroCourts           setIndoor()                Sets the current record's "indoor" value
@@ -84,11 +84,10 @@ abstract class BaseCroCourts extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('status', 'string', 1, array(
-             'type' => 'string',
+        $this->hasColumn('status', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
              'default' => 0,
-             'length' => 1,
              ));
     }
 

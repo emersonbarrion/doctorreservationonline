@@ -63,25 +63,30 @@
             var startTime = $('#cro_reservations_start').val();
             var endTime = $('#cro_reservations_end').val();
             var resid = $('#cro_reservations_id').val();
-            $.ajax({
-              type: 'GET',
-              timeout: 5000,
-              url: '/reservation/editreservationavailable',
-              data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime , reservationid: resid },
 
-              success:function(data){
-                  $('#is-available').empty();
-                  if(!data){
-                      $('#is-available').text('Not available');
-                  } else {
-                      $('#is-available').text('Submitting...');
-                      $('form').submit();
-                  }
-              }
-            });
+            if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
+               !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()) {
+              $('#is-available').empty();
+              $('#is-available').text('Fill the required fields');
+            } else {
+              $.ajax({
+                type: 'GET',
+                timeout: 5000,
+                url: '/reservation/editreservationavailable',
+                data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime , reservationid: resid },
 
-            if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || !$('#cro_reservations_end').val()){
-                alert('Please fill the fields');
+                success:function(data){
+                    $('#is-available').empty();
+                    if(!data){
+                        $('#is-available').text('Not available');
+                    } else if(data == 'error') {
+                        $('#is-available').text('Please correct the time selected');
+                    } else {
+                        $('#is-available').text('Submitting...');
+                        $('form').submit();
+                    }
+                }
+              });
             }
 
             return false;

@@ -2,6 +2,10 @@
 	width: 900px;
 }
 
+#userid {
+	display:none;
+}
+
 .form-label {
 	width:200px;
 	display: inline-block;

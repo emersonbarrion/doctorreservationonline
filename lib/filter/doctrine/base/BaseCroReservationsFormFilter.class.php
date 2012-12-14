@@ -31,7 +31,7 @@ abstract class BaseCroReservationsFormFilter extends BaseFormFilterDoctrine
       'start'          => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'end'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'payment_status' => new sfValidatorPass(array('required' => false)),
-      'status'         => new sfValidatorPass(array('required' => false)),
+      'status'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'created_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
@@ -60,7 +60,7 @@ abstract class BaseCroReservationsFormFilter extends BaseFormFilterDoctrine
       'start'          => 'Date',
       'end'            => 'Date',
       'payment_status' => 'Text',
-      'status'         => 'Text',
+      'status'         => 'Number',
       'created_at'     => 'Date',
       'updated_at'     => 'Date',
     );

@@ -39,7 +39,7 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'rate'                  => new sfValidatorPass(),
       'start_time'            => new sfValidatorString(array('max_length' => 255)),
       'end_time'              => new sfValidatorString(array('max_length' => 255)),
-      'status'                => new sfValidatorString(array('max_length' => 1, 'required' => false)),
+      'status'                => new sfValidatorInteger(array('required' => false)),
       'created_at'            => new sfValidatorDateTime(),
       'updated_at'            => new sfValidatorDateTime(),
     ));

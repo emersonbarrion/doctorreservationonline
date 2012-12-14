@@ -3,10 +3,10 @@
 <form action="<?php echo url_for('reservation/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <table>
-      <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
       <tr><td>Courtname:</td><td><?php echo $form['courtid'] ?></td></tr>
       <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
+      <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
+      <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
       <tr style='display: none'><td>Date:</td><td id='selectedDate'><?php echo $sf_params->get('selected_date') ?></td></tr>
       <tr><td>Start:</td><td><?php echo $form['start'] ?></td></tr>
       <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
@@ -22,6 +22,8 @@
 </form>
 
 <script>
+  $(document).ready(function(){
+
       var selectedDate = $('#selectedDate').text();
       $('#cro_reservations_selected_date').attr('value', selectedDate);
 
@@ -48,7 +50,8 @@
           var startTime = $('#cro_reservations_start').val();
           var endTime = $('#cro_reservations_end').val();
 
-          if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
+          if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
+             !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
             $('#is-available').empty();
             $('#is-available').text('Fill the required fields');
           } else {
@@ -62,7 +65,9 @@
                     $('#is-available').empty();
                     if(!data){
                         $('#is-available').text('Not available');
-                    } else {
+                    } else if(data == 'error'){
+                        $('#is-available').text('Please correct the time selected');
+                    }else {
                         $('#is-available').text('Submitting...');
                         $('form').submit();
                     }
@@ -77,7 +82,7 @@
             $('#is-available').empty();
         });
 
-
+  });
 </script>
 <?php else: ?>
 Please sign in before add new reservation <a href="<?php echo url_for('index/index') ?>">Sign in</a> / <a href="<?php echo url_for('user/register') ?>">Register</a>

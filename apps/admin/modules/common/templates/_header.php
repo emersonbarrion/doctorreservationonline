@@ -3,12 +3,7 @@
 <div id="menu">
 	<ul id="nav" class="menubar">
 		<li class="menubaritem first"><a href="<?php echo url_for('index/index') ?>">Dashboard</a></li>
-		<li class="menubaritem first"><a href="<?php echo url_for('users/index') ?>">Users</a></li>
-		<li class="menubaritem first"><a href="<?php echo url_for('user/list') ?>">User</a>
-			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('user/new') ?>">New</a></li>
-            </ul>
-        </li>    
+		<li class="menubaritem first"><a href="<?php echo url_for('users/index') ?>">Users</a></li>   
 		<li class="menubaritem first"><a href="<?php echo url_for('facilitator/list') ?>">Facilitator</a>
 			<ul>
             	<li class="menuitem"><a href="<?php echo url_for('facilitator/new') ?>">New</a></li>

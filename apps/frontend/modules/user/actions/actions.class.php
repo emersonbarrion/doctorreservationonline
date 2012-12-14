@@ -12,7 +12,6 @@ class userActions extends sfActions
 {
 	public function executeIndex(sfWebRequest $request)
 	{
-		$this->sendMailToUser();
 	}
 
 	public function executeRegister(sfWebRequest $request)
@@ -44,30 +43,23 @@ class userActions extends sfActions
 	            	$this->getUser()->setAttribute('userfullname', ucfirst($user['fname']) . ' ' . ucfirst($user['lname']));
 	            	$this->redirect('user/edit');
             	} else {
-            		$this->sendMailToUser($request);
+            		$this->sendMailToUser($postData['email']);
             		$this->redirect('index/index');
             	}
             }
         }
 	}
 
-	public function executeActivate(sfWebRequest $request)
-	{
-		$this->crouser = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
-		$this->form = new CroUsersForm($this->crouser);
-		$this->processForm($request, $this->form, 'edit');
-	}
-
-	protected function sendMailToUser(sfWebRequest $request)
+	protected function sendMailToUser($email)
 	{
 		$html = $this->getPartial('user/activate');
 
 		$message = $this->getMailer()->compose();
 		$message->setSubject('Account Activation');
-		$message->setTo($request->getParameter('email'));
 		$message->setFrom('fineschedule@gmail.com');
-		$message->setBody($html, 'text/html');    
+		$message->setTo($email);
+		$message->setBody($html, 'text/html');
 
-		echo $this->getMailer()->send($message);
+		$this->getMailer()->send($message);
 	}
 }

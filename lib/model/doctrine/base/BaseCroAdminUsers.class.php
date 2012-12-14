@@ -15,7 +15,7 @@
  * @property string $contact2
  * @property integer $user_group
  * @property timestamp $lastlogin
- * @property string $status
+ * @property integer $status
  * @property CroGroups $CroGroups
  * @property Doctrine_Collection $CroCms
  * 
@@ -29,7 +29,7 @@
  * @method string              getContact2()   Returns the current record's "contact2" value
  * @method integer             getUserGroup()  Returns the current record's "user_group" value
  * @method timestamp           getLastlogin()  Returns the current record's "lastlogin" value
- * @method string              getStatus()     Returns the current record's "status" value
+ * @method integer             getStatus()     Returns the current record's "status" value
  * @method CroGroups           getCroGroups()  Returns the current record's "CroGroups" value
  * @method Doctrine_Collection getCroCms()     Returns the current record's "CroCms" collection
  * @method CroAdminUsers       setUsername()   Sets the current record's "username" value
@@ -102,11 +102,10 @@ abstract class BaseCroAdminUsers extends sfDoctrineRecord
         $this->hasColumn('lastlogin', 'timestamp', null, array(
              'type' => 'timestamp',
              ));
-        $this->hasColumn('status', 'string', 1, array(
-             'type' => 'string',
+        $this->hasColumn('status', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
              'default' => 0,
-             'length' => 1,
              ));
     }
 

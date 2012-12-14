@@ -43,7 +43,7 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
       'contact2'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'user_group' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('CroGroups'))),
       'lastlogin'  => new sfValidatorDateTime(array('required' => false)),
-      'status'     => new sfValidatorString(array('max_length' => 1, 'required' => false)),
+      'status'     => new sfValidatorInteger(array('required' => false)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
     ));

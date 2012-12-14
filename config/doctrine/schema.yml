@@ -11,7 +11,7 @@ CroAdminUsers:
     contact2: { type: string(255) }
     user_group: { type: integer, notnull: true }
     lastlogin: { type: timestamp }
-    status: { type: string(1), notnull: true, default: 0 }
+    status: { type: integer, notnull: true, default: 0 }
   relations:
     CroGroups: { local: user_group, foreign: id }
 
@@ -44,7 +44,7 @@ CroCourts:
     rate: { type: double, notnull: true }
     start_time: { type: string(255), notnull: true }
     end_time: { type: string(255), notnull: true }
-    status: { type: string(1), notnull: true, default: 0 }
+    status: { type: integer, notnull: true, default: 0 }
 
 CroReservations:
   actAs: { Timestampable: ~ }
@@ -55,7 +55,7 @@ CroReservations:
     start: { type: timestamp, notnull: true }
     end: { type: timestamp, notnull: true }
     payment_status: { type: string(255), notnull: true, default: 0 }
-    status: { type: string(1), notnull: true, default: 0 }
+    status: { type: integer, notnull: true, default: 0 }
   relations:
     CroUsers: { local: userid, foreign: id }
     CroCourts: { local: courtid, foreign: id }

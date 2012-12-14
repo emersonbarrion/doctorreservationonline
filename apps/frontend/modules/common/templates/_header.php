@@ -20,7 +20,13 @@
 				</ul>
 			</li>
 			<?php endif; ?>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATION</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATION</a>
+				<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
+				<ul>
+					<li class="menuitem"><a href="<?php echo url_for('reservation/all') ?>">All Reservation</a></li>
+				</ul>
+				<?php endif; ?>
+			</li>
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem"><a href="<?php echo url_for('user/register') ?>">REGISTER</a></li>
 			<?php endif; ?>
@@ -32,6 +38,7 @@
 
 	<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
 		<div id="user">Sign in as <?php echo $sf_user->getAttribute('userfullname') ?></div>
+		<div id="userid"><?php echo $sf_user->getAttribute('id') ?></div>
 	<?php endif; ?>
 </div>
 
