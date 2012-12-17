@@ -1,8 +1,7 @@
 CroAdminUsers:
   Admin:
-    username: admin
-    password: b219dbd0bc70f6446d9c1262101f6d0a
     email: courtreservationonline@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: admin
     lname: owner
     contact1: 1234567890
@@ -12,9 +11,8 @@ CroAdminUsers:
     lastlogin: '2012-11-30 03:00:00'
     status: 1
   CompanyA:
-    username: microtech
-    password: b219dbd0bc70f6446d9c1262101f6d0a
     email: microtech@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: Belle
     lname: Steven
     contact1: 1234567890
@@ -24,9 +22,8 @@ CroAdminUsers:
     lastlogin: '2012-11-27 05:00:00'
     status: 1
   CompanyB:
-    username: Jiggle
-    password: b219dbd0bc70f6446d9c1262101f6d0a
     email: jiggle@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: Philipp
     lname: Claire
     contact1: 1234567890

@@ -17,11 +17,11 @@ class CroAdminUsersTable extends Doctrine_Table
         return Doctrine_Core::getTable('CroAdminUsers');
     }
 
-   	public function getAdminUserByUsernameAndPassword($username, $password)
+   	public function getAdminUserByEmailAndPassword($email, $password)
 	{
         $record = Doctrine_Query::create()
 					->from('CroAdminUsers u')
-        			->where('u.username = ? OR u.email = ?', array($username, $username))
+        			->where('u.email = ?', $email)
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
 

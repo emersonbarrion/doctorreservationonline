@@ -1,4 +1,4 @@
-<div id='loading' style='display:none'>loading...</div>
+<div id='loading' style='display:none'>Loading...</div>
 <div id='calendar'></div>
 
 <div id="add-event" class="center"></div>

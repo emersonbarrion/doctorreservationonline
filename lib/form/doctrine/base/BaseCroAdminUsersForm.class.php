@@ -16,7 +16,6 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
-      'username'   => new sfWidgetFormInputText(),
       'email'      => new sfWidgetFormInputText(),
       'password'   => new sfWidgetFormInputText(),
       'fname'      => new sfWidgetFormInputText(),
@@ -33,7 +32,6 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'username'   => new sfValidatorString(array('max_length' => 255)),
       'email'      => new sfValidatorString(array('max_length' => 255)),
       'password'   => new sfValidatorString(array('max_length' => 32)),
       'fname'      => new sfValidatorString(array('max_length' => 255)),
@@ -49,10 +47,7 @@ abstract class BaseCroAdminUsersForm extends BaseFormDoctrine
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorAnd(array(
-        new sfValidatorDoctrineUnique(array('model' => 'CroAdminUsers', 'column' => array('username'))),
-        new sfValidatorDoctrineUnique(array('model' => 'CroAdminUsers', 'column' => array('email'))),
-      ))
+      new sfValidatorDoctrineUnique(array('model' => 'CroAdminUsers', 'column' => array('email')))
     );
 
     $this->widgetSchema->setNameFormat('cro_admin_users[%s]');

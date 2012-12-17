@@ -13,9 +13,8 @@ abstract class BaseCroUsersFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'username'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'password'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'email'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'password'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'fname'        => new sfWidgetFormFilterInput(),
       'lname'        => new sfWidgetFormFilterInput(),
       'minitial'     => new sfWidgetFormFilterInput(),
@@ -27,9 +26,8 @@ abstract class BaseCroUsersFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'username'     => new sfValidatorPass(array('required' => false)),
-      'password'     => new sfValidatorPass(array('required' => false)),
       'email'        => new sfValidatorPass(array('required' => false)),
+      'password'     => new sfValidatorPass(array('required' => false)),
       'fname'        => new sfValidatorPass(array('required' => false)),
       'lname'        => new sfValidatorPass(array('required' => false)),
       'minitial'     => new sfValidatorPass(array('required' => false)),
@@ -58,9 +56,8 @@ abstract class BaseCroUsersFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'           => 'Number',
-      'username'     => 'Text',
-      'password'     => 'Text',
       'email'        => 'Text',
+      'password'     => 'Text',
       'fname'        => 'Text',
       'lname'        => 'Text',
       'minitial'     => 'Text',

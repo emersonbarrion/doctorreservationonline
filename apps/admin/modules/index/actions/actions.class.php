@@ -39,7 +39,7 @@ class indexActions extends sfActions
 
 	protected function checkLogin(sfWebRequest $request, $postData)
 	{
-		$user = Doctrine_Core::getTable('CroAdminUsers')->getAdminUserByUsernameAndPassword($postData['username'], $postData['password']);
+		$user = Doctrine_Core::getTable('CroAdminUsers')->getAdminUserByEmailAndPassword($postData['email'], $postData['password']);
 
         if($user) {
 	    	$this->getUser()->setUserAttributes($user);

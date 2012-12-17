@@ -15,7 +15,7 @@ class CroReservationsTable extends Doctrine_Table
     public function getUserReservations($userid)
 	{
         $reservation = Doctrine_Query::create()
-                        ->select('u.*, p.username')
+                        ->select('u.*, p.fname')
                         ->from('CroReservations u')
                         ->leftJoin('u.CroUsers p');
 

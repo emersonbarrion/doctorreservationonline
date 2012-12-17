@@ -74,7 +74,7 @@ $(document).ready(function() {
 	    eventRender: function(event, element) {
 	    	var timeRange = getReservationTimeRange(event.start, event.end);
 	    	element.find('.fc-event-title').prepend(timeRange + "<br/>");
-	    	element.find('.fc-event-title').append(' - ' + event.CroUsers.username);
+	    	element.find('.fc-event-title').append(' - ' + event.CroUsers.fname);
 	    	if(userId == event.userid){
 	    		element.find('.fc-event-skin').css('background-color','green');
 	    	}

@@ -4,12 +4,10 @@
         <form action="<?php echo url_for('facilitator/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
             <?php echo $form->renderHiddenFields(false) ?>
             <ul>
-              <li><div class='form-label'>Username:</div> <?php echo $form['username'] ?></li>
-              <li class="error">&nbsp; <?php echo $form['username']->getError() ?></li>
-              <li><div class='form-label'>Password:</div> <?php echo $form['password'] ?></li>
-              <li class="error">&nbsp; <?php echo $form['password']->getError() ?></li>
               <li><div class='form-label'>Email:</div> <?php echo $form['email'] ?></li>
               <li class="error">&nbsp; <?php echo $form['email']->getError() ?></li>
+              <li><div class='form-label'>Password:</div> <?php echo $form['password'] ?></li>
+              <li class="error">&nbsp; <?php echo $form['password']->getError() ?></li>
               <li><div class='form-label'>Firstname:</div> <?php echo $form['fname'] ?></li>
               <li class="error">&nbsp; <?php echo $form['fname']->getError() ?></li>
               <li><div class='form-label'>Lastname:</div> <?php echo $form['lname'] ?></li>

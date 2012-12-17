@@ -17,11 +17,11 @@ class CroUsersTable extends Doctrine_Table
         return Doctrine_Core::getTable('CroUsers');
     }
 
-   	public function getUserByUsernameAndPassword($username, $password)
+   	public function getUserByEmailAndPassword($email, $password)
 	{
         $record = Doctrine_Query::create()
 					->from('CroUsers u')
-        			->where('u.username = ? OR u.email = ?', array($username, $username))
+        			->where('u.email = ?', $email)
         			->andWhere('u.password = ?', md5(sfConfig::get('app_passwordsalt') . $password))
         			->fetchArray();
 

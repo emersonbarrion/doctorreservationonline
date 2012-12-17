@@ -60,7 +60,7 @@ class facilitatorActions extends sfActions
         	} else {
         		$postData['password'] = $crouser->getPassword();
         	}
-        	//var_dump($postData);die;
+
 			$form->bind($postData, $postFile);
 
 			if ($form->isValid()){				

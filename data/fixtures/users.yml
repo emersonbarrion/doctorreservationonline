@@ -17,22 +17,20 @@
 #     email:    kris.wallsmith@symfony-project.com
 CroUsers:
   Admin:
-    username: user
+    email: admin.admin@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: admin	
     lname: admin
     minitial: c
-    email: admin.admin@gmail.com
     phone: 12345678
     subscription: 'Monthly'
     status: 1
   Jeff:
-    username: jeff
+    email: jeff.jarin@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: jeff
     lname: jarin
     minitial: j
-    email: jeff.jarin@gmail.com
     phone: 12345678
     subscription: 'Yearly'
     status: 1

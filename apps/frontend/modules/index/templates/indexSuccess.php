@@ -14,9 +14,9 @@
       <form action="<?php echo url_for('index/index') ?>" method="post">
     	<?php echo $form->renderHiddenFields(false) ?>
         <ul>  
-          <li>Email Address (username)</li>
-          <li><?php echo $form['username'] ?></li>
-          <li class="error">&nbsp; <?php echo $form['username']->getError() ?></li>
+          <li>Email Address</li>
+          <li><?php echo $form['email'] ?></li>
+          <li class="error">&nbsp; <?php echo $form['email']->getError() ?></li>
           <li>Password:</li>
           <li><?php echo $form['password'] ?></li>
           <li class="error">&nbsp; <?php echo $form['password']->getError() ?></li>
