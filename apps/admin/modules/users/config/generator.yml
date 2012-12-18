@@ -20,7 +20,7 @@ generator:
           fname: { label: Firstname }
           lname: { label: Lastname }
       filter:
-        display: [username,email,fname,lname,subscription,status]
+        display: [email,fname,lname,subscription,status]
       form:
         class: CroUsersForm
       edit:    ~

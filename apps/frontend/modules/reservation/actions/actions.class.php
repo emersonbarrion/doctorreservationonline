@@ -48,7 +48,6 @@ class reservationActions extends sfActions
   public function executeEvents(sfWebRequest $request)
   {
     $reserve = NULL;
-
     if($request->getParameter('reserve') != 'all') {
       $reserve = $this->getUser()->getAttribute('id');
     }

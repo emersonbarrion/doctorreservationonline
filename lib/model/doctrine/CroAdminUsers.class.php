@@ -12,5 +12,8 @@
  */
 class CroAdminUsers extends BaseCroAdminUsers
 {
-
+	public function getGroup()
+	{
+		return $this->getCroGroups()->getName();
+	}
 }
