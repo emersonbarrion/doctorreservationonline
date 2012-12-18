@@ -12,5 +12,7 @@ class CroCourtsFormFilter extends BaseCroCourtsFormFilter
 {
   public function configure()
   {
+ 		$this->widgetSchema['status']   	= new sfWidgetFormChoice(array('choices' => array('' => 'Any', 0 => 'Inactive',1 => 'Active')));
+		$this->validatorSchema['status'] 	= new sfValidatorChoice(array('required'=>false, 'choices' => array('',0,1)));
   }
 }

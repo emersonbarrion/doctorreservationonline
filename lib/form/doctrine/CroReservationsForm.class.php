@@ -27,8 +27,8 @@ class CroReservationsForm extends BaseCroReservationsForm
         $this->widgetSchema['selected_date'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['payment_status']  = new sfWidgetFormChoice(array('choices' => array('PAID' => 'Paid', 'ONHOLD' => 'On hold', 'CANCEL' => 'Cancel')));
 
-        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(1 => 'Active', 0 => 'Inactive')));
-        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(1,0)));
+        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(0 => 'Inactive',1 => 'Active')));
+        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(0,1)));
         $this->validatorSchema['payment_status']  = new sfValidatorChoice(array('choices' => array('PAID', 'ONHOLD', 'CANCEL')));
         $this->validatorSchema['selected_date'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['start'] = new sfValidatorString(array('max_length' => 255, 'required' => false));

@@ -11,7 +11,7 @@
  * @property timestamp $start
  * @property timestamp $end
  * @property string $payment_status
- * @property integer $status
+ * @property boolean $status
  * @property CroUsers $CroUsers
  * @property CroCourts $CroCourts
  * @property Doctrine_Collection $CroCourtClose
@@ -23,7 +23,7 @@
  * @method timestamp           getStart()          Returns the current record's "start" value
  * @method timestamp           getEnd()            Returns the current record's "end" value
  * @method string              getPaymentStatus()  Returns the current record's "payment_status" value
- * @method integer             getStatus()         Returns the current record's "status" value
+ * @method boolean             getStatus()         Returns the current record's "status" value
  * @method CroUsers            getCroUsers()       Returns the current record's "CroUsers" value
  * @method CroCourts           getCroCourts()      Returns the current record's "CroCourts" value
  * @method Doctrine_Collection getCroCourtClose()  Returns the current record's "CroCourtClose" collection
@@ -77,8 +77,8 @@ abstract class BaseCroReservations extends sfDoctrineRecord
              'default' => 0,
              'length' => 255,
              ));
-        $this->hasColumn('status', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('status', 'boolean', null, array(
+             'type' => 'boolean',
              'notnull' => true,
              'default' => 0,
              ));

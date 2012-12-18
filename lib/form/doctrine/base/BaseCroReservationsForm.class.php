@@ -22,7 +22,7 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
       'start'          => new sfWidgetFormDateTime(),
       'end'            => new sfWidgetFormDateTime(),
       'payment_status' => new sfWidgetFormInputText(),
-      'status'         => new sfWidgetFormInputText(),
+      'status'         => new sfWidgetFormInputCheckbox(),
       'created_at'     => new sfWidgetFormDateTime(),
       'updated_at'     => new sfWidgetFormDateTime(),
     ));
@@ -35,7 +35,7 @@ abstract class BaseCroReservationsForm extends BaseFormDoctrine
       'start'          => new sfValidatorDateTime(),
       'end'            => new sfValidatorDateTime(),
       'payment_status' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'status'         => new sfValidatorInteger(array('required' => false)),
+      'status'         => new sfValidatorBoolean(array('required' => false)),
       'created_at'     => new sfValidatorDateTime(),
       'updated_at'     => new sfValidatorDateTime(),
     ));

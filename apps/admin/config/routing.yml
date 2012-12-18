@@ -1,3 +1,12 @@
+cro_courts:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                CroCourts
+    module:               courts
+    prefix_path:          /courts
+    column:               id
+    with_wildcard_routes: true
+
 cro_admin_users:
   class: sfDoctrineRouteCollection
   options:

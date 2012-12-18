@@ -24,7 +24,7 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'rate'                  => new sfWidgetFormInputText(),
       'start_time'            => new sfWidgetFormInputText(),
       'end_time'              => new sfWidgetFormInputText(),
-      'status'                => new sfWidgetFormInputText(),
+      'status'                => new sfWidgetFormInputCheckbox(),
       'created_at'            => new sfWidgetFormDateTime(),
       'updated_at'            => new sfWidgetFormDateTime(),
     ));
@@ -39,7 +39,7 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
       'rate'                  => new sfValidatorPass(),
       'start_time'            => new sfValidatorString(array('max_length' => 255)),
       'end_time'              => new sfValidatorString(array('max_length' => 255)),
-      'status'                => new sfValidatorInteger(array('required' => false)),
+      'status'                => new sfValidatorBoolean(array('required' => false)),
       'created_at'            => new sfValidatorDateTime(),
       'updated_at'            => new sfValidatorDateTime(),
     ));

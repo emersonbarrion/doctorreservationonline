@@ -4,7 +4,7 @@
 		  <?php echo $form['_csrf_token'] ?>
     	<?php echo $form->renderHiddenFields(false) ?>
         <ul>
-          <li>Email Address (username)</li>
+          <li>Email Address</li>
           <li><?php echo $form['email'] ?></li>
           <li class="error">&nbsp; <?php echo $form['email']->getError() ?></li>
           <li>Password:</li>

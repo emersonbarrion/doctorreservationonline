@@ -22,3 +22,7 @@ body {
 #content { padding:20px 30px; }
 
 #ui-datepicker-div { font-size: 12px; }
+
+#sf_admin_container label {
+    width: 10em;
+}

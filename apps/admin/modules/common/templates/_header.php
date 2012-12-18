@@ -5,11 +5,7 @@
 		<li class="menubaritem first"><a href="<?php echo url_for('index/index') ?>">Dashboard</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('users/index') ?>">Users</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('facilitators/index') ?>">Facilitators</a></li>
-		<li class="menubaritem first"><a href="<?php echo url_for('court/list') ?>">Unit</a>
-			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('court/new') ?>">New</a></li>
-            </ul>
-        </li>
+		<li class="menubaritem first"><a href="<?php echo url_for('courts/index') ?>">Units</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('reservation/list') ?>">Reservation</a>
 			<ul>
             	<li class="menuitem"><a href="<?php echo url_for('reservation/new') ?>">New</a></li>

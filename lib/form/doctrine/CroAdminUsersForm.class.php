@@ -25,8 +25,8 @@ class CroAdminUsersForm extends BaseCroAdminUsersForm
 			$this->widgetSchema['email'] 	= new sfWidgetFormInput(array(), array('readonly' => 'readonly'));
 		}
 		
-        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(1 => 'Active', 0 => 'Inactive')));
-        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(1,0)));
+        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(0 => 'Inactive',1 => 'Active')));
+        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(0,1)));
 
 		$this->widgetSchema->setNameFormat('admin[%s]');
   	}
