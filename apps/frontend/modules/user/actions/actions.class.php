@@ -32,8 +32,14 @@ class userActions extends sfActions
 	{
 		if ($request->isMethod('post'))
         {
-        	$postData = $request->getParameter('user');
-        	$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+			$postData = $request->getParameter('user');
+
+	    	if($postData['password']) {
+	    		$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
+	    	} else if($action == 'edit') {
+	    		$postData['password'] = $this->crouser->getPassword();
+	    	}
+	    	
             $this->form->bind($postData);
 
             if ($this->form->isValid()) {
