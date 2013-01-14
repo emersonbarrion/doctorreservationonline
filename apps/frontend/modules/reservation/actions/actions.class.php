@@ -126,6 +126,14 @@ class reservationActions extends sfActions
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     if ($request->isMethod('post')) {
+      if($request->hasParameter('Checkout')){
+        die('checkout');
+      } elseif($request->hasParameter('Save')){
+        die('save');
+      } else {
+        die('nothing has get');
+      }
+
       $data = $request->getParameter($form->getName());
 
       $data['start'] = strtotime($data['start'], $data['selected_date']);
@@ -138,6 +146,7 @@ class reservationActions extends sfActions
       $form->bind($data);
 
       if ($form->isValid()){
+
         $form->save();
         $this->redirect('reservation/index');
       }

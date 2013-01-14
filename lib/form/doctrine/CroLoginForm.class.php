@@ -19,7 +19,7 @@ class CroLoginForm extends BaseCroUsersForm
 		));
 
 		$this->setValidators(array(
-			'email' 		=> new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Username')),
+			'email' 		=> new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Email')),
 			'password' 		=> new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Password')),
 			'remember_me'	=> new sfValidatorBoolean()
 		));

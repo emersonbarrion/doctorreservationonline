@@ -13,12 +13,9 @@
       <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
       <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
       <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['payment_status']->getError() ?></td></tr>
-      <tr><td>Payment status:</td><td><?php echo $form['payment_status'] ?></td></tr>
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
-    <a href='<?php echo url_for('reservation/remove?id='.$form->getObject()->getId()) ?>'>Delete</a>
-    <input id="submit-new-reservation" name="Submit" type="submit" value="Submit"/>
+    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Save"/>
 </form>
 
 <script>
@@ -46,36 +43,38 @@
             });
         });
 
-        $("#submit-new-reservation").live('click', function() {
-          var startTime = $('#cro_reservations_start').val();
-          var endTime = $('#cro_reservations_end').val();
+        $("#submit-new-reservation-with-pay, #submit-new-reservation-without-pay").live('click', function() {
 
-          if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
-             !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
-            $('#is-available').empty();
-            $('#is-available').text('Fill the required fields');
-          } else {
-            $.ajax({
-                type: 'GET',
-                timeout: 5000,
-                url: '/reservation/reservationavailable',
-                data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime },
+                var startTime = $('#cro_reservations_start').val();
+                var endTime = $('#cro_reservations_end').val();
 
-                success:function(data){
-                    $('#is-available').empty();
-                    if(!data){
-                        $('#is-available').text('Not available');
-                    } else if(data == 'error'){
-                        $('#is-available').text('Please correct the time selected');
-                    }else {
-                        $('#is-available').text('Submitting...');
-                        $('form').submit();
-                    }
+                if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
+                   !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
+                  $('#is-available').empty();
+                  $('#is-available').text('Fill the required fields');
+                } else {
+                  $.ajax({
+                      type: 'GET',
+                      timeout: 5000,
+                      url: '/reservation/reservationavailable',
+                      data: { courtid: courtid, date: selectedDate, start: startTime, end: endTime },
+
+                      success:function(returnedData){
+                          $('#is-available').empty();
+                          if(!returnedData){
+                              $('#is-available').text('Not available');
+                          } else if(returnedData == 'error'){
+                              $('#is-available').text('Please correct the time selected');
+                          }else {
+                              $('#is-available').text('Submitting...');
+                              $('form').submit();
+                          }
+                      }
+                  });
                 }
-            });
-          }
 
-          return false;
+                return false;
+
         });
 
         $('#cro_reservations_start, #cro_reservations_end, #cro_reservations_title, #cro_reservations_court').focus(function(){
@@ -83,6 +82,7 @@
         });
 
   });
+
 </script>
 <?php else: ?>
 Please sign in before add new reservation <a href="<?php echo url_for('index/index') ?>">Sign in</a> / <a href="<?php echo url_for('user/register') ?>">Register</a>

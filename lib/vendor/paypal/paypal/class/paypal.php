@@ -40,9 +40,11 @@ class PayPal {
 
 	//these constants you have to obtain from PayPal
 	//Step-by-step manual is here: https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_api_NVPAPIBasics
-	const API_USERNAME = "USERNAME";
-	const API_PASSWORD = "PASSWORD";
-	const API_SIGNATURE = "SIGNATURE";
+	const API_USERNAME = "schedu_1357852582_biz_api1.gmail.com";
+	const API_PASSWORD = "1357852601";
+	const API_SIGNATURE = "AcjbdLpyzOwwewC5D2WjKACP1MM4Aqs-5DWAIA4KGeSJql0Gc8vGMfx2";
+	const RETURN_URL = "http://www.courtreservationonline.com/payment/ppreturn";
+	const CANCEL_URL = "http://www.courtreservationonline.com/payment/cancel";
 
 	private $endpoint;
 	private $host;
@@ -58,22 +60,6 @@ class PayPal {
 			$this->host = "api-3t.sandbox.paypal.com";
 			$this->gate = 'https://www.sandbox.paypal.com/cgi-bin/webscr?';
 		}
-	}
-
-	/**
-	 * @return string URL of the "success" page
-	 */
-	private function getReturnTo() {
-		return sprintf("%s://%s/ppreturn",
-		$this->getScheme(), $_SERVER['SERVER_NAME']);
-	}
-
-	/**
-	 * @return string URL of the "cancel" page
-	 */
-	private function getReturnToCancel() {
-		return sprintf("%s://%s/ppcancel",
-		$this->getScheme(), $_SERVER['SERVER_NAME']);
 	}
 
 	/**
@@ -109,12 +95,14 @@ class PayPal {
 	 * 
 	 * @return array error info
 	 */
-	public function doExpressCheckout($amount, $desc, $invoice='', $currency='USD'){
+	public function doExpressCheckout($amount, $desc, $invoice='', $currency='USD')
+	{
+		echo 'sdfdsfdsfdsf';
 		$data = array(
 		'PAYMENTACTION' =>'Sale',
 		'AMT' =>$amount,
-		'RETURNURL' =>$this->getReturnTo(),
-		'CANCELURL'  =>$this->getReturnToCancel(),
+		'RETURNURL' =>self::RETURN_URL,
+		'CANCELURL'  =>self::CANCEL_URL,
 		'DESC'=>$desc,
 		'NOSHIPPING'=>"1",
 		'ALLOWNOTE'=>"1",

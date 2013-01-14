@@ -9,17 +9,20 @@
  * @property double $rate
  * @property date $payment_date
  * @property string $payment_type
+ * @property string $payment_status
  * @property CroReservations $CroReservations
  * 
  * @method integer         getReservationid()   Returns the current record's "reservationid" value
  * @method double          getRate()            Returns the current record's "rate" value
  * @method date            getPaymentDate()     Returns the current record's "payment_date" value
  * @method string          getPaymentType()     Returns the current record's "payment_type" value
+ * @method string          getPaymentStatus()   Returns the current record's "payment_status" value
  * @method CroReservations getCroReservations() Returns the current record's "CroReservations" value
  * @method CroPayments     setReservationid()   Sets the current record's "reservationid" value
  * @method CroPayments     setRate()            Sets the current record's "rate" value
  * @method CroPayments     setPaymentDate()     Sets the current record's "payment_date" value
  * @method CroPayments     setPaymentType()     Sets the current record's "payment_type" value
+ * @method CroPayments     setPaymentStatus()   Sets the current record's "payment_status" value
  * @method CroPayments     setCroReservations() Sets the current record's "CroReservations" value
  * 
  * @package    courtreservationonline
@@ -47,6 +50,12 @@ abstract class BaseCroPayments extends sfDoctrineRecord
         $this->hasColumn('payment_type', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('payment_status', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'default' => 0,
              'length' => 255,
              ));
     }

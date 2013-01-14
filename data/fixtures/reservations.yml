@@ -6,7 +6,6 @@ CroReservations:
     start: '2012-11-29 09:00:00'
     end: '2012-11-29 10:00:00'
     status: 1
-    payment_status: 'PAID'
   User2:
     CroUsers: Admin
     CroCourts: Basketball
@@ -14,7 +13,6 @@ CroReservations:
     start: '2012-11-30 09:00:00'
     end: '2012-11-30 10:00:00'
     status: 1
-    payment_status: 'PAID'
   User3:
     CroUsers: Admin
     CroCourts: Basketball
@@ -22,7 +20,6 @@ CroReservations:
     start: '2012-11-30 10:00:00'
     end: '2012-11-30 11:00:00'
     status: 1
-    payment_status: 'PAID'
   User4:
     CroUsers: Admin
     CroCourts: Basketball
@@ -30,7 +27,6 @@ CroReservations:
     start: '2012-11-30 11:00:00'
     end: '2012-11-30 12:00:00'
     status: 1
-    payment_status: 'PAID'
   User5:
     CroUsers: Admin
     CroCourts: Basketball
@@ -38,7 +34,6 @@ CroReservations:
     start: '2012-11-30 13:00:00'
     end: '2012-11-30 14:00:00'
     status: 1
-    payment_status: 'PAID'
   User6:
     CroUsers: Jeff
     CroCourts: Tennis
@@ -46,4 +41,3 @@ CroReservations:
     start: '2012-12-12 13:00:00'
     end: '2012-12-12 14:00:00'
     status: 1
-    payment_status: 'PAID'

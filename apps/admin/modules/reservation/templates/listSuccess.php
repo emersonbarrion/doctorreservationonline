@@ -8,7 +8,6 @@
     <td align="center" valign="top"><?php echo $cro_reservation->getStart() ?></td>
     <td align="center" valign="top"><?php echo $cro_reservation->getEnd() ?></td>
     <td align="center" valign="top"><?php echo $cro_reservation->getStatus() ?></td>
-    <td align="center" valign="top"><?php echo $cro_reservation->getPaymentStatus() ?></td>
     <td align="center" valign="top"><?php echo $cro_reservation->getCreatedAt() ?></td>
     <td align="center" valign="top"><?php echo $cro_reservation->getUpdatedAt() ?></td>
   </tr>

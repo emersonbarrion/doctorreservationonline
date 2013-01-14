@@ -13,13 +13,14 @@
       <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
       <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
       <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['payment_status']->getError() ?></td></tr>
-      <tr><td>Payment status:</td><td><?php echo $form['payment_status'] ?></td></tr>
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
     <a href='<?php echo url_for('reservation/delete?id='.$form->getObject()->getId()) ?>'>Delete</a>
-    <input id="submit-edit-reservation" name="Submit" type="submit" value="Submit"/>
+    <input id="submit-edit-reservation-without-pay" name="Submit" type="submit" value="Save"/>
 </form>
+<br/>
+<br/>
+<?php include_partial('payment/payment') ?>
 
 <script>
       var selectedDate = $('#selectedDate').text();
@@ -59,7 +60,7 @@
             });
         });
 
-        $("#submit-edit-reservation").live('click', function() {
+        $("#submit-edit-reservation-without-pay, #submit-edit-reservation-with-pay").live('click', function() {
             var startTime = $('#cro_reservations_start').val();
             var endTime = $('#cro_reservations_end').val();
             var resid = $('#cro_reservations_id').val();

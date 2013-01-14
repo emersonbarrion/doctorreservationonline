@@ -52,7 +52,6 @@ CroReservations:
     courtid: { type: integer, notnull: true }
     start: { type: timestamp, notnull: true }
     end: { type: timestamp, notnull: true }
-    payment_status: { type: string(255), notnull: true, default: 0 }
     status: { type: boolean, notnull: true, default: 0 }
   relations:
     CroUsers: { local: userid, foreign: id }
@@ -73,6 +72,7 @@ CroPayments:
     rate: { type: double, notnull: true }
     payment_date: { type: date, notnull: true }
     payment_type: { type: string(255), notnull: true }
+    payment_status: { type: string(255), notnull: true, default: 0 }
   relations:
     CroReservations: { onDelete: CASCADE, local: reservationid, foreign: id }
 

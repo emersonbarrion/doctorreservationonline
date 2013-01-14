@@ -8,6 +8,64 @@ schedu@gmail.com
 357730700
 
 https://www.x.com/developers/paypal/documentation-tools/express-checkout/integration-guide/ECGettingStarted
+<input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
+
+-- Set the transaction details to paypal
+SetExpressCheckout
+	METHOD=SetExpressCheckout
+	VERSION=XX.0
+	USER=API_username
+	PWD=API_password
+	SIGNATURE=API_signature
+	PAYMENTREQUEST_0_AMT=amount
+	PAYMENTREQUEST_0_CURRENCYCODE=currencyID
+	RETURNURL=return_url
+	CANCELURL=cancel_url
+	PAYMENTREQUEST_0_PAYMENTACTION=Sale
+
+	(SANDBOX)
+	USER=sdk-three_api1.sdk.com
+	PWD=QFZCWN5HZM8VBG7Q
+	SIGNATURE=A-IzJhZZjhg29XQ2qnhapuwxIDzyAZQ92FRP5dqBzVesOkzbdUONzmOU
+
+	https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=tokenValue
 
 
-<img src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif' align='left' style='margin-right:7px;'>
+
+-- Obtain the transaction details
+GetExpressCheckoutDetails
+	METHOD=GetExpressCheckoutDetails
+	VERSION=XX.0
+	USER=API_username
+	PWD=API_password
+	SIGNATURE=API_signature
+	TOKEN=tokenValue
+
+
+-- Completing the transaction
+DoExpressCheckoutPayment 
+	METHOD=DoExpressCheckoutPayment
+	VERSION=XX.0
+	USER=API_username
+	PWD=API_password
+	SIGNATURE=API_signature
+	TOKEN=tokenValue
+	PAYERID=id
+	PAYMENTREQUEST_0_AMT=amount
+	PAYMENTREQUEST_0_CURRENCYCODE=currencyID
+	PAYMENTREQUEST_0_PAYMENTACTION=Sale
+	
+
+
+
+
+MERCHANT
+schedu_1357852582_biz@gmail.com
+schedu_1357852582_biz_api1.gmail.com
+1357852601
+AcjbdLpyzOwwewC5D2WjKACP1MM4Aqs-5DWAIA4KGeSJql0Gc8vGMfx2
+
+
+BUYER
+schedu_1358166165_per@gmail.com
+358166122
