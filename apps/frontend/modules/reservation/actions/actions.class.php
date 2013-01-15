@@ -126,13 +126,6 @@ class reservationActions extends sfActions
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     if ($request->isMethod('post')) {
-      if($request->hasParameter('Checkout')){
-        die('checkout');
-      } elseif($request->hasParameter('Save')){
-        die('save');
-      } else {
-        die('nothing has get');
-      }
 
       $data = $request->getParameter($form->getName());
 

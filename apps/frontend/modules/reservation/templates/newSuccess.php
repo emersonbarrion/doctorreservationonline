@@ -15,7 +15,7 @@
       <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
-    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Save"/>
+    <input id="submit-new-reservation" name="Submit" type="submit" value="Save"/>
 </form>
 
 <script>
@@ -43,7 +43,7 @@
             });
         });
 
-        $("#submit-new-reservation-with-pay, #submit-new-reservation-without-pay").live('click', function() {
+        $("#submit-new-reservation").live('click', function() {
 
                 var startTime = $('#cro_reservations_start').val();
                 var endTime = $('#cro_reservations_end').val();
