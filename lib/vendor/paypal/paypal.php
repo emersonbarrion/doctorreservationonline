@@ -95,11 +95,11 @@ class PayPal {
 	 * 
 	 * @return array error info
 	 */
-	public function doExpressCheckout($amount, $desc, $invoice='', $currency='USD'){
+	public function doExpressCheckout($amount, $resid, $rate, $desc, $invoice='', $currency='USD'){
 		$data = array(
 		'PAYMENTACTION' =>'Sale',
 		'AMT' =>$amount,
-		'RETURNURL' =>self::RETURN_URL,
+		'RETURNURL' =>self::RETURN_URL . '?resid=' . $resid . '&amount=' . $amount . '&rate=' . $rate,
 		'CANCELURL'  =>self::CANCEL_URL,
 		'DESC'=>$desc,
 		'NOSHIPPING'=>"1",

@@ -10,6 +10,8 @@
  * @property integer $courtid
  * @property timestamp $start
  * @property timestamp $end
+ * @property integer $hours
+ * @property double $amount
  * @property boolean $status
  * @property CroUsers $CroUsers
  * @property CroCourts $CroCourts
@@ -21,6 +23,8 @@
  * @method integer             getCourtid()       Returns the current record's "courtid" value
  * @method timestamp           getStart()         Returns the current record's "start" value
  * @method timestamp           getEnd()           Returns the current record's "end" value
+ * @method integer             getHours()         Returns the current record's "hours" value
+ * @method double              getAmount()        Returns the current record's "amount" value
  * @method boolean             getStatus()        Returns the current record's "status" value
  * @method CroUsers            getCroUsers()      Returns the current record's "CroUsers" value
  * @method CroCourts           getCroCourts()     Returns the current record's "CroCourts" value
@@ -31,6 +35,8 @@
  * @method CroReservations     setCourtid()       Sets the current record's "courtid" value
  * @method CroReservations     setStart()         Sets the current record's "start" value
  * @method CroReservations     setEnd()           Sets the current record's "end" value
+ * @method CroReservations     setHours()         Sets the current record's "hours" value
+ * @method CroReservations     setAmount()        Sets the current record's "amount" value
  * @method CroReservations     setStatus()        Sets the current record's "status" value
  * @method CroReservations     setCroUsers()      Sets the current record's "CroUsers" value
  * @method CroReservations     setCroCourts()     Sets the current record's "CroCourts" value
@@ -66,6 +72,14 @@ abstract class BaseCroReservations extends sfDoctrineRecord
              ));
         $this->hasColumn('end', 'timestamp', null, array(
              'type' => 'timestamp',
+             'notnull' => true,
+             ));
+        $this->hasColumn('hours', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('amount', 'double', null, array(
+             'type' => 'double',
              'notnull' => true,
              ));
         $this->hasColumn('status', 'boolean', null, array(

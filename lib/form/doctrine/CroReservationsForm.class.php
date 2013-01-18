@@ -25,10 +25,12 @@ class CroReservationsForm extends BaseCroReservationsForm
         $this->widgetSchema['userid'] = new sfWidgetFormInputHidden(array(), array('value' => sfContext::getInstance()->getUser()->getAttribute('id')));
         $this->widgetSchema['courtid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroCourts', 'method' => 'getName', 'add_empty' => true));
         $this->widgetSchema['selected_date'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['process'] = new sfWidgetFormInputHidden();
 
         $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(0 => 'Inactive',1 => 'Active')));
         $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(0,1)));
         $this->validatorSchema['selected_date'] = new sfValidatorString(array('required' => false));
+        $this->validatorSchema['process'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['start'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
         $this->validatorSchema['end'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
     }

@@ -15,7 +15,8 @@
       <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
-    <input id="submit-new-reservation" name="Submit" type="submit" value="Save"/>
+    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Save"/>
+    <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
 </form>
 
 <script>
@@ -43,10 +44,17 @@
             });
         });
 
-        $("#submit-new-reservation").live('click', function() {
+        $("#submit-new-reservation-without-pay, #submit-new-reservation-with-pay").live('click', function() {
 
                 var startTime = $('#cro_reservations_start').val();
                 var endTime = $('#cro_reservations_end').val();
+
+                $('#cro_reservations_process').attr('value','save');
+
+                if($(this).attr('id') == 'submit-new-reservation-with-pay'){
+                    $('#cro_reservations_process').attr('value','pay');
+                }
+
 
                 if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
                    !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
@@ -67,6 +75,7 @@
                               $('#is-available').text('Please correct the time selected');
                           }else {
                               $('#is-available').text('Submitting...');
+
                               $('form').submit();
                           }
                       }

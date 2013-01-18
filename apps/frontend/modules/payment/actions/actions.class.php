@@ -29,13 +29,16 @@ class paymentActions extends sfActions
 	//Use this form for sandbox tests
 	$r = new PayPal();
 
-	$ret = ($r->doExpressCheckout(10, 'Access to source code library'));
-
-	//An error occured. The auxiliary information is in the $ret array
-
-	print_r($ret);
+	$ret = $r->doExpressCheckout($request->getParameter('amount'), $request->getParameter('resid'), $request->getParameter('rate'));
   }
 
+  public function executeSuccess(sfWebRequest $request)
+  {
+  }
+
+  public function executeFail(sfWebRequest $request)
+  {
+  }
 
   public function executePpreturn(sfWebRequest $request)
   {
@@ -44,18 +47,36 @@ class paymentActions extends sfActions
 	
 	$token = $_GET['token'];
 	$d = $r->getCheckoutDetails($token);
-	echo '<pre>';
-	print_r($d);
-	echo '</pre>';
-
 	
-
 	$final = $r->doPayment();
 
+	if($d['TOKEN'] == $final['TOKEN']){
+		$payment = new CroPayments();
+		$payment->setReservationid($request->getParameter('resid'));
+		$payment->setToken($final['TOKEN']);
+		$payment->setAmount($final['AMT']);
+		$payment->setTransactionid($final['TRANSACTIONID']);
+		$payment->setTransactiontype($final['TRANSACTIONTYPE']);
+		$payment->setfirstname($d['FIRSTNAME']);
+		$payment->setlastname($d['LASTNAME']);
+		$payment->setCountrycode($d['COUNTRYCODE']);
+		$payment->setEmail($d['EMAIL']);
+		$payment->setPayerid($d['PAYERID']);
+		$payment->setRate($request->getParameter('rate'));
+		$payment->setOrdertime($final['ORDERTIME']);
+		$payment->setFeeamount($final['FEEAMT']);
+		$payment->setTaxamount($final['TAXAMT']);
+		$payment->setPaymenttype($final['PAYMENTTYPE']);
+		$payment->setPaymentstatus($final['PAYMENTSTATUS']);
+		$payment->setCurrencycode($final['CURRENCYCODE']);
+		$payment->setAck($final['ACK']);
+		$payment->save();
+	}
+
 	if ($final['ACK'] == 'Success') {
-		echo 'Succeed!';
+		$this->redirect('payment/success');
 	} else {
-		print_r($final);
+		$this->redirect('payment/fail');
 	}
 
 	die();

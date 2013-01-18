@@ -52,6 +52,8 @@ CroReservations:
     courtid: { type: integer, notnull: true }
     start: { type: timestamp, notnull: true }
     end: { type: timestamp, notnull: true }
+    hours: { type: integer, notnull: true }
+    amount: { type: double, notnull: true }
     status: { type: boolean, notnull: true, default: 0 }
   relations:
     CroUsers: { local: userid, foreign: id }
@@ -69,10 +71,23 @@ CroPayments:
   actAs: { Timestampable: ~ }
   columns:
     reservationid: { type: integer, notnull: true }
-    rate: { type: double, notnull: true }
-    payment_date: { type: date, notnull: true }
-    payment_type: { type: string(255), notnull: true }
-    payment_status: { type: string(255), notnull: true, default: 0 }
+    token: { type: string(255), notnull: true }
+    amount: { type: double, notnull: true }
+    transactionid: { type: string(255), notnull: true }
+    transactiontype: { type: string(255), notnull: true }
+    firstname: { type: string(255), notnull: true }
+    lastname: { type: string(255), notnull: true }
+    countrycode: { type: string(255), notnull: true }
+    email: { type: string(255), notnull: true }
+    payerid: { type: string(255), notnull: true }
+    rate: { type: integer, notnull: true }
+    ordertime: { type: date, notnull: true }
+    feeamount: { type: double, notnull: true }
+    taxamount: { type: double, notnull: true }
+    paymenttype: { type: string(255), notnull: true }
+    paymentstatus: { type: string(255) }
+    currencycode: { type: string(255) }
+    ack: { type: string(255) }
   relations:
     CroReservations: { onDelete: CASCADE, local: reservationid, foreign: id }
 

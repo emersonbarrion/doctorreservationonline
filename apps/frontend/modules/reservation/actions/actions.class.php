@@ -28,12 +28,21 @@ class reservationActions extends sfActions
   public function executeEdit(sfWebRequest $request)
   {
     $crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
-    
+    $cropayments = Doctrine::getTable('CroPayments')->getPayment(array($request->getParameter('id')));
+
+
+
     if($crouser->getUserid() != $this->getUser()->getAttribute('id')) {
       echo 'Please select your reservation';
       return sfView::NONE;
     }
 
+    $this->payment_status = 'Pending';
+    if($cropayments[0]['paymentstatus'] == 'Completed'){
+      $this->payment_status = 'Paid';
+    }
+
+    
     $this->form = new CroReservationsForm($crouser);
     $this->processForm($request, $this->form);
   }
@@ -135,14 +144,64 @@ class reservationActions extends sfActions
       $data['end'] = date('H:i:s', $data['end']);
       $data['start'] =  $data['selected_date'] . ' ' . $data['start'];
       $data['end']   = $data['selected_date'] . ' ' . $data['end'];
-      
+
+      $diff = $this->timeDiff(strtotime($data['start']), strtotime($data['end']));
+
+      $data['hours'] = $diff['hours'];
+      if($diff['minutes']){
+        $data['hours'] = $data['hours'] + 1;
+      }
+
+      $court = Doctrine_Core::getTable('CroCourts')->getTimeAvailable($data['courtid']);
+
+      $data['amount'] = $court[0]['rate'] * $data['hours'];
+
       $form->bind($data);
 
       if ($form->isValid()){
-
-        $form->save();
-        $this->redirect('reservation/index');
+        $obj = $form->save();
+        if($data['process'] == 'pay'){
+          $this->redirect('payment/index?resid=' . $obj->getId() . '&amount='. $data['amount'] . '&rate=' . $court[0]['rate']);
+        } else {
+          $this->redirect('reservation/index');
+        }
       }
     }
+  }
+
+  public function timeDiff($t1, $t2)
+  {
+     $diff = array(
+        'years' => 0,
+        'months' => 0,
+        'weeks' => 0,
+        'days' => 0,
+        'hours' => 0,
+        'minutes' => 0,
+        'seconds' =>0
+     );
+
+     if($t1 > $t2) {
+        $time1 = $t2;
+        $time2 = $t1;
+     } else {
+        $time1 = $t1;
+        $time2 = $t2;
+     }
+
+     foreach(array('years','months','weeks','days','hours','minutes','seconds') as $unit)
+     {
+        while(TRUE) {
+           $next = strtotime("+1 $unit", $time1);
+           if($next < $time2) {
+              $time1 = $next;
+              $diff[$unit]++;
+           } else {
+              break;
+           }
+        }
+     }
+
+     return($diff);
   }
 }

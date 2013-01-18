@@ -16,4 +16,14 @@ class CroPaymentsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('CroPayments');
     }
+
+    public function getPayment($courtid)
+	{
+        $timeAvailable = Doctrine_Query::create()->from('CroPayments u');
+
+        if($courtid) $record = $timeAvailable->where('u.reservationid = ?', $courtid)->fetchArray();
+        else $record = $timeAvailable->fetchArray();
+        
+        return $record;
+	}
 }

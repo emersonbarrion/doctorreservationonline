@@ -3,6 +3,7 @@
 <form action="<?php echo url_for('reservation/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <table>
+      <tr><td>Payment Status:</td><td><?php echo $payment_status ?></td></tr>
       <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
       <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
       <tr><td>Courtname:</td><td><?php echo $form['courtid'] ?></td></tr>
@@ -20,7 +21,7 @@
 </form>
 <br/>
 <br/>
-<?php include_partial('payment/payment') ?>
+<?php //include_partial('payment/payment') ?>
 
 <script>
       var selectedDate = $('#selectedDate').text();
