@@ -1,11 +1,24 @@
-Paypal Integration
 
-test
-schedulefine@gmail.com
-schedulefinepassword
+-------------------------------
+PAYPAL INTEGRATION
+-------------------------------
 
-schedu@gmail.com
-357730700
+PAYPAL Test Account
+	schedulefine@gmail.com
+	schedulefinepassword
+
+
+MERCHANT
+	schedu_1357852582_biz@gmail.com
+	schedu_1357852582_biz_api1.gmail.com
+	1357852601
+	AcjbdLpyzOwwewC5D2WjKACP1MM4Aqs-5DWAIA4KGeSJql0Gc8vGMfx2
+
+
+BUYER
+	schedu_1358166165_per@gmail.com
+	358166122
+
 
 https://www.x.com/developers/paypal/documentation-tools/express-checkout/integration-guide/ECGettingStarted
 <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
@@ -54,18 +67,3 @@ DoExpressCheckoutPayment
 	PAYMENTREQUEST_0_AMT=amount
 	PAYMENTREQUEST_0_CURRENCYCODE=currencyID
 	PAYMENTREQUEST_0_PAYMENTACTION=Sale
-	
-
-
-
-
-MERCHANT
-schedu_1357852582_biz@gmail.com
-schedu_1357852582_biz_api1.gmail.com
-1357852601
-AcjbdLpyzOwwewC5D2WjKACP1MM4Aqs-5DWAIA4KGeSJql0Gc8vGMfx2
-
-
-BUYER
-schedu_1358166165_per@gmail.com
-358166122

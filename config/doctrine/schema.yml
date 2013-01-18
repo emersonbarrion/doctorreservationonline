@@ -81,7 +81,7 @@ CroPayments:
     email: { type: string(255), notnull: true }
     payerid: { type: string(255), notnull: true }
     rate: { type: integer, notnull: true }
-    ordertime: { type: date, notnull: true }
+    ordertime: { type: string(255), notnull: true }
     feeamount: { type: double, notnull: true }
     taxamount: { type: double, notnull: true }
     paymenttype: { type: string(255), notnull: true }

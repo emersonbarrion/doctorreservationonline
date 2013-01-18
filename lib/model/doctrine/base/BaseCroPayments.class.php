@@ -16,7 +16,7 @@
  * @property string $email
  * @property string $payerid
  * @property integer $rate
- * @property date $ordertime
+ * @property string $ordertime
  * @property double $feeamount
  * @property double $taxamount
  * @property string $paymenttype
@@ -36,7 +36,7 @@
  * @method string          getEmail()           Returns the current record's "email" value
  * @method string          getPayerid()         Returns the current record's "payerid" value
  * @method integer         getRate()            Returns the current record's "rate" value
- * @method date            getOrdertime()       Returns the current record's "ordertime" value
+ * @method string          getOrdertime()       Returns the current record's "ordertime" value
  * @method double          getFeeamount()       Returns the current record's "feeamount" value
  * @method double          getTaxamount()       Returns the current record's "taxamount" value
  * @method string          getPaymenttype()     Returns the current record's "paymenttype" value
@@ -126,9 +126,10 @@ abstract class BaseCroPayments extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('ordertime', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('ordertime', 'string', 255, array(
+             'type' => 'string',
              'notnull' => true,
+             'length' => 255,
              ));
         $this->hasColumn('feeamount', 'double', null, array(
              'type' => 'double',
