@@ -5,6 +5,8 @@ CroReservations:
     title: 'First Reservation'
     start: '2012-11-29 09:00:00'
     end: '2012-11-29 10:00:00'
+    hours: 1
+    amount: 150
     status: 1
   User2:
     CroUsers: Admin
@@ -12,6 +14,8 @@ CroReservations:
     title: 'Second Reservation'
     start: '2012-11-30 09:00:00'
     end: '2012-11-30 10:00:00'
+    hours: 1
+    amount: 150
     status: 1
   User3:
     CroUsers: Admin
@@ -19,6 +23,8 @@ CroReservations:
     title: 'Third Reservation'
     start: '2012-11-30 10:00:00'
     end: '2012-11-30 11:00:00'
+    hours: 1
+    amount: 150
     status: 1
   User4:
     CroUsers: Admin
@@ -26,6 +32,8 @@ CroReservations:
     title: 'Third Reservation'
     start: '2012-11-30 11:00:00'
     end: '2012-11-30 12:00:00'
+    hours: 1
+    amount: 150
     status: 1
   User5:
     CroUsers: Admin
@@ -33,6 +41,8 @@ CroReservations:
     title: 'Fifth Reservation'
     start: '2012-11-30 13:00:00'
     end: '2012-11-30 14:00:00'
+    hours: 1
+    amount: 150
     status: 1
   User6:
     CroUsers: Jeff
@@ -40,4 +50,6 @@ CroReservations:
     title: 'Sixth Reservation'
     start: '2012-12-12 13:00:00'
     end: '2012-12-12 14:00:00'
+    hours: 1
+    amount: 250
     status: 1
