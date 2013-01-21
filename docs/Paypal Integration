@@ -20,6 +20,11 @@ BUYER
 	358166122
 
 
+------------------------------------------------------------------------------------------
+IMPORTANT!
+Change the values in the paypal.php under lib/vendor/paypal when in live site
+------------------------------------------------------------------------------------------
+
 https://www.x.com/developers/paypal/documentation-tools/express-checkout/integration-guide/ECGettingStarted
 <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
 
