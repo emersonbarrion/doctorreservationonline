@@ -6,11 +6,7 @@
 		<li class="menubaritem first"><a href="<?php echo url_for('users/index') ?>">Users</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('facilitators/index') ?>">Facilitators</a></li>
 		<li class="menubaritem first"><a href="<?php echo url_for('courts/index') ?>">Units</a></li>
-		<li class="menubaritem first"><a href="<?php echo url_for('reservation/list') ?>">Reservation</a>
-			<ul>
-            	<li class="menuitem"><a href="<?php echo url_for('reservation/new') ?>">New</a></li>
-            </ul>
-        </li>
+		<li class="menubaritem first"><a href="<?php echo url_for('reservations/index') ?>">Reservations</a></li>
 		<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('admin', 'facilitator'), false)): ?>
 		<li class="menubaritem"><a href="<?php echo url_for('index/logout') ?>">Logout</a></li>
 		<?php endif; ?>

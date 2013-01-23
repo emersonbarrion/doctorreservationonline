@@ -46,4 +46,21 @@ class CroUsersForm extends BaseCroUsersForm
 		$this->widgetSchema['password'] = new sfWidgetFormInputPassword();
   		$this->validatorSchema['password'] = new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Password'));
   	}
+
+  	public function changepasswordConfigure()
+  	{
+  		unset( $this['created_at'], $this['updated_at'], $this['fname'], 
+  			   $this['lname'], $this['status'], $this['subscription'], $this['minitial'], $this['email'] );
+
+		$this->widgetSchema['password']     = new sfWidgetFormInputPassword();
+		$this->widgetSchema['password2']    = new sfWidgetFormInputPassword();
+
+		$this->validatorSchema['password'] = new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Password'));
+		$this->validatorSchema['password2'] = new sfValidatorString(array('max_length' => 255), array('required' => 'Please Enter Password'));
+
+		$this->mergePostValidator(new sfValidatorSchemaCompare(
+		    'password', sfValidatorSchemaCompare::EQUAL, 'password2',
+		    array())
+		);
+  	}
 }

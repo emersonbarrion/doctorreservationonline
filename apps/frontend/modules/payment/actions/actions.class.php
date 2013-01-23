@@ -9,7 +9,6 @@
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 
-
 require_once sfConfig::get('sf_lib_dir').'/vendor/paypal/paypal.php';
 require_once sfConfig::get('sf_lib_dir').'/vendor/paypal/httprequest.php';
 
@@ -34,6 +33,7 @@ class paymentActions extends sfActions
 
   public function executeSuccess(sfWebRequest $request)
   {
+  	
   }
 
   public function executeFail(sfWebRequest $request)

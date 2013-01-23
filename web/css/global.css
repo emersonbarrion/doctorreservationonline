@@ -17,3 +17,7 @@
     float: right;
     width: 150px;
 }
+
+#selectedDate {
+	display:none;
+}

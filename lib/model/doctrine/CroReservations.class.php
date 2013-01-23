@@ -12,5 +12,13 @@
  */
 class CroReservations extends BaseCroReservations
 {
+	public function getUser()
+	{
+		return $this->getCroUsers()->getEmail();
+	}
 
+	public function getUnit()
+	{
+		return $this->getCroCourts()->getName();
+	}
 }

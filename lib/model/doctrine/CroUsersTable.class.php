@@ -27,4 +27,24 @@ class CroUsersTable extends Doctrine_Table
 
         return empty($record) ? NULL : $record[0];
 	}
+
+    public function getUserListByFilter($email)
+    {
+        $record = Doctrine_Query::create()
+                    ->from('CroUsers u')
+                    ->where('u.email LIKE ?', '%'. $email . '%')
+                    ->fetchArray();
+
+        return isSet($record[0]) ? $record : null;
+    }
+
+    public function getUserIdForFilter($email)
+    {
+        $record = Doctrine_Query::create()
+                    ->from('CroUsers u')
+                    ->where('u.email = ?', $email)
+                    ->fetchArray();
+
+        return isSet($record[0]) ? $record[0] : null;
+    }
 }

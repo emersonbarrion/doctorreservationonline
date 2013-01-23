@@ -9,6 +9,7 @@ class myUser extends sfBasicSecurityUser
 		$this->clearCredentials();
 		$this->addCredentials('user');
 	    $this->setAttribute('id', $user['id']);
+	    $this->setAttribute('email', $user['email']);
 	}
 
 	public function clearUserAttributes()

@@ -3,29 +3,30 @@
 <form action="<?php echo url_for('reservation/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <table>
-      <tr><td>Courtname:</td><td><?php echo $form['courtid'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
-      <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
-      <tr style='display: none'><td>Date:</td><td id='selectedDate'><?php echo $sf_params->get('selected_date') ?></td></tr>
-      <tr><td>Start:</td><td><?php echo $form['start'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
-      <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
-      <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
-      <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
+        <tr><td>Courtname:</td><td><?php echo $form['courtid'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
+        <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
+        <tr style='display: none'><td>Date:</td><td id='selectedDate'><?php echo $sf_params->get('selected_date') ?></td></tr>
+        <tr><td>Start:</td><td><?php echo $form['start'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
+        <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
+        <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
     <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Save"/>
     <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
 </form>
 
 <script>
-  $(document).ready(function(){
+    $(document).ready(function(){
 
-      var selectedDate = $('#selectedDate').text();
-      $('#cro_reservations_selected_date').attr('value', selectedDate);
-
+        var selectedDate = $('#selectedDate').text();
         var courtid = $("#cro_reservations_courtid").val();
+
+        $('#cro_reservations_selected_date').attr('value', selectedDate);
+  
         $("#cro_reservations_courtid").live('change', function() {
             courtid = $(this).val();
             $.ajax({
@@ -86,7 +87,7 @@
 
         });
 
-        $('#cro_reservations_start, #cro_reservations_end, #cro_reservations_title, #cro_reservations_court').focus(function(){
+        $('#cro_reservations_start, #cro_reservations_end, #cro_reservations_title, #cro_reservations_courtid').focus(function(){
             $('#is-available').empty();
         });
 

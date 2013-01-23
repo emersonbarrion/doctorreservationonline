@@ -25,7 +25,7 @@ class CroReservationsTable extends Doctrine_Table
         return $record;
 	}
 
-    public function checkReservations($courtid, $date, $start, $end, $userid)
+    public function checkReservations($courtid, $date, $start, $end)
     {
         $reservation = Doctrine_Query::create()
                         ->from('CroReservations u')
@@ -42,7 +42,7 @@ class CroReservationsTable extends Doctrine_Table
         return $isAvailable;
     }
 
-    public function checkEditReservations($courtid, $date, $start, $end, $userid, $resid)
+    public function checkEditReservations($courtid, $date, $start, $end, $resid)
     {
         $reservation = Doctrine_Query::create()
                         ->from('CroReservations u')

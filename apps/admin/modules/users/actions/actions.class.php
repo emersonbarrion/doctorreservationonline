@@ -61,4 +61,13 @@ class usersActions extends autoUsersActions
 	      $this->getUser()->setFlash('error', 'The item has not been saved due to some errors.', false);
 	    }
 	}
+
+	public function executeEmaillist(sfWebRequest $request)
+	{
+	    $userlist = Doctrine::getTable('CroUsers')->getUserListByFilter($request->getParameter('find'));
+
+		echo json_encode($userlist);
+
+		return sfView::NONE;
+	}
 }

@@ -16,17 +16,14 @@
 			<li class="menubaritem first"><a href="#">ACCOUNT</a>
 				<ul>
 					<li class="menuitem"><a href="<?php echo url_for('user/edit') ?>">Profile</a></li>
-					<li class="menuitem"><a href="#">Change Password</a></li>
+					<li class="menuitem"><a href="<?php echo url_for('user/changepassword') ?>">Change Password</a></li>
 				</ul>
 			</li>
 			<?php endif; ?>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATION</a>
-				<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
-				<ul>
-					<li class="menuitem"><a href="<?php echo url_for('reservation/all') ?>">All Reservation</a></li>
-				</ul>
-				<?php endif; ?>
-			</li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">MY RESERVATIONS</a></li>
+			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/all') ?>">ALL RESERVATIONS</a></li>
+			<?php endif; ?>
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem"><a href="<?php echo url_for('user/register') ?>">REGISTER</a></li>
 			<?php endif; ?>

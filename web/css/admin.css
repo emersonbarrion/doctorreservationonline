@@ -26,3 +26,7 @@ body {
 #sf_admin_container label {
     width: 10em;
 }
+
+li.ui-menu-item{
+	list-style-type: none; 
+}

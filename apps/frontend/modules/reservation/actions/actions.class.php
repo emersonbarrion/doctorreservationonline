@@ -95,8 +95,7 @@ class reservationActions extends sfActions
     $available = Doctrine_Core::getTable('CroReservations')
                     ->checkReservations($request->getParameter('courtid'), 
                                         $request->getParameter('date'),
-                                        $start, $end,
-                                        $this->getUser()->getAttribute('id'));
+                                        $start, $end);
 
     echo $available;
 
@@ -122,8 +121,7 @@ class reservationActions extends sfActions
     $available = Doctrine_Core::getTable('CroReservations')
                     ->checkEditReservations($request->getParameter('courtid'), 
                                             $request->getParameter('date'),
-                                            $start, $end,
-                                            $this->getUser()->getAttribute('id'), $request->getParameter('reservationid'));
+                                            $start, $end, $request->getParameter('reservationid'));
 
     echo $available;
 
