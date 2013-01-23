@@ -1,0 +1,112 @@
+CroAdminUsers:
+  actAs: { Timestampable: ~ }
+  columns:
+    email: { type: string(255), notnull: true, unique: true }
+    password: { type: string(32), notnull: true }
+    fname: { type: string(255), notnull: true }
+    lname: { type: string(255), notnull: true }
+    address: { type: string(4000) }
+    contact1: { type: string(255) }
+    contact2: { type: string(255) }
+    user_group: { type: integer, notnull: true }
+    lastlogin: { type: timestamp }
+    status: { type: boolean, notnull: true, default: 0 }
+  relations:
+    CroGroups: { local: user_group, foreign: id }
+
+CroUsers:
+  actAs: { Timestampable: ~ }
+  columns:
+    email: { type: string(255), notnull: true, unique: true }
+    password: { type: string(32), notnull: true }
+    fname: { type: string(255) }
+    lname: { type: string(255) }
+    minitial: { type: string(255) }
+    phone: { type: string(255) }
+    subscription: { type: string(255) }
+    status: { type: boolean, notnull: true, default: 0 }
+
+CroGroups:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+
+CroCourts:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    indoor: { type: boolean, notnull: true, default: 0}
+    lights: { type: boolean, notnull: true, default: 0}
+    priorreservationhours: { type: integer, notnull: true }
+    maxreservationhours: { type: integer, notnull: true }
+    rate: { type: double, notnull: true }
+    start_time: { type: string(255), notnull: true }
+    end_time: { type: string(255), notnull: true }
+    status: { type: boolean, notnull: true, default: 0 }
+
+CroReservations:
+  actAs: { Timestampable: ~ }
+  columns:
+    title: { type: string(255), notnull: true }
+    userid: { type: integer, notnull: true }
+    courtid: { type: integer, notnull: true }
+    start: { type: timestamp, notnull: true }
+    end: { type: timestamp, notnull: true }
+    hours: { type: integer, notnull: true }
+    amount: { type: double, notnull: true }
+    status: { type: boolean, notnull: true, default: 0 }
+  relations:
+    CroUsers: { local: userid, foreign: id }
+    CroCourts: { local: courtid, foreign: id }
+
+CroCourtClose:
+  actAs: { Timestampable: ~ }
+  columns:
+    reservationid: { type: integer, notnull: true }
+    closedate: { type: string(255), notnull: true }
+  relations:
+    CroReservations: { local: reservationid, foreign: id }
+
+CroPayments:
+  actAs: { Timestampable: ~ }
+  columns:
+    reservationid: { type: integer, notnull: true }
+    token: { type: string(255), notnull: true }
+    amount: { type: double, notnull: true }
+    transactionid: { type: string(255), notnull: true }
+    transactiontype: { type: string(255), notnull: true }
+    firstname: { type: string(255), notnull: true }
+    lastname: { type: string(255), notnull: true }
+    countrycode: { type: string(255), notnull: true }
+    email: { type: string(255), notnull: true }
+    payerid: { type: string(255), notnull: true }
+    rate: { type: integer, notnull: true }
+    ordertime: { type: string(255), notnull: true }
+    feeamount: { type: double, notnull: true }
+    taxamount: { type: double, notnull: true }
+    paymenttype: { type: string(255), notnull: true }
+    paymentstatus: { type: string(255) }
+    currencycode: { type: string(255) }
+    ack: { type: string(255) }
+  relations:
+    CroReservations: { onDelete: CASCADE, local: reservationid, foreign: id }
+
+CroCms:
+  actAs: { Timestampable: ~ }
+  columns:
+    page_url_id: { type: integer, notnull: true }
+    content_name: { type: string(255), notnull: true }
+    content_text: { type: string(4000) }
+    content_image: { type: string(4000) }
+    created_by: { type: integer, notnull: true }
+    updated_by: { type: integer, notnull: true }
+  relations:
+    CroAdminUsers: { onDelete: CASCADE, local: created_by, foreign: id }
+    CroAdminUsers: { onDelete: CASCADE, local: updated_by, foreign: id }
+    CroPages: { onDelete: CASCADE, local: page_url_id, foreign: id }
+
+CroPages:
+  actAs: { Timestampable: ~ }
+  columns:
+    page_url: { type: string(255), notnull: true }
+    description: { type: string(255), notnull: true }

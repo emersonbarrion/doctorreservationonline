@@ -17,7 +17,10 @@
       <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
     <a href='<?php echo url_for('reservation/delete?id='.$form->getObject()->getId()) ?>'>Delete</a>
+    
     <input id="submit-edit-reservation-without-pay" name="Submit" type="submit" value="Save"/>
+    <input id="submit-edit-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
+
 </form>
 <br/>
 <br/>
@@ -65,6 +68,12 @@
             var startTime = $('#cro_reservations_start').val();
             var endTime = $('#cro_reservations_end').val();
             var resid = $('#cro_reservations_id').val();
+
+            $('#cro_reservations_process').attr('value','save');
+
+            if($(this).attr('id') == 'submit-edit-reservation-with-pay'){
+                $('#cro_reservations_process').attr('value','pay');
+            }
 
             if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
                !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()) {

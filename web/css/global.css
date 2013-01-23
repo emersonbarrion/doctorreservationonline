@@ -1,5 +1,6 @@
 #calendar {
-	width: 900px;
+    float: left;
+    width: 750px;
 }
 
 #userid {
@@ -10,4 +11,9 @@
 	width:200px;
 	display: inline-block;
 	margin-bottom: 10px;
+}
+
+#notification {
+    float: right;
+    width: 150px;
 }

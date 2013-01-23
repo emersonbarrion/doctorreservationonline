@@ -1,0 +1,1 @@
+<div id='notification'>Please select date to schedule a reservation</div>

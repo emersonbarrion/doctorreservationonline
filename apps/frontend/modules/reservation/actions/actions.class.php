@@ -30,8 +30,6 @@ class reservationActions extends sfActions
     $crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
     $cropayments = Doctrine::getTable('CroPayments')->getPayment(array($request->getParameter('id')));
 
-
-
     if($crouser->getUserid() != $this->getUser()->getAttribute('id')) {
       echo 'Please select your reservation';
       return sfView::NONE;
