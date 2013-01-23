@@ -20,8 +20,11 @@
 				</ul>
 			</li>
 			<?php endif; ?>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">MY RESERVATIONS</a></li>
+			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATIONS</a></li>
+			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">MY RESERVATIONS</a></li>
 			<li class="menubaritem"><a href="<?php echo url_for('reservation/all') ?>">ALL RESERVATIONS</a></li>
 			<?php endif; ?>
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
