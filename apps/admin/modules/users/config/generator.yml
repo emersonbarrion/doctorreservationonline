@@ -20,8 +20,19 @@ generator:
           fname: { label: Firstname }
           lname: { label: Lastname }
       filter:
-        display: [email,fname,lname,subscription,status]
+        display: [email,fname,lname,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
       form:
         class: CroUsersForm
-      edit:    ~
-      new:     ~
+      edit:
+        display: [email,password,fname, lname,minitial, phone, subscription,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+      new:
+        display: [email,password,fname, lname,minitial, phone, subscription,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
