@@ -24,5 +24,11 @@ generator:
         display: [name,indoor,lights,rate,status]
       form:
         class: CroCourtsForm
-      edit:    ~
-      new:     ~
+      edit:
+        fields:
+          priorreservationhours: { label: Prior Hours }
+          maxreservationhours: { label: Max Hours }
+      new:
+        fields:
+          priorreservationhours: { label: Prior Hours }
+          maxreservationhours: { label: Max Hours }
