@@ -10,12 +10,11 @@
  */
 class CroReservationsFormFilter extends BaseCroReservationsFormFilter
 {
-  public function configure()
-  {
- 		$this->widgetSchema['status']   	= new sfWidgetFormChoice(array('choices' => array('' => 'Any', 0 => 'Inactive',1 => 'Active')));
+	public function configure()
+	{
+		$this->widgetSchema['status']   	= new sfWidgetFormChoice(array('choices' => array('' => 'Any', 0 => 'Inactive',1 => 'Active')));
 		$this->validatorSchema['status'] 	= new sfValidatorChoice(array('required'=>false, 'choices' => array('',0,1)));
 
 		$this->widgetSchema['userid'] 		= new sfWidgetFormInputText();
-		
-  }
+	}
 }

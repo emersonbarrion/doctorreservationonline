@@ -12,6 +12,7 @@
  * @property timestamp $end
  * @property integer $hours
  * @property double $amount
+ * @property string $paymentstatus
  * @property boolean $status
  * @property CroUsers $CroUsers
  * @property CroCourts $CroCourts
@@ -25,6 +26,7 @@
  * @method timestamp           getEnd()           Returns the current record's "end" value
  * @method integer             getHours()         Returns the current record's "hours" value
  * @method double              getAmount()        Returns the current record's "amount" value
+ * @method string              getPaymentstatus() Returns the current record's "paymentstatus" value
  * @method boolean             getStatus()        Returns the current record's "status" value
  * @method CroUsers            getCroUsers()      Returns the current record's "CroUsers" value
  * @method CroCourts           getCroCourts()     Returns the current record's "CroCourts" value
@@ -37,6 +39,7 @@
  * @method CroReservations     setEnd()           Sets the current record's "end" value
  * @method CroReservations     setHours()         Sets the current record's "hours" value
  * @method CroReservations     setAmount()        Sets the current record's "amount" value
+ * @method CroReservations     setPaymentstatus() Sets the current record's "paymentstatus" value
  * @method CroReservations     setStatus()        Sets the current record's "status" value
  * @method CroReservations     setCroUsers()      Sets the current record's "CroUsers" value
  * @method CroReservations     setCroCourts()     Sets the current record's "CroCourts" value
@@ -81,6 +84,11 @@ abstract class BaseCroReservations extends sfDoctrineRecord
         $this->hasColumn('amount', 'double', null, array(
              'type' => 'double',
              'notnull' => true,
+             ));
+        $this->hasColumn('paymentstatus', 'string', 255, array(
+             'type' => 'string',
+             'default' => 'PENDING',
+             'length' => 255,
              ));
         $this->hasColumn('status', 'boolean', null, array(
              'type' => 'boolean',

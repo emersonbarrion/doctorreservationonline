@@ -75,8 +75,14 @@ $(document).ready(function() {
 	    	var timeRange = getReservationTimeRange(event.start, event.end);
 	    	element.find('.fc-event-title').prepend(timeRange + "<br/>");
 	    	element.find('.fc-event-title').append(' - ' + event.CroUsers.fname);
+	    	console.log(event);
 	    	if(userId == event.userid){
 	    		element.find('.fc-event-skin').css('background-color','green');
+	    	}
+
+	    	if(event.paymentstatus == 'PENDING'){
+	    		element.find('.fc-event-skin').css('background-color','yellow');	
+	    		element.find('.fc-event-skin').css('color','black');
 	    	}
 		}
 

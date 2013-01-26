@@ -12,7 +12,7 @@ class CroReservationsForm extends BaseCroReservationsForm
 {
     public function configure()
     {
-        unset( $this['created_at'], $this['updated_at'] );
+        unset( $this['created_at'], $this['updated_at'], $this['status']);
         
         if($this->isNew()){
             $this->widgetSchema['start'] = new sfWidgetFormInputText();
@@ -27,8 +27,6 @@ class CroReservationsForm extends BaseCroReservationsForm
         $this->widgetSchema['selected_date'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['process'] = new sfWidgetFormInputHidden();
 
-        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(0 => 'Inactive',1 => 'Active')));
-        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(0,1)));
         $this->validatorSchema['selected_date'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['process'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['start'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
@@ -37,6 +35,9 @@ class CroReservationsForm extends BaseCroReservationsForm
 
     public function adminConfigure()
     {
+        $this->widgetSchema['status']  = new sfWidgetFormChoice(array('choices' => array(0 => 'Inactive',1 => 'Active')));
+        $this->validatorSchema['status']  = new sfValidatorChoice(array('choices' => array(0,1)));
+
         if($this->isNew()){
             $this->widgetSchema['start'] = new sfWidgetFormInputText();
             $this->widgetSchema['end'] = new sfWidgetFormInputText();

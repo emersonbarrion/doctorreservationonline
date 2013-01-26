@@ -40,7 +40,11 @@ class reservationActions extends sfActions
       $this->payment_status = 'Paid';
     }
 
-    
+    $this->status = 'Inactive';
+    if($crouser->getStatus() == 1){
+      $this->status = 'Active';
+    }
+
     $this->form = new CroReservationsForm($crouser);
     $this->processForm($request, $this->form);
   }

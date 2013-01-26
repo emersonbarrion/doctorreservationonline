@@ -54,6 +54,7 @@ CroReservations:
     end: { type: timestamp, notnull: true }
     hours: { type: integer, notnull: true }
     amount: { type: double, notnull: true }
+    paymentstatus: { type: string(255), default: 'PENDING' }
     status: { type: boolean, notnull: true, default: 0 }
   relations:
     CroUsers: { local: userid, foreign: id }

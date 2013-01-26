@@ -12,10 +12,8 @@
         <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
         <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
         <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
-        <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
-        <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
     </table>
-    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Save"/>
+    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Pay later"/>
     <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
 </form>
 
