@@ -12,6 +12,7 @@ class reservationActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
+    $this->myreservationlist = Doctrine_Core::getTable('CroReservations')->getUserReservationList($this->getUser()->getAttribute('id'));
   }
 
   public function executeAll(sfWebRequest $request)
@@ -203,5 +204,9 @@ class reservationActions extends sfActions
      }
 
      return($diff);
+  }
+
+  public function executeList(sfWebRequest $request)
+  {
   }
 }

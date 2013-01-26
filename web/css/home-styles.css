@@ -318,3 +318,62 @@ a:link {
    margin-top: -200px;
    padding:50px;
 }
+
+
+
+#reservation-container{
+	position:relative;
+	height:600px;
+}
+#my-reservation-list{
+	position:absolute;
+}
+
+#my-reservation-list tr {
+	background-color: #fff;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+#my-reservation-list th, #my-reservation-list td{
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	text-align: left;
+	vertical-align: top;
+	padding: .5em;
+	font-size:12px;
+}
+#my-reservation-list th{
+	color: #464646;
+	background-color: #e7eef6;
+	white-space: nowrap;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+			.tabs li {
+				list-style:none;
+				display:inline;
+			}
+
+			.tabs a {
+				padding:5px 10px;
+				display:inline-block;
+				background:#fff;
+				color:#000;
+				text-decoration:none;
+			}
+
+			.tabs a.active {
+				background:#666;
+				color:#fff;
+			}
+
+ul.tabs {
+	padding-left:0px;
+}

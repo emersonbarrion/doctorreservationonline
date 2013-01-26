@@ -25,6 +25,20 @@ class CroReservationsTable extends Doctrine_Table
         return $record;
 	}
 
+    public function getUserReservationList($userid)
+    {
+        $reservation = Doctrine_Query::create()
+                        ->select('u.*, p.fname, m.name')
+                        ->from('CroReservations u')
+                        ->leftJoin('u.CroUsers p')
+                        ->leftJoin('u.CroCourts m');
+
+        if($userid) $record = $reservation->where('u.userid = ?', $userid)->fetchArray();
+        else $record = $reservation->fetchArray();
+        
+        return $record;
+    }
+
     public function checkReservations($courtid, $date, $start, $end)
     {
         $reservation = Doctrine_Query::create()
