@@ -28,5 +28,11 @@ generator:
           user_group: { label: Group }
       form:
         class: CroAdminUsersForm
-      edit:    ~
-      new:     ~
+      edit:
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }	  
+      new:
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }	  

@@ -26,5 +26,11 @@ generator:
           courtid: { label: Unit }
       form:
         class: CroReservationsForm
-      edit:    ~
+      edit:
+        fields:
+          userid: { label: User }
+          courtid: { label: Court Name }	  
+          start: { label: Start Time }
+          end: { label: End Time }	  	  		  
+          paymentstatus: { label: Payment Status }	  
       new:     ~
