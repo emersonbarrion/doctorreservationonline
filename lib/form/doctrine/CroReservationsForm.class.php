@@ -45,6 +45,9 @@ class CroReservationsForm extends BaseCroReservationsForm
             $this->widgetSchema['start'] = new sfWidgetFormInputText(array(), array('value' => date('Y-m-d h:i a', strtotime($this->getObject()->getStart()))));
             $this->widgetSchema['end'] = new sfWidgetFormInputText(array(), array('value' => date('Y-m-d h:i a', strtotime($this->getObject()->getEnd()))));
         }
-        $this->widgetSchema['useremail'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroUsers', 'method' => 'getEmail'));
+        $this->widgetSchema['userid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroUsers', 'method' => 'getEmail', 'add_empty' => true));
+        //$this->widgetSchema['useremail'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroUsers', 'method' => 'getEmail'));
     }
+
+    
 }

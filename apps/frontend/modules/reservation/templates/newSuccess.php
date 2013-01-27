@@ -1,8 +1,12 @@
-<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential('user')): ?>
+<?php if($sf_user->isAuthenticated() && ($sf_user->hasCredential('user') || $sf_user->hasCredential('admin'))): ?>
 <div id="is-available" style ="background-color:red"></div>
 <form action="<?php echo url_for('reservation/'.($form->getObject()->isNew() ? 'new' : 'edit').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post">
     <?php echo $form->renderHiddenFields() ?>
     <table>
+        <?php if($sf_user->hasCredential('admin')): ?>
+          <tr><td>Email:</td><td><?php echo $form['userid'] ?></td></tr>
+          <tr><td></td><td><?php echo $form['userid']->getError() ?></td></tr>
+        <?php endif; ?>
         <tr><td>Courtname:</td><td><?php echo $form['courtid'] ?></td></tr>
         <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
         <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
@@ -12,9 +16,17 @@
         <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
         <tr><td>End:</td><td><?php echo $form['end'] ?></td></tr>
         <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
+        <?php if($sf_user->hasCredential('admin')): ?>
+          <tr><td>Status:</td><td><?php echo $form['status'] ?></td></tr>
+          <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
+        <?php endif; ?>
     </table>
-    <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Pay later"/>
-    <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">
+    <?php if($sf_user->hasCredential('admin')): ?>
+          <input id="submit-new-reservation-and-paid" name="Submit" type="submit" value="Save and Paid"/>
+    <?php else: ?>
+          <input id="submit-new-reservation-without-pay" name="Submit" type="submit" value="Pay later"/>
+          <input id="submit-new-reservation-with-pay" name="Submit" type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" value="Checkout">    
+    <?php endif; ?>
 </form>
 
 <script>
@@ -43,7 +55,7 @@
             });
         });
 
-        $("#submit-new-reservation-without-pay, #submit-new-reservation-with-pay").live('click', function() {
+        $("#submit-new-reservation-without-pay, #submit-new-reservation-with-pay, #submit-new-reservation-and-paid").live('click', function() {
 
                 var startTime = $('#cro_reservations_start').val();
                 var endTime = $('#cro_reservations_end').val();
@@ -52,7 +64,9 @@
 
                 if($(this).attr('id') == 'submit-new-reservation-with-pay'){
                     $('#cro_reservations_process').attr('value','pay');
-                }
+                } else if($(this).attr('id') == 'submit-new-reservation-and-paid'){
+                    $('#cro_reservations_process').attr('value','paid');
+                }  
 
 
                 if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 

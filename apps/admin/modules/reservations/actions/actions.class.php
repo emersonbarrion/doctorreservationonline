@@ -31,6 +31,55 @@ class reservationsActions extends autoReservationsActions
 		$this->selectedDate = date('Y-m-d', strtotime($reservation->getStart()));
 	}
 
+	public function executeNew(sfWebRequest $request)
+	{
+		// $this->form = new CroReservationsForm();
+	 //  	$this->processReservation($request, $this->form);
+	}
+
+	public function executeCalendar(sfWebRequest $request)
+	{
+		// $this->form = new CroReservationsForm();
+	 	// $this->processReservation($request, $this->form);
+	}
+
+	protected function processReservation(sfWebRequest $request, sfForm $form)
+	{
+	if ($request->isMethod('post')) {
+
+		$data = $request->getParameter($form->getName());
+
+		$data['start'] = strtotime($data['start'], $data['selected_date']);
+		$data['end'] = strtotime($data['end'], $data['selected_date']);
+		$data['start'] = date('H:i:s', $data['start']);
+		$data['end'] = date('H:i:s', $data['end']);
+		$data['start'] =  $data['selected_date'] . ' ' . $data['start'];
+		$data['end']   = $data['selected_date'] . ' ' . $data['end'];
+
+		$diff = $this->timeDiff(strtotime($data['start']), strtotime($data['end']));
+
+		$data['hours'] = $diff['hours'];
+		if($diff['minutes']){
+		$data['hours'] = $data['hours'] + 1;
+		}
+
+		$court = Doctrine_Core::getTable('CroCourts')->getTimeAvailable($data['courtid']);
+
+		$data['amount'] = $court[0]['rate'] * $data['hours'];
+
+		$form->bind($data);
+
+		if ($form->isValid()){
+			$obj = $form->save();
+			if($data['process'] == 'pay'){
+			  $this->redirect('payment/index?resid=' . $obj->getId() . '&amount='. $data['amount'] . '&rate=' . $court[0]['rate']);
+			} else {
+			  $this->redirect('reservation/index');
+			}
+		}
+	}
+	}
+
 	public function executeEditreservationavailable(sfWebRequest $request)
 	{
 		$start = strtotime($request->getParameter('start'), $request->getParameter('date'));

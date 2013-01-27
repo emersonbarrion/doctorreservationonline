@@ -12,7 +12,7 @@ class CroReservationsTable extends Doctrine_Table
         return Doctrine_Core::getTable('CroReservations');
     }
 
-    public function getUserReservations($userid)
+    public function getUserReservations($userid = NULL)
 	{
         $reservation = Doctrine_Query::create()
                         ->select('u.*, p.fname')
@@ -25,7 +25,7 @@ class CroReservationsTable extends Doctrine_Table
         return $record;
 	}
 
-    public function getUserReservationList($userid)
+    public function getUserReservationList($userid = NULL)
     {
         $reservation = Doctrine_Query::create()
                         ->select('u.*, p.fname, m.name')
@@ -71,5 +71,14 @@ class CroReservationsTable extends Doctrine_Table
         }
 
         return $isAvailable;
+    }
+
+    public function updatePaymentStatus($reservationid, $paymentstatus)
+    {
+        $q = Doctrine_Query::create()
+                ->update('CroReservations q')
+                ->set('q.paymentstatus','?', $paymentstatus)
+                ->where('q.id = ?', $reservationid)
+                ->execute();
     }
 }

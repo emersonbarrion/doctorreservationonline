@@ -30,3 +30,7 @@ body {
 li.ui-menu-item{
 	list-style-type: none; 
 }
+
+#calendar{
+	padding-bottom: 50px;
+}

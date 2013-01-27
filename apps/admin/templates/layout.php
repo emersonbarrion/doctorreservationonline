@@ -14,5 +14,6 @@
                 <?php echo $sf_content ?>
             </div>
             <div style="clear:both"></div>
+            <div class="dim transparent"></div>
         </body>
 </html>

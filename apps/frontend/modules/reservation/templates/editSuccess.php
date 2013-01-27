@@ -23,7 +23,6 @@
 </form>
 <br/>
 <br/>
-<?php //include_partial('payment/payment') ?>
 
 <script>
       var selectedDate = $('#selectedDate').text();

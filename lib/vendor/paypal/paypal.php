@@ -43,8 +43,8 @@ class PayPal {
 	const API_USERNAME = "schedu_1357852582_biz_api1.gmail.com";
 	const API_PASSWORD = "1357852601";
 	const API_SIGNATURE = "AcjbdLpyzOwwewC5D2WjKACP1MM4Aqs-5DWAIA4KGeSJql0Gc8vGMfx2";
-	const RETURN_URL = "http://courtreservationonline.com/payment/ppreturn";
-	const CANCEL_URL = "http://courtreservationonline.com/payment/cancel";
+	const RETURN_URL = "http://www.courtreservationonline.com/payment/ppreturn";
+	const CANCEL_URL = "http://www.courtreservationonline.com/payment/cancel";
 
 	private $endpoint;
 	private $host;

@@ -20,7 +20,15 @@
             <td><?php echo date('F j, Y g:i a', strtotime($val['end'])) ?></td>
             <td><?php echo $val['hours'] ?></td>
             <td><?php echo $val['amount'] ?></td>
-            <td><?php echo $val['paymentstatus'] ?></td>
+            <td>
+                <?php 
+                    if($val['paymentstatus'] == 'Completed'){
+                        echo 'Paid';
+                    } else {
+                        echo 'Pending';
+                    }
+                ?>
+            </td>
             <td><?php 
             	if($val['status']){
             		echo 'Active';

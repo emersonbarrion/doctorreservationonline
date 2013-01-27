@@ -17,12 +17,16 @@ class reservationActions extends sfActions
 
   public function executeAll(sfWebRequest $request)
   {
+    $this->myreservationlist = Doctrine_Core::getTable('CroReservations')->getUserReservationList();
     $this->setTemplate('index');
   }
 
   public function executeNew(sfWebRequest $request)
   {
       $this->form = new CroReservationsForm();
+      if($this->getUser()->hasCredential('admin')){
+        $this->form->adminConfigure();
+      }
       $this->processForm($request, $this->form);
   }
 
@@ -37,7 +41,7 @@ class reservationActions extends sfActions
     }
 
     $this->payment_status = 'Pending';
-    if($cropayments[0]['paymentstatus'] == 'Completed'){
+    if($cropayments[0]['paymentstatus'] == 'Completed' || $crouser->getPaymentstatus()){
       $this->payment_status = 'Paid';
     }
 
@@ -60,7 +64,7 @@ class reservationActions extends sfActions
   public function executeEvents(sfWebRequest $request)
   {
     $reserve = NULL;
-    if($request->getParameter('reserve') != 'all') {
+    if($request->getParameter('reserve') != 'all' && !$this->getUser()->hasCredential('admin')) {
       $reserve = $this->getUser()->getAttribute('id');
     }
 
@@ -157,12 +161,18 @@ class reservationActions extends sfActions
 
       $data['amount'] = $court[0]['rate'] * $data['hours'];
 
+      if($this->getUser()->hasCredential('admin')){
+        $data['paymentstatus'] = 'Completed';
+      }
+
       $form->bind($data);
 
       if ($form->isValid()){
         $obj = $form->save();
         if($data['process'] == 'pay'){
           $this->redirect('payment/index?resid=' . $obj->getId() . '&amount='. $data['amount'] . '&rate=' . $court[0]['rate']);
+        } else if($data['process'] == 'paid'){
+          $this->redirect('admin.php/reservation/calendar');
         } else {
           $this->redirect('reservation/index');
         }

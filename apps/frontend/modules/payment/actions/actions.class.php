@@ -71,6 +71,8 @@ class paymentActions extends sfActions
 		$payment->setCurrencycode($final['CURRENCYCODE']);
 		$payment->setAck($final['ACK']);
 		$payment->save();
+
+		$reservation = Doctrine_Core::getTable('CroReservations')->updatePaymentStatus($request->getParameter('resid'), $final['PAYMENTSTATUS']);
 	}
 
 	if ($final['ACK'] == 'Success') {

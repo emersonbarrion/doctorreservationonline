@@ -15,9 +15,7 @@
 	</div>
 	<div id='tab2'>
 	    <div id='my-reservation-list'>
-			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
-				<?php include_partial('reservation/list', array('myreservationlist' => $myreservationlist)) ?>
-			<?php endif; ?>
+			<?php include_partial('reservation/list', array('myreservationlist' => $myreservationlist)) ?>
 		</div>
 	</div>
 </div>
