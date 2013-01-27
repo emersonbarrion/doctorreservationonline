@@ -16,7 +16,7 @@
 			<li class="menubaritem first"><a href="#">ACCOUNT</a>
 				<ul>
 					<li class="menuitem"><a href="<?php echo url_for('user/edit') ?>">Profile</a></li>
-					<li class="menuitem"><a href="#">Change Password</a></li>
+					<li class="menuitem"><a href="<?php echo url_for('user/changepassword') ?>">Change Password</a></li>
 				</ul>
 			</li>
 			<?php endif; ?>

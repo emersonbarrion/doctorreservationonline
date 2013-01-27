@@ -95,7 +95,7 @@ class PayPal {
 	 * 
 	 * @return array error info
 	 */
-	public function doExpressCheckout($amount, $resid, $rate, $desc, $invoice='', $currency='USD'){
+	public function doExpressCheckout($amount, $resid, $rate, $desc='', $invoice='', $currency='USD'){
 		$data = array(
 		'PAYMENTACTION' =>'Sale',
 		'AMT' =>$amount,

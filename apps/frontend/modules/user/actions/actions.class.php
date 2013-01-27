@@ -41,6 +41,7 @@ class userActions extends sfActions
 		if ($request->isMethod('post'))
         {
 			$postData = $request->getParameter('user');
+			$postData['activationkey'] = md5(sfConfig::get('app_passwordsalt') . $postData['email']);
 
 	    	if($postData['password']) {
 	    		$postData['password'] = md5(sfConfig::get('app_passwordsalt') . $postData['password']);
@@ -64,11 +65,18 @@ class userActions extends sfActions
             		$this->sendMailForChangepassword($this->getUser()->getAttribute('email'));
             		$this->redirect('index/index');
             	} else {
-            		$this->sendMailToUser($postData['email']);
+            		$this->sendMailToUser($postData['email'], $postData['activationkey']);
             		$this->redirect('index/index');
             	}
             }
         }
+	}
+
+	public function executeAccountactivate(sfWebRequest $request)
+	{
+		$user = Doctrine::getTable('CroUsers')->checkActivationKey($request->getParameter('activationkey'));
+		if($user) $users = Doctrine_Core::getTable('CroUsers')->updateUserStatus($request->getParameter('activationkey'));
+		$this->redirect('index/index');
 	}
 
 	protected function sendMailForChangepassword($email)
@@ -84,9 +92,9 @@ class userActions extends sfActions
 		$this->getMailer()->send($message);
 	}
 
-	protected function sendMailToUser($email)
+	protected function sendMailToUser($email, $activationkey)
 	{
-		$html = $this->getPartial('user/activate');
+		$html = $this->getPartial('user/activate' , array('email' => $email, 'activationkey' => $activationkey));
 
 		$message = $this->getMailer()->compose();
 		$message->setSubject('Account Activation');
