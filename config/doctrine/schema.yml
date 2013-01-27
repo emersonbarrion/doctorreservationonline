@@ -1,6 +1,7 @@
 CroAdminUsers:
   actAs: { Timestampable: ~ }
   columns:
+    activationkey: { type: string(32), notnull: true }
     email: { type: string(255), notnull: true, unique: true }
     password: { type: string(32), notnull: true }
     fname: { type: string(255), notnull: true }
@@ -17,6 +18,7 @@ CroAdminUsers:
 CroUsers:
   actAs: { Timestampable: ~ }
   columns:
+    activationkey: { type: string(32), notnull: true }
     email: { type: string(255), notnull: true, unique: true }
     password: { type: string(32), notnull: true }
     fname: { type: string(255) }

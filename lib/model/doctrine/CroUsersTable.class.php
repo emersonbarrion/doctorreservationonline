@@ -47,4 +47,23 @@ class CroUsersTable extends Doctrine_Table
 
         return isSet($record[0]) ? $record[0] : null;
     }
+
+    public function checkActivationKey($activationkey)
+    {
+        $record = Doctrine_Query::create()
+                        ->from('CroUsers u')
+                        ->where('u.activationkey = ?', array($activationkey))
+                        ->fetchArray();
+
+        return isSet($record[0]) ? $record[0] : null;
+    }
+
+    public function updateUserStatus($activationkey)
+    {
+        $q = Doctrine_Query::create()
+                ->update('CroUsers q')
+                ->set('q.status','?', 1)
+                ->where('q.activationkey = ?', $activationkey)
+                ->execute();
+    }
 }
