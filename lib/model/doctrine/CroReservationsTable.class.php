@@ -87,7 +87,7 @@ class CroReservationsTable extends Doctrine_Table
         $graceDay = date('Y-m-d H:i:s', strtotime('1 day ago'));
         $q = Doctrine_Query::create()
                 ->delete('CroReservations q')
-                ->where('q.start < ?', $graceDay)
+                ->where('q.start < ? AND q.paymentstatus != ?', array($graceDay, 'Completed'))
                 ->execute();
     }
 }
