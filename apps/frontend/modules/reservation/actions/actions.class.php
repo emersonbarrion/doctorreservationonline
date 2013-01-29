@@ -219,4 +219,26 @@ class reservationActions extends sfActions
   public function executeList(sfWebRequest $request)
   {
   }
+  
+  public function executeCancel(sfWebRequest $request)
+  {
+	$crouser = Doctrine::getTable('CroReservations')->find(array($request->getParameter('id')));
+	$crouser->delete();
+	$this->sendMailToCancelReservation($this->getUser()->getAttribute('email'));
+    $this->redirect('reservation/index');
+	
+  }
+  
+  protected function sendMailToCancelReservation($email)
+  {
+		$html = $this->getPartial('reservation/reschedule' , array('email' => $email));
+		$message = $this->getMailer()->compose();
+		$message->setSubject('Reschedule Reservation');
+		$message->setFrom('fineschedule@gmail.com');
+		$message->setTo($email);
+		$message->setBody($html, 'text/html');
+
+		$this->getMailer()->send($message);
+		
+  }
 }
