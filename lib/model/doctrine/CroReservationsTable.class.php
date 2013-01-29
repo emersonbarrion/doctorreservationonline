@@ -81,4 +81,13 @@ class CroReservationsTable extends Doctrine_Table
                 ->where('q.id = ?', $reservationid)
                 ->execute();
     }
+
+    public function removeReservations()
+    {
+        $graceDay = date('Y-m-d H:i:s', strtotime('1 day ago'));
+        $q = Doctrine_Query::create()
+                ->delete('CroReservations q')
+                ->where('q.start < ?', $graceDay)
+                ->execute();
+    }
 }

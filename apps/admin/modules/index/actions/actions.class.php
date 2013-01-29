@@ -12,6 +12,7 @@ class indexActions extends sfActions
 {
 	public function executeIndex(sfWebRequest $request)
 	{
+		$reservations = Doctrine_Core::getTable('CroReservations')->removeReservations();
 	}
 
 	public function executeLogin(sfWebRequest $request)

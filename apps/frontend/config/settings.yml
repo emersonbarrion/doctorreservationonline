@@ -34,6 +34,8 @@ all:
     # Enable the database manager
     use_database:           true
 
+    default_timezone:       'America/Los_Angeles'
+
   .actions:
     login_module: index
     login_action: index
