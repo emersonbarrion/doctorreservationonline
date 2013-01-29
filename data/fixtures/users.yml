@@ -17,6 +17,7 @@
 #     email:    kris.wallsmith@symfony-project.com
 CroUsers:
   Admin:
+    activationkey: a  
     email: admin.admin@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: admin	
@@ -26,6 +27,7 @@ CroUsers:
     subscription: 'Monthly'
     status: 1
   Jeff:
+    activationkey: a   
     email: jeff.jarin@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: jeff

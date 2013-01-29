@@ -20,6 +20,12 @@ $(document).ready(function(){
 	        e.preventDefault();
 	    });
 	});
+	
+	$("div#calendar").bind({
+	mousemove : changeTooltipPosition,
+	mouseenter : showTooltip,
+	mouseleave: hideTooltip
+	});
 
 });
 
@@ -30,4 +36,21 @@ var getReservationTimeRange;
 
 getReservationTimeRange = function(startTime, endTime){
     return moment(startTime).format("hh:mm a") + ' - ' + moment(endTime).format("hh:mm a");
+};
+
+var showTooltip = function(event) {
+   $('div.tooltip').remove();
+   $('<div class="tooltip">Please click on any date <br/> to create a new reservation.</div>')
+     .appendTo('body');
+   changeTooltipPosition(event);
+};
+
+var changeTooltipPosition = function(event) {
+	var tooltipX = event.pageX - 8;
+	var tooltipY = event.pageY + 8;
+	$('div.tooltip').css({top: tooltipY, left: tooltipX});
+};
+
+var hideTooltip = function() {
+	$('div.tooltip').remove();
 };

@@ -1,5 +1,6 @@
 CroAdminUsers:
   Admin:
+    activationkey: a
     email: courtreservationonline@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: admin
@@ -11,6 +12,7 @@ CroAdminUsers:
     lastlogin: '2012-11-30 03:00:00'
     status: 1
   CompanyA:
+    activationkey: a  
     email: microtech@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: Belle
@@ -22,6 +24,7 @@ CroAdminUsers:
     lastlogin: '2012-11-27 05:00:00'
     status: 1
   CompanyB:
+    activationkey: a  
     email: jiggle@gmail.com
     password: b219dbd0bc70f6446d9c1262101f6d0a
     fname: Philipp

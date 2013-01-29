@@ -11,7 +11,7 @@
 	    <div id='calendar'></div>
 		<br/>
 		<br/>
-		<?php include_partial('reservation/reservationnotification') ?>
+		<?php //include_partial('reservation/reservationnotification') ?>
 	</div>
 	<div id='tab2'>
 	    <div id='my-reservation-list'>
