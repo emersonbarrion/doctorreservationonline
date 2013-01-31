@@ -27,8 +27,12 @@
     </form>
   </div>
 
-  <p align="center"><a href="#">View Schedule</a> | <a href="#">Forgot my password</a></p>
+  <p align="center"><a href="#">View Schedule</a> | <a id='forgot-password' href="#">Forgot my password</a></p>
 </div>
 <?php endif; ?>
+
+<div id='forgot-password-container' class='center'>
+    <?php include_partial('user/forgotpassword') ?>
+</div>
 
 <div class="clearfix"></div>

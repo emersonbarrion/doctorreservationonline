@@ -22,6 +22,11 @@ class userActions extends sfActions
 		$this->processForm($request, $this->form, 'changepassword');
 	}
 
+    public function executeSendforgotpassword(sfWebRequest $request)
+    {
+
+    }
+
 	public function executeRegister(sfWebRequest $request)
 	{
 		$this->form = new CroUsersForm();
@@ -91,6 +96,19 @@ class userActions extends sfActions
 
 		$this->getMailer()->send($message);
 	}
+
+    protected function sendMailForForgotpassword($email)
+    {
+        $html = $this->getPartial('user/_forgotpasswordinstruction');
+
+        $message = $this->getMailer()->compose();
+        $message->setSubject('Forgot Password');
+        $message->setFrom('fineschedule@gmail.com');
+        $message->setTo($email);
+        $message->setBody($html, 'text/html');
+
+        $this->getMailer()->send($message);
+    }
 
 	protected function sendMailToUser($email, $activationkey)
 	{

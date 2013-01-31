@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $('#forgot-password-container').hide();
+
 	$('ul.tabs').each(function(){
 	    var $active, $content, $links = $(this).find('a');
 	    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -27,7 +29,36 @@ $(document).ready(function(){
 	mouseleave: hideTooltip
 	});
 
+    $("#forgot-password").live('click', function(){
+        $('#forgot-password-container').show();
+        setDimBackground();
+        return false;
+    });
+
+    $('#sendEmailForgotPassword').live('click', function(){
+        var emailForgotPassword = $('#emailForgotPassword').val();
+        $.ajax({
+            type: 'POST',
+            timeout: 5000,
+            url: '/user/sendforgotpassword',
+            data: { email: emailForgotPassword},
+
+            success:function(data){
+            }
+        });
+    });
+
 });
+
+$('.dim').live('click', function(){
+    $(this).toggle();
+    $('#forgot-password-container').hide();
+});
+
+var setDimBackground = function(){
+    var totalHeight = $(document).height();
+    $('.dim').css({'height' : totalHeight + 'px', 'display' : 'block'});
+};
 
 /* Get the reservation time range */
 var startTime;

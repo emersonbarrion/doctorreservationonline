@@ -283,7 +283,7 @@ a:link {
 }
 
 /* Calendar */
-#add-event, #edit-event {
+#add-event, #edit-event, #forgot-password-container {
 	background-color:#fff;
 	display:none;
 	top: 50%;
