@@ -102,7 +102,6 @@
         $('#cro_reservations_start, #cro_reservations_end, #cro_reservations_title, #cro_reservations_courtid').focus(function(){
             $('#is-available').empty();
         });
-
   });
 
 </script>

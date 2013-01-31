@@ -8,18 +8,29 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    <!--[if !IE 7]>
+    <style type="text/css">
+        #pagewrap {display:table;height:100%}
+    </style>
+    <![endif]-->
 </head>
 
 <body>
-
-    <?php include_component('common', 'header') ?>
-    <div class="clearfix"></div>
-    <div id="contentarea">
-        <?php echo $sf_content ?>
-    </div>
-    <div class="clearfix"></div>
-    <?php include_component('common', 'footer') ?>
     <div class="dim transparent"></div>
+    <div id='pagewrap'>
+        <div id='sub-pagewrap'>
+            <?php include_component('common', 'header') ?>
+            <div class="clearfix"></div>
+            <div id="contentarea">
+                <div id=main-container>
+                    <?php echo $sf_content ?>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+    <?php include_component('common', 'footer') ?>
 </body>
 
 </html>

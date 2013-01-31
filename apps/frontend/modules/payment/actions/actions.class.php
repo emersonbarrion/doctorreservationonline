@@ -14,73 +14,71 @@ require_once sfConfig::get('sf_lib_dir').'/vendor/paypal/httprequest.php';
 
 class paymentActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
+    /**
+     * Executes index action
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeIndex(sfWebRequest $request)
+    {
+        //Use this form for production server
+        //$r = new PayPal(true);
 
-	//Use this form for production server 
-	//$r = new PayPal(true);
+        //Use this form for sandbox tests
+        $r = new PayPal();
+        $this->paypalError = false;
 
-	//Use this form for sandbox tests
-	$r = new PayPal();
+        $return = $r->doExpressCheckout($request->getParameter('amount'), $request->getParameter('resid'), $request->getParameter('rate'));
+        if(!$return[0]){ $this->paypalError = true; }
+    }
 
-	$ret = $r->doExpressCheckout($request->getParameter('amount'), $request->getParameter('resid'), $request->getParameter('rate'));
-  }
+    public function executeSuccess(sfWebRequest $request)
+    {
 
-  public function executeSuccess(sfWebRequest $request)
-  {
-  	
-  }
+    }
 
-  public function executeFail(sfWebRequest $request)
-  {
-  }
+    public function executeFail(sfWebRequest $request)
+    {
+    }
 
-  public function executePpreturn(sfWebRequest $request)
-  {
-  	$r = new PayPal();
+    public function executePpreturn(sfWebRequest $request)
+    {
+        $r = new PayPal();
+        $token = $_GET['token'];
+        $d = $r->getCheckoutDetails($token);
+        $final = $r->doPayment();
 
-	
-	$token = $_GET['token'];
-	$d = $r->getCheckoutDetails($token);
-	
-	$final = $r->doPayment();
+        if($d['TOKEN'] == $final['TOKEN']){
+            $payment = new CroPayments();
+            $payment->setReservationid($request->getParameter('resid'));
+            $payment->setToken($final['TOKEN']);
+            $payment->setAmount($final['AMT']);
+            $payment->setTransactionid($final['TRANSACTIONID']);
+            $payment->setTransactiontype($final['TRANSACTIONTYPE']);
+            $payment->setfirstname($d['FIRSTNAME']);
+            $payment->setlastname($d['LASTNAME']);
+            $payment->setCountrycode($d['COUNTRYCODE']);
+            $payment->setEmail($d['EMAIL']);
+            $payment->setPayerid($d['PAYERID']);
+            $payment->setRate($request->getParameter('rate'));
+            $payment->setOrdertime($final['ORDERTIME']);
+            $payment->setFeeamount($final['FEEAMT']);
+            $payment->setTaxamount($final['TAXAMT']);
+            $payment->setPaymenttype($final['PAYMENTTYPE']);
+            $payment->setPaymentstatus($final['PAYMENTSTATUS']);
+            $payment->setCurrencycode($final['CURRENCYCODE']);
+            $payment->setAck($final['ACK']);
+            $payment->save();
 
-	if($d['TOKEN'] == $final['TOKEN']){
-		$payment = new CroPayments();
-		$payment->setReservationid($request->getParameter('resid'));
-		$payment->setToken($final['TOKEN']);
-		$payment->setAmount($final['AMT']);
-		$payment->setTransactionid($final['TRANSACTIONID']);
-		$payment->setTransactiontype($final['TRANSACTIONTYPE']);
-		$payment->setfirstname($d['FIRSTNAME']);
-		$payment->setlastname($d['LASTNAME']);
-		$payment->setCountrycode($d['COUNTRYCODE']);
-		$payment->setEmail($d['EMAIL']);
-		$payment->setPayerid($d['PAYERID']);
-		$payment->setRate($request->getParameter('rate'));
-		$payment->setOrdertime($final['ORDERTIME']);
-		$payment->setFeeamount($final['FEEAMT']);
-		$payment->setTaxamount($final['TAXAMT']);
-		$payment->setPaymenttype($final['PAYMENTTYPE']);
-		$payment->setPaymentstatus($final['PAYMENTSTATUS']);
-		$payment->setCurrencycode($final['CURRENCYCODE']);
-		$payment->setAck($final['ACK']);
-		$payment->save();
+            $reservation = Doctrine_Core::getTable('CroReservations')->updatePaymentStatus($request->getParameter('resid'), $final['PAYMENTSTATUS']);
+        }
 
-		$reservation = Doctrine_Core::getTable('CroReservations')->updatePaymentStatus($request->getParameter('resid'), $final['PAYMENTSTATUS']);
-	}
+        if ($final['ACK'] == 'Success') {
+            $this->redirect('payment/success');
+        } else {
+            $this->redirect('payment/fail');
+        }
 
-	if ($final['ACK'] == 'Success') {
-		$this->redirect('payment/success');
-	} else {
-		$this->redirect('payment/fail');
-	}
-
-	die();
-  }
+        die();
+    }
 }

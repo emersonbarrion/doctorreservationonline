@@ -4,7 +4,7 @@ var hideElement = function(){
 };
 
 var setDimBackground = function(){
-	var totalHeight = $('body').height();
+	var totalHeight = $(document).height();
 	$('.dim').css({'height' : totalHeight + 'px', 'display' : 'block'});
 };
 
