@@ -37,6 +37,7 @@ $(document).ready(function(){
 
     $('#sendEmailForgotPassword').live('click', function(){
         var emailForgotPassword = $('#emailForgotPassword').val();
+        console.log(emailForgotPassword);
         $.ajax({
             type: 'POST',
             timeout: 5000,
@@ -44,6 +45,9 @@ $(document).ready(function(){
             data: { email: emailForgotPassword},
 
             success:function(data){
+                if(!data){
+                    $('#forgot-password-container').html('The email has been sent. Please check your email');
+                }
             }
         });
     });

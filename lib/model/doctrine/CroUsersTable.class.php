@@ -28,6 +28,16 @@ class CroUsersTable extends Doctrine_Table
         return empty($record) ? NULL : $record[0];
 	}
 
+    public function getUserByEmail($email)
+    {
+        $record = Doctrine_Query::create()
+            ->from('CroUsers u')
+            ->where('u.email = ?', $email)
+            ->fetchArray();
+
+        return empty($record) ? NULL : $record[0];
+    }
+
     public function getUserListByFilter($email)
     {
         $record = Doctrine_Query::create()

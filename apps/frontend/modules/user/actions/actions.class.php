@@ -16,15 +16,25 @@ class userActions extends sfActions
 
 	public function executeChangepassword(sfWebRequest $request)
 	{
-		$this->crouser = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
-		$this->form = new CroUsersForm($this->crouser);
-		$this->form->changepasswordConfigure();
-		$this->processForm($request, $this->form, 'changepassword');
+        if($request->getParameter('activationkey')){
+            $this->crouser = Doctrine::getTable('CroUsers')->findOneBy('activationkey',$request->getParameter('activationkey'));
+        } else {
+            $this->crouser = Doctrine::getTable('CroUsers')->find(array($this->getUser()->getAttribute('id')));
+        }
+
+        if($this->crouser){
+            $this->useremail = $this->crouser->getEmail();
+            $this->activationkey = $this->crouser->getActivationkey();
+            $this->form = new CroUsersForm($this->crouser);
+            $this->form->changepasswordConfigure();
+            $this->processForm($request, $this->form, 'changepassword', $this->crouser->getEmail());
+        }
 	}
 
     public function executeSendforgotpassword(sfWebRequest $request)
     {
-
+        $crouser = Doctrine::getTable('CroUsers')->getUserByEmail($request->getParameter('email'));
+        $this->sendMailForForgotpassword($request->getParameter('email'), $crouser['activationkey']);
     }
 
 	public function executeRegister(sfWebRequest $request)
@@ -41,7 +51,7 @@ class userActions extends sfActions
 		$this->processForm($request, $this->form, 'edit');
 	}
 
-	protected function processForm(sfWebRequest $request, sfForm $form, $action)
+	protected function processForm(sfWebRequest $request, sfForm $form, $action, $emailForgotPassword = NULL)
 	{
 		if ($request->isMethod('post'))
         {
@@ -53,7 +63,7 @@ class userActions extends sfActions
 	    	} else if($action == 'edit' || $action == 'changepassword') {
 	    		$postData['password'] = $this->crouser->getPassword();
 	    	}
-	    	
+
 	    	if($action == 'changepassword'){
 	    		$postData['password2'] = md5(sfConfig::get('app_passwordsalt') . $postData['password2']);
 	    	}
@@ -67,6 +77,10 @@ class userActions extends sfActions
 	            	$this->getUser()->setAttribute('userfullname', ucfirst($user['fname']) . ' ' . ucfirst($user['lname']));
 	            	$this->redirect('user/edit');
             	} else if ($action == 'changepassword'){
+                    $useremail = $this->getUser()->getAttribute('email');
+                    if($emailForgotPassword){
+                        $useremail = $emailForgotPassword;
+                    }
             		$this->sendMailForChangepassword($this->getUser()->getAttribute('email'));
             		$this->redirect('index/index');
             	} else {
@@ -97,9 +111,9 @@ class userActions extends sfActions
 		$this->getMailer()->send($message);
 	}
 
-    protected function sendMailForForgotpassword($email)
+    protected function sendMailForForgotpassword($email, $activationkey)
     {
-        $html = $this->getPartial('user/_forgotpasswordinstruction');
+        $html = $this->getPartial('user/forgotpasswordemail', array('email' => $email, 'activationkey' => $activationkey));
 
         $message = $this->getMailer()->compose();
         $message->setSubject('Forgot Password');

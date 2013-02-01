@@ -1,10 +1,10 @@
 <div id="registerarea">
 
     <div id="loginbox">
-        <form action="<?php echo url_for('user/changepassword') ?>" method="post">
+        <form action="<?php echo url_for('user/changepassword').'?activationkey='.$activationkey ?>" method="post">
             <?php echo $form->renderHiddenFields(false) ?>
             <ul>
-              <li><div class='form-label'>Email:</div> <?php echo $sf_user->getAttribute('email') ?></li>
+              <li><div class='form-label'>Email:</div> <?php echo $useremail ?></li>
               <li><div class='form-label'>New Password:</div> <?php echo $form['password'] ?></li>
               <li class="error">&nbsp; <?php echo $form['password']->getError() ?></li>
               <li><div class='form-label'>Retype Password:</div> <?php echo $form['password2'] ?></li>
