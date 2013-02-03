@@ -55,7 +55,7 @@ $(document).ready(function(){
 });
 
 $('.dim').live('click', function(){
-    $(this).toggle();
+    $('.dim').css({'height' : '1px', 'display' : 'none'});
     $('#forgot-password-container').hide();
 });
 

@@ -23,11 +23,18 @@ class reservationActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-      $this->form = new CroReservationsForm();
-      if($this->getUser()->hasCredential('admin')){
-        $this->form->adminConfigure();
+      $diff = $this->timeDiff(strtotime($request->getParameter('selected_date')), strtotime(date('Y-m-d')));
+
+      if($diff['years'] <= 0 && $diff['months'] <= 0 && $diff['weeks'] <= 0 && $diff['days'] >= 2){
+          $this->form = new CroReservationsForm();
+          if($this->getUser()->hasCredential('admin')){
+              $this->form->adminConfigure();
+          }
+          $this->processForm($request, $this->form);
+      } else {
+            echo 'Please select date ahead of 2 days';
+            return sfView::NONE;
       }
-      $this->processForm($request, $this->form);
   }
 
   public function executeEdit(sfWebRequest $request)
