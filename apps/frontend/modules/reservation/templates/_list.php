@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Court Name</th>
+            <th>Unit Name</th>
             <th>Start</th>
             <th>End</th>
             <th>Hours</th>

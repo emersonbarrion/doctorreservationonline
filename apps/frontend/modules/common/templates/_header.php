@@ -10,7 +10,7 @@
 		<ul id="nav" class="menubar">
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem first"><a href="<?php echo url_for('index/index') ?>">HOME</a></li>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">RESERVATIONS</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">APPOINTMENTS</a></li>
 			<?php endif; ?>
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem first"><a href="<?php echo url_for('dashboard/index') ?>">DASHBOARD</a></li>
@@ -23,8 +23,8 @@
 			<?php endif; ?>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_user->hasCredential(array('user'))): ?>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">MY RESERVATIONS</a></li>
-			<li class="menubaritem"><a href="<?php echo url_for('reservation/all') ?>">ALL RESERVATIONS</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/index') ?>">MY APPOINTMENTS</a></li>
+			<li class="menubaritem"><a href="<?php echo url_for('reservation/all') ?>">ALL APPOINTMENTS</a></li>
 			<?php endif; ?>
 			<?php if(!$sf_user->isAuthenticated() || !$sf_user->hasCredential(array('user'))): ?>
 			<li class="menubaritem"><a href="<?php echo url_for('user/register') ?>">REGISTER</a></li>

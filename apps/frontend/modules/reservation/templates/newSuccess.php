@@ -7,7 +7,7 @@
           <tr><td>Email:</td><td><?php echo $form['userid'] ?></td></tr>
           <tr><td></td><td><?php echo $form['userid']->getError() ?></td></tr>
         <?php endif; ?>
-        <tr><td>Court Name:</td><td><?php echo $form['courtid'] ?></td></tr>
+        <tr><td>Unit Name:</td><td><?php echo $form['courtid'] ?></td></tr>
         <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
         <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
         <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
@@ -17,7 +17,7 @@
         <tr><td>End Time:</td><td><?php echo $form['end'] ?></td></tr>
         <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
         <?php if($sf_user->hasCredential('admin')): ?>
-          <tr><td>Reservation Status:</td><td><?php echo $form['status'] ?></td></tr>
+          <tr><td>Appointment Status:</td><td><?php echo $form['status'] ?></td></tr>
           <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
         <?php endif; ?>
     </table>
