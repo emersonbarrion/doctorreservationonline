@@ -23,9 +23,8 @@ class reservationActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-      $diff = $this->timeDiff(strtotime($request->getParameter('selected_date')), strtotime(date('Y-m-d')));
-
-      if($diff['years'] <= 0 && $diff['months'] <= 0 && $diff['weeks'] <= 0 && $diff['days'] >= 2){
+      $validDate = date("Y-m-d",strtotime("+2 day"));
+      if($request->getParameter('selected_date') > $validDate){
           $this->form = new CroReservationsForm();
           if($this->getUser()->hasCredential('admin')){
               $this->form->adminConfigure();
