@@ -1,0 +1,37 @@
+CroAdminUsers:
+  Admin:
+    activationkey: a
+    email: courtreservationonline@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    fname: admin
+    lname: owner
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'France'
+    CroGroups: Admin
+    lastlogin: '2012-11-30 03:00:00'
+    status: 1
+  CompanyA:
+    activationkey: a  
+    email: microtech@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    fname: Belle
+    lname: Steven
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'USA'
+    CroGroups: Facilitator
+    lastlogin: '2012-11-27 05:00:00'
+    status: 1
+  CompanyB:
+    activationkey: a  
+    email: jiggle@gmail.com
+    password: b219dbd0bc70f6446d9c1262101f6d0a
+    fname: Philipp
+    lname: Claire
+    contact1: 1234567890
+    contact2: 0987654321
+    address: 'Britain'
+    CroGroups: Facilitator
+    lastlogin: '2012-11-24 02:00:00'
+    status: 1
