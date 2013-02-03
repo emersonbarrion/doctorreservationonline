@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           CroUsers
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cro_users
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        hide: [id,password,created_at,updated_at,minitial]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+      filter:
+        display: [email,fname,lname,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+      form:
+        class: CroUsersForm
+      edit:
+        display: [email,password,fname, lname,minitial, phone, subscription,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+      new:
+        display: [email,password,fname, lname,minitial, phone, subscription,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }

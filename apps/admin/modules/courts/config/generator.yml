@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           CroCourts
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cro_courts
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Units List
+        display: [name,indoor,lights,priorreservationhours,maxreservationhours,rate,start_time,end_time,status]
+        fields:
+          priorreservationhours: { label: Prior Hours }
+          maxreservationhours: { label: Max Hours }
+      filter:
+        display: [name,indoor,lights,rate,status]
+      form:
+        class: CroCourtsForm
+      edit:
+        fields:
+          priorreservationhours: { label: Prior Hours }
+          maxreservationhours: { label: Max Hours }
+      new:
+        fields:
+          priorreservationhours: { label: Prior Hours }
+          maxreservationhours: { label: Max Hours }

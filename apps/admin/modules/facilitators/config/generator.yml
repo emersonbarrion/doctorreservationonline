@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           CroAdminUsers
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cro_admin_users
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [email,fname,lname,address,group,lastlogin,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+          lastlogin: { label: Last Login }
+      filter:
+        display: [email,fname,lname,address,user_group,status]
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }
+          user_group: { label: Group }
+      form:
+        class: CroAdminUsersForm
+      edit:
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }	  
+      new:
+        fields:
+          fname: { label: Firstname }
+          lname: { label: Lastname }	  

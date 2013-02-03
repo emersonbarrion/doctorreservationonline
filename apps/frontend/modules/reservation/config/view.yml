@@ -1,0 +1,11 @@
+indexSuccess:
+  metas:
+    title:        'Reservation Page'
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  stylesheets:    [fullcalendar.css, fullcalendar-modified.css]
+
+  javascripts:    [calendar/fullcalendar.min.js, calendar-script.js]

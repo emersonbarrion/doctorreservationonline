@@ -1,0 +1,36 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           CroReservations
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cro_reservations
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [title,userid,courtid,start,end,hours,amount,status,created_at,updated_at]
+        fields:
+          userid: { label: User }
+          courtid: { label: Unit }
+      filter:
+        display: [title,userid,courtid,start,end,hours,amount,status]
+        fields:
+          userid: { label: User }
+          courtid: { label: Unit }
+      form:
+        class: CroReservationsForm
+      edit:
+        fields:
+          userid: { label: User }
+          courtid: { label: Court Name }	  
+          start: { label: Start Time }
+          end: { label: End Time }	  	  		  
+          paymentstatus: { label: Payment Status }	  
+      new:     ~
