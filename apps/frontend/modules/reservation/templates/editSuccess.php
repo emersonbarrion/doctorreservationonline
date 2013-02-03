@@ -6,14 +6,14 @@
       <tr><td>Payment Status:</td><td><?php echo $payment_status ?></td></tr>
       <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
       <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
-      <tr><td>Court Name:</td><td><?php echo $form['courtid'] ?></td></tr>
+      <tr><td>Unit Name:</td><td><?php echo $form['courtid'] ?></td></tr>
       <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
       <tr style='display: none'><td>Date:</td><td id='selectedDate'><?php echo $sf_params->get('selected_date') ?></td></tr>
       <tr><td>Start Time:</td><td><?php echo $form['start'] ?></td></tr>
       <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
       <tr><td>End Time:</td><td><?php echo $form['end'] ?></td></tr>
       <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
-      <tr><td>Reservation Status:</td><td><?php echo $status ?></td></tr>
+      <tr><td>Appointment Status:</td><td><?php echo $status ?></td></tr>
     </table>
 
     <?php if($payment_status != "Paid"): ?>
