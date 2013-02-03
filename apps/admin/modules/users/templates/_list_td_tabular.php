@@ -1,3 +1,6 @@
+<td class="sf_admin_text sf_admin_list_td_activationkey">
+    <?php echo $cro_users->getActivationkey() ?>
+</td>
 <td class="sf_admin_text sf_admin_list_td_email">
   <?php echo $cro_users->getEmail() ?>
 </td>
