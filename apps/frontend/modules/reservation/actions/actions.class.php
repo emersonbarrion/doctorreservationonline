@@ -21,20 +21,27 @@ class reservationActions extends sfActions
     $this->setTemplate('index');
   }
 
-  public function executeNew(sfWebRequest $request)
-  {
+    public function executeNew(sfWebRequest $request)
+    {
       $validDate = date("Y-m-d",strtotime("+2 day"));
-      if($request->getParameter('selected_date') > $validDate){
+      $data = $request->getParameter('cro_reservations');
+      if ($request->isMethod('post')) {
+          $selectedDate = $data['selected_date'];
+      } else {
+          $selectedDate = $request->getParameter('selected_date');
+      }
+
+        if($selectedDate > $validDate){
           $this->form = new CroReservationsForm();
           if($this->getUser()->hasCredential('admin')){
               $this->form->adminConfigure();
           }
           $this->processForm($request, $this->form);
-      } else {
+        } else if(!$request->isMethod('post')) {
             echo 'Please select date ahead of 2 days';
             return sfView::NONE;
-      }
-  }
+        }
+    }
 
   public function executeEdit(sfWebRequest $request)
   {

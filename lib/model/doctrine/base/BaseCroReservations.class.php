@@ -14,6 +14,7 @@
  * @property double $amount
  * @property string $paymentstatus
  * @property boolean $status
+ * @property string $notes
  * @property CroUsers $CroUsers
  * @property CroCourts $CroCourts
  * @property Doctrine_Collection $CroCourtClose
@@ -28,6 +29,7 @@
  * @method double              getAmount()        Returns the current record's "amount" value
  * @method string              getPaymentstatus() Returns the current record's "paymentstatus" value
  * @method boolean             getStatus()        Returns the current record's "status" value
+ * @method string              getNotes()         Returns the current record's "notes" value
  * @method CroUsers            getCroUsers()      Returns the current record's "CroUsers" value
  * @method CroCourts           getCroCourts()     Returns the current record's "CroCourts" value
  * @method Doctrine_Collection getCroCourtClose() Returns the current record's "CroCourtClose" collection
@@ -41,6 +43,7 @@
  * @method CroReservations     setAmount()        Sets the current record's "amount" value
  * @method CroReservations     setPaymentstatus() Sets the current record's "paymentstatus" value
  * @method CroReservations     setStatus()        Sets the current record's "status" value
+ * @method CroReservations     setNotes()         Sets the current record's "notes" value
  * @method CroReservations     setCroUsers()      Sets the current record's "CroUsers" value
  * @method CroReservations     setCroCourts()     Sets the current record's "CroCourts" value
  * @method CroReservations     setCroCourtClose() Sets the current record's "CroCourtClose" collection
@@ -56,10 +59,9 @@ abstract class BaseCroReservations extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('cro_reservations');
-        $this->hasColumn('title', 'string', 255, array(
+        $this->hasColumn('title', 'string', null, array(
              'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
+             'default' => '',
              ));
         $this->hasColumn('userid', 'integer', null, array(
              'type' => 'integer',
@@ -94,6 +96,10 @@ abstract class BaseCroReservations extends sfDoctrineRecord
              'type' => 'boolean',
              'notnull' => true,
              'default' => 0,
+             ));
+        $this->hasColumn('notes', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
     }
 

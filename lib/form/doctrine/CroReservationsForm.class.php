@@ -12,7 +12,7 @@ class CroReservationsForm extends BaseCroReservationsForm
 {
     public function configure()
     {
-        unset( $this['created_at'], $this['updated_at'], $this['status']);
+        unset( $this['created_at'], $this['updated_at'], $this['status'], $this['title']);
         
         if($this->isNew()){
             $this->widgetSchema['start'] = new sfWidgetFormInputText();
@@ -26,8 +26,10 @@ class CroReservationsForm extends BaseCroReservationsForm
         $this->widgetSchema['courtid'] = new sfWidgetFormDoctrineChoice(array('model' => 'CroCourts', 'method' => 'getName', 'add_empty' => true));
         $this->widgetSchema['selected_date'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['process'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['notes'] = new sfWidgetFormTextarea();
 
         $this->validatorSchema['selected_date'] = new sfValidatorString(array('required' => false));
+        $this->validatorSchema['notes'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['process'] = new sfValidatorString(array('required' => false));
         $this->validatorSchema['start'] = new sfValidatorString(array('max_length' => 255, 'required' => false));
         $this->validatorSchema['end'] = new sfValidatorString(array('max_length' => 255, 'required' => false));

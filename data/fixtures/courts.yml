@@ -2,8 +2,8 @@ CroCourts:
   Basketball:
     name: 'Court 1'
     status: 1
-    indoor: 1
-    lights: 1
+    room: 1
+    location: 'City'
     priorreservationhours: 2
     maxreservationhours: 5
     rate: 150
@@ -15,8 +15,8 @@ CroCourts:
   Tennis:
     name: 'Court 2'
     status: 1
-    indoor: 1
-    lights: 1
+    room: 1
+    location: 'City'
     priorreservationhours: 8
     maxreservationhours: 8
     rate: 250

@@ -9,13 +9,16 @@
         <?php endif; ?>
         <tr><td>Unit Name:</td><td><?php echo $form['courtid'] ?></td></tr>
         <tr><td></td><td><?php echo $form['courtid']->getError() ?></td></tr>
-        <tr><td>Title:</td><td><?php echo $form['title'] ?></td></tr>
-        <tr><td></td><td><?php echo $form['title']->getError() ?></td></tr>
+        <tr><td>Name:</td><td><?php echo $sf_user->getAttribute('userfullname') ?></td></tr>
+        <tr><td>Phone:</td><td><?php echo $sf_user->getAttribute('phone') ?></td></tr>
+        <tr><td>Email:</td><td><?php echo $sf_user->getAttribute('email') ?></td></tr>
         <tr style='display: none'><td>Date:</td><td id='selectedDate'><?php echo $sf_params->get('selected_date') ?></td></tr>
         <tr><td>Start Time:</td><td><?php echo $form['start'] ?></td></tr>
         <tr><td></td><td><?php echo $form['start']->getError() ?></td></tr>
         <tr><td>End Time:</td><td><?php echo $form['end'] ?></td></tr>
         <tr><td></td><td><?php echo $form['end']->getError() ?></td></tr>
+        <tr><td>Notes:</td><td><?php echo $form['notes'] ?></td></tr>
+        <tr><td></td><td><?php echo $form['notes']->getError() ?></td></tr>
         <?php if($sf_user->hasCredential('admin')): ?>
           <tr><td>Appointment Status:</td><td><?php echo $form['status'] ?></td></tr>
           <tr><td></td><td><?php echo $form['status']->getError() ?></td></tr>
@@ -69,8 +72,7 @@
                 }  
 
 
-                if(!$('#cro_reservations_title').val() || !$('#cro_reservations_start').val() || 
-                   !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
+                if(!$('#cro_reservations_start').val() || !$('#cro_reservations_end').val() || !$('#cro_reservations_courtid').val()){
                   $('#is-available').empty();
                   $('#is-available').text('Fill the required fields');
                 } else {

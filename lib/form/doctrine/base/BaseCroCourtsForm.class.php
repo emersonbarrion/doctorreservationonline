@@ -16,30 +16,32 @@ abstract class BaseCroCourtsForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'                    => new sfWidgetFormInputHidden(),
+      'room'                  => new sfWidgetFormInputText(),
       'name'                  => new sfWidgetFormInputText(),
-      'indoor'                => new sfWidgetFormInputCheckbox(),
-      'lights'                => new sfWidgetFormInputCheckbox(),
+      'location'              => new sfWidgetFormInputText(),
       'priorreservationhours' => new sfWidgetFormInputText(),
       'maxreservationhours'   => new sfWidgetFormInputText(),
       'rate'                  => new sfWidgetFormInputText(),
       'start_time'            => new sfWidgetFormInputText(),
       'end_time'              => new sfWidgetFormInputText(),
       'status'                => new sfWidgetFormInputCheckbox(),
+      'remarks'               => new sfWidgetFormInputText(),
       'created_at'            => new sfWidgetFormDateTime(),
       'updated_at'            => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
       'id'                    => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'room'                  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'name'                  => new sfValidatorString(array('max_length' => 255)),
-      'indoor'                => new sfValidatorBoolean(array('required' => false)),
-      'lights'                => new sfValidatorBoolean(array('required' => false)),
+      'location'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'priorreservationhours' => new sfValidatorInteger(),
       'maxreservationhours'   => new sfValidatorInteger(),
       'rate'                  => new sfValidatorPass(),
       'start_time'            => new sfValidatorString(array('max_length' => 255)),
       'end_time'              => new sfValidatorString(array('max_length' => 255)),
       'status'                => new sfValidatorBoolean(array('required' => false)),
+      'remarks'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'            => new sfValidatorDateTime(),
       'updated_at'            => new sfValidatorDateTime(),
     ));

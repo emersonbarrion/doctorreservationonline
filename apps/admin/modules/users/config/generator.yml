@@ -15,6 +15,7 @@ generator:
       actions: ~
       fields:  ~
       list:
+        title: 'Test lagn'
         hide: [id,password,created_at,updated_at,minitial]
         fields:
           fname: { label: Firstname }

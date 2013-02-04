@@ -16,12 +16,12 @@ generator:
       fields:  ~
       list:
         title: Units List
-        display: [name,indoor,lights,priorreservationhours,maxreservationhours,rate,start_time,end_time,status]
+        display: [name,room,priorreservationhours,maxreservationhours,rate,start_time,end_time,status]
         fields:
           priorreservationhours: { label: Prior Hours }
           maxreservationhours: { label: Max Hours }
       filter:
-        display: [name,indoor,lights,rate,status]
+        display: [name,room,rate,status]
       form:
         class: CroCourtsForm
       edit:
